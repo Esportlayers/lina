@@ -1,17 +1,15 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { HYDRATE, MakeStore, createWrapper } from 'next-redux-wrapper';
 import { createReducer } from './reducer/util/Reducer';
-import { combiner } from './reducer/util/Combiner';
 import thunk from 'redux-thunk';
 import networkMiddleware from './middleware/NetworkMiddleware';
+import { initialUiState, Ui, uiReducer } from './reducer/Ui';
 
 export interface State {
-	entities: {
-	};
+    ui: Ui;
 }
 const initial: State = {
-	entities: {
-	},
+    ui: initialUiState,
 };
 
 const { addReducer, combinedReducer: stateReducer } = createReducer<State>(initial);
@@ -24,8 +22,7 @@ addReducer<HydrateAction>(HYDRATE, (store) => ({ ...store }));
 
 export const storeReducer = combineReducers<State>({
 	...stateReducer,
-	entities: combiner({
-	})
+    ui: uiReducer,
 });
 
 const makeStore: MakeStore<State> = () => {
