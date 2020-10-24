@@ -1,61 +1,76 @@
-import { ReactElement } from "react";
-import { useCurrentUser } from "../../modules/selector/UiSelector";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import { FC, ReactElement, useState } from "react";
+import Welcome from "./Sections/Welcome";
+
+const variants: Variants = {
+    enter: () => {
+      return {
+        x: '100vw',
+        opacity: 0,
+        transition: {
+          when: 'beforeChildren',
+          staggerChildren: 0.5,
+          duration: 0.5,
+        },
+      };
+    },
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: () => {
+      return {
+        zIndex: 0,
+        x: '-100vw',
+        opacity: 0
+      };
+    }
+};
+  
+export interface WelcomePageProps {
+    onContinue: () => void;
+}
+
+const pages: FC<WelcomePageProps>[] = [
+    Welcome,
+    Welcome,
+];
 
 export default function WelcomeScreen(): ReactElement {
-    const currentUser = useCurrentUser();
-
-    return <div className={'welcomeContainer'}>
-        <h1 className={'welcome'}>Welcome {currentUser?.displayName || ''}!</h1>
-        <h2>
-            StreamDota requires a configuration file to work.
-            <br />
-            <br />
-            Please follow the next steps to complete the setup.
-        </h2>
-
-        <div className={'btnRow'}>
-            <div className={'btn'}>
-                Start Setup
-            </div>
-        </div>
+    const [index, setIndex] = useState(0);
+    const Comp = pages[index];
+    
+    return <div className={'container'}>
+        <AnimatePresence initial={false}>
+            <motion.div
+                key={index}
+                variants={variants}
+                initial={'enter'}
+                animate={'center'}
+                exit={'exit'}
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+            >
+                <div className={'animationContainer'}>
+                    <AnimatePresence initial={true}>
+                        <Comp onContinue={() => setIndex(index + 1)}/>
+                    </AnimatePresence>
+                </div>
+            </motion.div>
+        </AnimatePresence>
 
         <style jsx>{`
-            .welcomeContainer {
-                max-width: 1000px;
-                width: 100%;
-                margin: 5rem auto;
-                text-align: center;
+            .container {
+                position: relative;
             }
 
-            h1 {
-                font-size: 5rem;
-            }
-
-            .btn {
-                padding: 1.5rem 3.5rem;
-                border-radius: 4rem;
-                background-color: #FF9900;
-                display: inline-flex;
-                font-size: 1.2rem;
-                line-height: 1.2rem;
-                font-weight: bold;
-                text-transform: uppercase;
-                color: #FFF;
-                box-shadow: 4px 4px 15px rgba(0,0,0,0.3);
-                cursor: pointer;
-                transition: box-shadow 240ms; 
-            }
-
-            .btn:hover {
-                box-shadow: 4px 4px 20px rgba(0,0,0,0.4);
-            }
-
-            .btnRow {
-                display: flex;
-                align-items: center;
-                margin-top: 5rem;
-                justify-content: space-around;
+            .animationContainer {
+                position: absolute;
+                width: 100vw;
             }
         `}</style>
-    </div>
+    </div>;
 }
