@@ -13,7 +13,7 @@ export default function GrandCentralTerminal(): ReactElement {
             if(!currentUser.gsiConnected) {
                 router.push('/welcome');
             } else {
-                router.push('/dashboard')
+                router.push('/welcome')
             }
             
         }
