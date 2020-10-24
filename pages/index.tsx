@@ -4,13 +4,13 @@ import PageFrame from '../components/PageFrame';
 import LoginInfo from '../components/LoginInfo';
 
 export default function Home(): ReactElement {
-  /*if(process.browser) {
+  if(process.browser) {
       if(localStorage.getItem('jwt')) {
-          Router.push('/dashboard');
+          Router.push('/grandCentralTerminal');
       } else {
           location.href = `${process.env.API_URL}/auth/twitch`;
       }
-  }*/
+  }
 
   return <PageFrame>
     <LoginInfo />

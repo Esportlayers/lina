@@ -20,10 +20,11 @@ export default function LoginInfo(): ReactElement {
                 },
                 "interactivity": {
                     "events": {
+                        "resize": true,
                         "onhover": {
                             "enable": true,
                             "mode": "repulse"
-                        }
+                        },
                     }
                 }
             }}
@@ -50,7 +51,28 @@ export default function LoginInfo(): ReactElement {
                 color: #EEE;
                 font-weight: bold;
                 pointer-events: none;
+                animation: pulse 4s infinite;
             }
+
+           @keyframes pulse {
+               0% {
+                   opacity: .1;
+               }
+               50% {
+                   opacity: 1;
+               }
+               100% {
+                   opacity: .1;
+               }
+           } 
+
+           :global(#tsparticles) {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+           }
         `}</style>
     </div>
 }
