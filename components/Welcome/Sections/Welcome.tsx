@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useCurrentUser } from "../../../modules/selector/UiSelector";
 import Button from "../../Util/Button";
+import Container from "../../Util/Container";
 import ExpandFullWidth from "../../Util/Motion/ExpandFullWidth";
 import NudgeFromBottom from "../../Util/Motion/NudgeFromBottom";
 import { WelcomePageProps } from "../WelcomeScreen";
@@ -8,7 +9,7 @@ import { WelcomePageProps } from "../WelcomeScreen";
 export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
     const currentUser = useCurrentUser();
 
-    return <div className={'welcomeContainer'}>
+    return <Container>
         {currentUser && <NudgeFromBottom>
             <h1 className={'welcome'}>Welcome {currentUser?.displayName || ''}!</h1>
         </NudgeFromBottom>}
@@ -40,12 +41,6 @@ export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
         </div>
 
         <style jsx>{`
-            .welcomeContainer {
-                max-width: 1000px;
-                width: 100%;
-                margin: 20vh auto;
-                text-align: center;
-            }
 
             h1 {
                 font-size: 5rem;
@@ -66,6 +61,6 @@ export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
                 margin-bottom: 5rem;
             }
         `}</style>
-    </div>
+    </Container>
 
 }

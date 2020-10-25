@@ -1,6 +1,9 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { FC, ReactElement, useState } from "react";
 import Welcome from "./Sections/Welcome";
+import DownloadConfig from "./Sections/DownloadConfig";
+import LocateConfig from "./Sections/LocateConfig";
+import WaitingForConnection from "./Sections/WaitingForConnection";
 
 const variants: Variants = {
     enter: () => {
@@ -34,7 +37,9 @@ export interface WelcomePageProps {
 
 const pages: FC<WelcomePageProps>[] = [
     Welcome,
-    Welcome,
+    DownloadConfig,
+    LocateConfig,
+    WaitingForConnection,
 ];
 
 export default function WelcomeScreen(): ReactElement {
