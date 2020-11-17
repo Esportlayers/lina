@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
-    "@types/node": "^14.11.8",
+    "@types/node": "^14.14.7",
     "@types/normalizr": "^2.0.18",
     "@types/react": "^16.9.51",
     "@types/react-redux": "^7.1.9",
