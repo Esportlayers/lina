@@ -1,9 +1,9 @@
 
 import { ReactElement } from "react";
 import { getDefaultHeader } from "../../../modules/middleware/Network";
-import Button from "../../Util/Button";
-import Container from "../../Util/Container";
-import NudgeFromBottom from "../../Util/Motion/NudgeFromBottom";
+import Button from "../../Ui/button/Button";
+import Container from "../../Ui/container/Container";
+import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
 import { WelcomePageProps } from "../WelcomeScreen";
 
 async function downloadGsiConfig(): Promise<void> {

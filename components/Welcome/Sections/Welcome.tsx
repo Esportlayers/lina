@@ -1,10 +1,11 @@
 import { ReactElement } from "react";
 import { useCurrentUser } from "../../../modules/selector/UiSelector";
-import Button from "../../Util/Button";
-import Container from "../../Util/Container";
-import ExpandFullWidth from "../../Util/Motion/ExpandFullWidth";
-import NudgeFromBottom from "../../Util/Motion/NudgeFromBottom";
+import Button from "../../Ui/button/Button";
+import Container from "../../Ui/container/Container";
+import ExpandFullWidth from "../../Ui/motion/ExpandFullWidth";
+import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
 import { WelcomePageProps } from "../WelcomeScreen";
+import DeleteButton from "./DeleteButton";
 
 export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
     const currentUser = useCurrentUser();
@@ -22,16 +23,11 @@ export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
         <NudgeFromBottom delay={.2}>
             <h2>StreamDota requires a GSI configuration file to work.</h2>
             <h4>You can find details on GSI here (there is only an official CSGO documentation): <a href={'https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Game_State_Integration'} target={'_blank'}>valvesoftware.com</a></h4>
-            <h5>However, if you feel uncomfortable downloading a configuration file, you can also directly delete your account now.</h5>
+            <h5>However, if you feel uncomfortable downloading a configuration file, you can also directly delete your account now or later.</h5>
         </NudgeFromBottom>
 
         <div className={'btnRow'}>
-
-            <NudgeFromBottom delay={.3}>
-                <Button ghost>
-                    Delete my account
-                </Button>
-            </NudgeFromBottom>
+            <DeleteButton />
 
             <NudgeFromBottom delay={.4}>
                 <Button onClick={onContinue}>

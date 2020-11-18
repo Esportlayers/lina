@@ -1,7 +1,7 @@
 import React, {createContext, Dispatch, useContext, useReducer} from 'react';
 import {State} from "./State";
 import MessageHandler from './MessageHandler';
-import { useCurrentUser } from '../../../modules/selector/UiSelector';
+import { useCurrentUser } from '../../modules/selector/UiSelector';
 
 function getWebsocketUrl(): string {
     const url = process.env.API_URL;

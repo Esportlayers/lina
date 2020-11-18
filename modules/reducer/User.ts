@@ -1,7 +1,6 @@
 import { CALL_API } from "../middleware/NetworkMiddlewareTypes";
-import { AUTH_USER_REQUEST, AUTH_USER_SUCCESS, AUTH_USER_FAILURE } from "./Actions";
+import { AUTH_USER_REQUEST, AUTH_USER_SUCCESS, AUTH_USER_FAILURE, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAILURE } from "./Actions";
 import { currentUserSelector } from "../selector/UiSelector";
-
 
 export function authUser(code: string) {
     return async (dispatch, getState) => {
@@ -21,6 +20,27 @@ export function authUser(code: string) {
             return true;
         }
 
+        return false;
+    }
+}
+
+export function deleteUser() {
+    return async (dispatch, getState) => {
+        if(currentUserSelector(getState())) {
+            await dispatch({
+                [CALL_API]: {
+                    endpoint: `${process.env.API_URL}/user/deleteAccount`,
+                    method: 'del',
+                    types: {
+                        requestType: DELETE_USER_REQUEST,
+                        successType: DELETE_USER_SUCCESS,
+                        failureType: DELETE_USER_FAILURE,
+                    },
+                },
+            });
+            localStorage.removeItem('jwt');
+            return true;
+        }
         return false;
     }
 }

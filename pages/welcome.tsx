@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
 import PageFrame from '../components/PageFrame';
-import { initialState, reducer } from '../components/Util/Websocket/State';
+import { initialState, reducer } from '../components/Websocket/State';
 import WelcomeScreen from '../components/Welcome/WelcomeScreen';
 import { useCurrentUser } from '../modules/selector/UiSelector';
 import dynamic from "next/dynamic";
 
 
 const ContextProvider = dynamic(
-    () => import('../components/Util/Websocket/Context'),
+    () => import('../components/Websocket/Context'),
     { ssr: false }
 );
 

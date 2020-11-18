@@ -7,11 +7,12 @@ interface Props {
     onClick?: () => void;
     ghost?: boolean;
     big?: boolean;
+    del?: boolean;
 }
 
-export default function Button({big, children, ghost, onClick}: Props): ReactElement {
+export default function Button({big, children, del, ghost, onClick}: Props): ReactElement {
     return <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}>
-        <div className={classNames('btn', {big, ghost})} onClick={onClick}>
+        <div className={classNames('btn', {big, del, ghost})} onClick={onClick}>
             {children}
         </div>
         <style jsx>{`
@@ -32,6 +33,10 @@ export default function Button({big, children, ghost, onClick}: Props): ReactEle
         .ghost {
             box-shadow: none;
             background: transparent;
+        }
+
+        .del {
+            background-color: var(--delete-red);
         }
 
         .big {

@@ -1,12 +1,12 @@
 
 import classNames from "classnames";
 import { ReactElement, useEffect, useState } from "react";
-import Button from "../../Util/Button";
-import Container from "../../Util/Container";
-import Loader from "../../Util/Loader";
-import NudgeFromBottom from "../../Util/Motion/NudgeFromBottom";
-import { useMessageListener } from "../../Util/Websocket/MessageHandler";
-import { isGsiConnectedMessage } from "../../Util/Websocket/State";
+import Button from "../../Ui/button/Button";
+import Container from "../../Ui/container/Container";
+import Loader from "../../Ui/loader/Loader";
+import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
+import { useMessageListener } from "../../Websocket/MessageHandler";
+import { isGsiConnectedMessage } from "../../Websocket/State";
 import { WelcomePageProps } from "../WelcomeScreen";
 
 export default function WaitingForConnection({onContinue}: WelcomePageProps): ReactElement {
