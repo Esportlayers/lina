@@ -1,9 +1,10 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { FC, ReactElement, useState } from "react";
+import { FC, ReactElement, useCallback, useState } from "react";
 import Welcome from "./Sections/Welcome";
 import DownloadConfig from "./Sections/DownloadConfig";
 import LocateConfig from "./Sections/LocateConfig";
 import WaitingForConnection from "./Sections/WaitingForConnection";
+import { useRouter } from "next/router";
 
 const variants: Variants = {
     enter: () => {
@@ -44,7 +45,18 @@ const pages: FC<WelcomePageProps>[] = [
 
 export default function WelcomeScreen(): ReactElement {
     const [index, setIndex] = useState(0);
+    const router = useRouter();
     const Comp = pages[index];
+
+    const nextStep = useCallback(() => {
+        if(index === 2) {
+          router.push('/configurationDashboard');
+        } else {
+          setIndex(index + 1)
+        }
+      },
+      [index, router],
+    )
     
     return <div className={'container'}>
         <AnimatePresence initial={false}>
@@ -61,7 +73,7 @@ export default function WelcomeScreen(): ReactElement {
             >
                 <div className={'animationContainer'}>
                     <AnimatePresence initial={true}>
-                        <Comp onContinue={() => setIndex(index + 1)}/>
+                        <Comp onContinue={nextStep}/>
                     </AnimatePresence>
                 </div>
             </motion.div>

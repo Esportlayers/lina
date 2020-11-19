@@ -21,7 +21,7 @@ export default function WaitingForConnection({onContinue}: WelcomePageProps): Re
 
     return <Container>
         <NudgeFromBottom delay={.2}>
-            <h2>Start or Restart your Dota 2 and join, replay or observe a game</h2>
+            <h2>Start or restart your Dota 2 and join, replay or observe a game</h2>
         </NudgeFromBottom>
 
         <br />
@@ -45,7 +45,7 @@ export default function WaitingForConnection({onContinue}: WelcomePageProps): Re
 
         {connected && <NudgeFromBottom>
             <Button onClick={onContinue}>
-                Setup overlays
+                Setup modules
             </Button>
         </NudgeFromBottom>}
 
@@ -58,7 +58,7 @@ export default function WaitingForConnection({onContinue}: WelcomePageProps): Re
                 display: inline-flex;
                 margin: 2rem auto;
                 border: 2px solid rgba(255, 255, 255, 0.2);
-                border-left-color: #5cb85c;
+                border-left-color: var(--primary-accent);
                 animation: spin 2s infinite linear;
                 position: relative;
                 vertical-align: top;
@@ -80,7 +80,7 @@ export default function WaitingForConnection({onContinue}: WelcomePageProps): Re
             .connected {
                 -webkit-animation: none;
                 animation: none;
-                border-color: #5cb85c;
+                border-color: var(--primary-accent);
                 transition: border 500ms ease-out;
             }
 
@@ -104,8 +104,8 @@ export default function WaitingForConnection({onContinue}: WelcomePageProps): Re
                 height: 3rem;
                 width: 1.5rem;
                 transform-origin: left top;
-                border-right: 3px solid #5cb85c;
-                border-top: 3px solid #5cb85c;
+                border-right: 3px solid var(--primary-accent);
+                border-top: 3px solid var(--primary-accent);
                 content: '';
                 left: 1.25rem;
                 top: 3rem;
