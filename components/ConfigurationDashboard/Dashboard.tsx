@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
 import NudgeFromBottom from "../Ui/motion/NudgeFromBottom";
+import RoshanTimer from "./TileSvgs/RoshanTimer";
 import VoteSystem from "./TileSvgs/VoteSystem";
+import WLSystem from "./TileSvgs/WLSystem";
 
 const options = [
     {
@@ -8,7 +10,7 @@ const options = [
         title: 'Vote system',
         description: 'Viewers can vote on your game result',
     }, {
-        icon: <VoteSystem />,
+        icon: <WLSystem />,
         title: 'W/L Overlay',
         description: 'Counts your wins and losses',
     }, {
@@ -16,7 +18,7 @@ const options = [
         title: 'Anti snipe minimap',
         description: 'Overlay for your minimap to avoid snipers',
     }, {
-        icon: <VoteSystem />,
+        icon: <RoshanTimer />,
         title: 'Roshan timer',
         description: 'Simple timer to show when roshan does respawn',
     }, {

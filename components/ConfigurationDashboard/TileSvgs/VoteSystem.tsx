@@ -87,7 +87,7 @@ export default function VoteSystem(): ReactElement {
         <motion.path variants={rectVariants} d="M30 25.5H220C222.485 25.5 224.5 27.5147 224.5 30V170C224.5 172.485 222.485 174.5 220 174.5H30C27.5147 174.5 25.5 172.485 25.5 170V30C25.5 27.5147 27.5147 25.5 30 25.5Z" stroke="white"/>
 
         <motion.path variants={sliderBorderVariant} d="M45.5 54C45.5 52.067 47.067 50.5 49 50.5H201C202.933 50.5 204.5 52.067 204.5 54V56C204.5 57.933 202.933 59.5 201 59.5H49C47.067 59.5 45.5 57.933 45.5 56V54Z" stroke="white"/>
-        <motion.path variants={sliderContentVariant} width={'104px'} d="M45 54C45 51.7909 46.7909 50 49 50H121C123.209 50 125 51.7909 125 54V56C125 58.2091 123.209 60 121 60H49C46.7909 60 45 58.2091 45 56V54Z" fill="#DDDDDD"/>
+        <motion.path style={{originX: 0, originY: 0.5}} variants={sliderContentVariant} width={'104px'} d="M45 54C45 51.7909 46.7909 50 49 50H121C123.209 50 125 51.7909 125 54V56C125 58.2091 123.209 60 121 60H49C46.7909 60 45 58.2091 45 56V54Z" fill="#DDDDDD"/>
         <motion.path variants={sliderDistVariant} d="M123 49H127V61H123V49Z" fill="#24D46A"/>
 
         <motion.path variants={barVariant} d="M57 115H99V121H57V115Z" fill="#24D46A"/>
