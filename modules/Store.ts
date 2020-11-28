@@ -4,6 +4,7 @@ import { createReducer } from './reducer/util/Reducer';
 import thunk from 'redux-thunk';
 import networkMiddleware from './middleware/NetworkMiddleware';
 import { initialUiState, Ui, uiReducer } from './reducer/Ui';
+import LogRocket from 'logrocket';
 
 export interface State {
     ui: Ui;
@@ -27,7 +28,7 @@ export const storeReducer = combineReducers<State>({
 
 const makeStore: MakeStore<State> = () => {
     //@ts-ignore
-	return createStore(storeReducer, applyMiddleware(thunk, networkMiddleware));
+	return createStore(storeReducer, applyMiddleware(thunk, networkMiddleware, LogRocket.reduxMiddleware()));
 };
 
 export const wrapper = createWrapper<State>(makeStore);
