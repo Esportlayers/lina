@@ -1,8 +1,12 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import NudgeFromBottom from "../Ui/motion/NudgeFromBottom";
+import AntiSnipeMap from "./TileSvgs/AntiSnipeMap";
 import RoshanTimer from "./TileSvgs/RoshanTimer";
 import VoteSystem from "./TileSvgs/VoteSystem";
 import WLSystem from "./TileSvgs/WLSystem";
+import DraftStats from "./TileSvgs/DraftStats";
+import LiveStats from "./TileSvgs/LiveStats";
+import { motion } from "framer-motion";
 
 const options = [
     {
@@ -14,7 +18,7 @@ const options = [
         title: 'W/L Overlay',
         description: 'Counts your wins and losses',
     }, {
-        icon: <VoteSystem />,
+        icon: <AntiSnipeMap />,
         title: 'Anti snipe minimap',
         description: 'Overlay for your minimap to avoid snipers',
     }, {
@@ -22,11 +26,11 @@ const options = [
         title: 'Roshan timer',
         description: 'Simple timer to show when roshan does respawn',
     }, {
-        icon: <VoteSystem />,
+        icon: <DraftStats />,
         title: 'Draft stats',
         description: 'Statistics for hero picks',
     }, {
-        icon: <VoteSystem />,
+        icon: <LiveStats />,
         title: 'Hero stats',
         description: 'Live statistics by heroes in your games',
     }
@@ -34,12 +38,12 @@ const options = [
 export default function Dashboard(): ReactElement {
     return <div className={'container'}>
         <div className={'grid'}>
-            {options.map(({title, icon, description}, idx) => <NudgeFromBottom delay={.05 * idx}>
-                <div key={title}>
+            {options.map(({title, icon, description}, idx) => <NudgeFromBottom delay={.05 * idx} key={title}>
+                <motion.div className={'tile'} whileHover={{scale: 1.05}} whileTap={{scale: .95}}>
                     <div className={'icon'}>{icon}</div>
                     <h4>{title}</h4>
                     <div className={'info'}>{description}</div>
-                </div>
+                </motion.div>
             </NudgeFromBottom>)}
         </div>
 
