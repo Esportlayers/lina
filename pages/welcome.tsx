@@ -1,8 +1,7 @@
 import React, { ReactElement } from 'react';
 import PageFrame from '../components/PageFrame';
 import { initialState, reducer } from '../components/Websocket/State';
-import WelcomeScreen from '../components/Welcome/WelcomeScreen';
-import { useCurrentUser } from '../modules/selector/UiSelector';
+import WelcomeScreen from '../components/Pages/Welcome/WelcomeScreen';
 import dynamic from "next/dynamic";
 
 
@@ -13,8 +12,6 @@ const ContextProvider = dynamic(
 
 
 export default function Welcome(): ReactElement {
-    const currentUser = useCurrentUser();
-
     return <PageFrame>
         <ContextProvider initialState={initialState} reducer={reducer} path={'/dota-gsi/live'}>
             <WelcomeScreen />

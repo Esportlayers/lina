@@ -1,10 +1,10 @@
 import { ReactElement, useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteUser } from "../../../modules/reducer/User";
-import Button from "../../Ui/button/Button";
-import Modal from "../../Ui/modal/Modal";
-import ModalHeader from "../../Ui/modal/ModalHeader";
-import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
+import { deleteUser } from "../../../../modules/reducer/User";
+import Button from "../../../Ui/button/Button";
+import Modal from "../../../Ui/modal/Modal";
+import ModalHeader from "../../../Ui/modal/ModalHeader";
+import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
 
 export default function DeleteButton(): ReactElement {
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);

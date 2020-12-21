@@ -1,10 +1,10 @@
 
 import { ReactElement } from "react";
-import { getDefaultHeader } from "../../../modules/middleware/Network";
-import Button from "../../Ui/button/Button";
-import Container from "../../Ui/container/Container";
-import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
-import { WelcomePageProps } from "../WelcomeScreen";
+import { getDefaultHeader } from "../../../../modules/middleware/Network";
+import Button from "../../../Ui/button/Button";
+import Container from "../../../Ui/container/Container";
+import { FullPageSliderProps } from "../../../Ui/fullpageslide/FullPageSlide";
+import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
 
 async function downloadGsiConfig(): Promise<void> {
     const response = await fetch(process.env.API_URL + '/dota-gsi/generateConfig', {headers: getDefaultHeader()});
@@ -19,7 +19,7 @@ async function downloadGsiConfig(): Promise<void> {
     a.remove();
 }
 
-export default function DownloadConfig({onContinue}: WelcomePageProps): ReactElement {
+export default function DownloadConfig({onContinue}: FullPageSliderProps): ReactElement {
     const onLoadGsi = async () => {
         await downloadGsiConfig();
         onContinue();

@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
-import { useCurrentUser } from "../../../modules/selector/UiSelector";
-import Button from "../../Ui/button/Button";
-import Container from "../../Ui/container/Container";
-import ExpandFullWidth from "../../Ui/motion/ExpandFullWidth";
-import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
-import { WelcomePageProps } from "../WelcomeScreen";
+import { useCurrentUser } from "../../../../modules/selector/UiSelector";
+import Button from "../../../Ui/button/Button";
+import Container from "../../../Ui/container/Container";
+import { FullPageSliderProps } from "../../../Ui/fullpageslide/FullPageSlide";
+import ExpandFullWidth from "../../../Ui/motion/ExpandFullWidth";
+import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
 import DeleteButton from "./DeleteButton";
 
-export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
+export default function Welcome({onContinue}: FullPageSliderProps): ReactElement {
     const currentUser = useCurrentUser();
 
     return <Container>
@@ -37,11 +37,6 @@ export default function Welcome({onContinue}: WelcomePageProps): ReactElement {
         </div>
 
         <style jsx>{`
-
-            h1 {
-                font-size: 5rem;
-            }
-
             h1, h2, h4, h5 {
                 font-weight: 400;
             }

@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import NudgeFromBottom from "../Ui/motion/NudgeFromBottom";
+import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
 import AntiSnipeMap from "./TileSvgs/AntiSnipeMap";
 import RoshanTimer from "./TileSvgs/RoshanTimer";
 import VoteSystem from "./TileSvgs/VoteSystem";
@@ -39,10 +39,12 @@ export default function Dashboard(): ReactElement {
     return <div className={'container'}>
         <div className={'grid'}>
             {options.map(({title, icon, description}, idx) => <NudgeFromBottom delay={.05 * idx} key={title}>
-                <motion.div className={'tile'} whileHover={{scale: 1.05}} whileTap={{scale: .95}}>
-                    <div className={'icon'}>{icon}</div>
-                    <h4>{title}</h4>
-                    <div className={'info'}>{description}</div>
+                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: .95}}>
+                    <div className={'tile'}>
+                        <div className={'icon'}>{icon}</div>
+                        <h4>{title}</h4>
+                        <div className={'info'}>{description}</div>
+                    </div>
                 </motion.div>
             </NudgeFromBottom>)}
         </div>
@@ -60,6 +62,7 @@ export default function Dashboard(): ReactElement {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-gap: 4rem;
+                padding: 2rem 3rem;
             }   
 
             .icon {
@@ -76,6 +79,10 @@ export default function Dashboard(): ReactElement {
                 font-size: .9rem;
                 color: rgba(255, 255, 255, .85);
                 text-align: center;
+            }
+
+            .tile {
+                cursor: pointer;
             }
         `}</style>
     </div>;

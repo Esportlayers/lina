@@ -37,6 +37,14 @@ export default function PageFrame({children}: {children: ReactNode}): ReactEleme
             a:hover {
                 text-decoration: underline;
             }
+
+            h1 {
+                font-size: 5rem;
+            }
+            
+            h2 {
+                font-size: 3rem;
+            }
         `}</style>
     </div>
 }

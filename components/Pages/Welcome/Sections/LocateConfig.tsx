@@ -1,11 +1,11 @@
 
 import { ReactElement } from "react";
-import Button from "../../Ui/button/Button";
-import Container from "../../Ui/container/Container";
-import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
-import { WelcomePageProps } from "../WelcomeScreen";
+import Button from "../../../Ui/button/Button";
+import Container from "../../../Ui/container/Container";
+import { FullPageSliderProps } from "../../../Ui/fullpageslide/FullPageSlide";
+import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
 
-export default function LocateConfig({onContinue}: WelcomePageProps): ReactElement {
+export default function LocateConfig({onContinue}: FullPageSliderProps): ReactElement {
 
     return <Container>
         <NudgeFromBottom delay={.2}>

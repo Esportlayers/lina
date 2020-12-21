@@ -1,15 +1,14 @@
 
 import classNames from "classnames";
 import { ReactElement, useEffect, useState } from "react";
-import Button from "../../Ui/button/Button";
-import Container from "../../Ui/container/Container";
-import Loader from "../../Ui/loader/Loader";
-import NudgeFromBottom from "../../Ui/motion/NudgeFromBottom";
-import { useMessageListener } from "../../Websocket/MessageHandler";
-import { isGsiConnectedMessage } from "../../Websocket/State";
-import { WelcomePageProps } from "../WelcomeScreen";
+import Button from "../../../Ui/button/Button";
+import Container from "../../../Ui/container/Container";
+import { FullPageSliderProps } from "../../../Ui/fullpageslide/FullPageSlide";
+import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
+import { useMessageListener } from "../../../Websocket/MessageHandler";
+import { isGsiConnectedMessage } from "../../../Websocket/State";
 
-export default function WaitingForConnection({onContinue}: WelcomePageProps): ReactElement {
+export default function WaitingForConnection({onContinue}: FullPageSliderProps): ReactElement {
     const message = useMessageListener();
     const [connected, setConnected] = useState(false);
 
@@ -45,13 +44,14 @@ export default function WaitingForConnection({onContinue}: WelcomePageProps): Re
 
         {connected && <NudgeFromBottom>
             <Button onClick={onContinue}>
-                Setup modules
+                Get your overlays
             </Button>
         </NudgeFromBottom>}
 
         <style jsx>{`
             h5 {
                 font-weight: 400;
+                font-size: 1.8rem;
             }
 
             .loader {

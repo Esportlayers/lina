@@ -14,6 +14,7 @@ export default function ModalHeader({children}: Props): ReactElement {
                 margin-bottom: 1rem;
                 color: var(--primary-accent);
                 text-transform: uppercase;
+                font-size: 2rem;
             }    
         `}</style>
     </h2>;
