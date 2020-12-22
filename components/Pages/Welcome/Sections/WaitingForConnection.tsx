@@ -5,11 +5,10 @@ import Button from "../../../Ui/button/Button";
 import Container from "../../../Ui/container/Container";
 import { FullPageSliderProps } from "../../../Ui/fullpageslide/FullPageSlide";
 import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
-import { useMessageListener } from "../../../Websocket/MessageHandler";
-import { isGsiConnectedMessage } from "../../../Websocket/State";
+import { useTetherListener, isGsiConnectedMessage } from "@esportlayers/io";
 
 export default function WaitingForConnection({onContinue}: FullPageSliderProps): ReactElement {
-    const message = useMessageListener();
+    const message = useTetherListener();
     const [connected, setConnected] = useState(false);
 
     useEffect(() => {

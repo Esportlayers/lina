@@ -1,20 +1,21 @@
 import React, { ReactElement } from 'react';
 import PageFrame from '../components/PageFrame';
-import { initialState, reducer } from '../components/Websocket/State';
 import WelcomeScreen from '../components/Pages/Welcome/WelcomeScreen';
 import dynamic from "next/dynamic";
+import { useCurrentUser } from '../modules/selector/UiSelector';
+import {getWSUrl} from '@esportlayers/io';
 
-
-const ContextProvider = dynamic(
-    () => import('../components/Websocket/Context'),
+const Tether = dynamic(
+    () => (import('@esportlayers/io').then((mod) => mod.Tether)),
     { ssr: false }
 );
 
 
 export default function Welcome(): ReactElement {
+    const currentUser = useCurrentUser();
     return <PageFrame>
-        <ContextProvider initialState={initialState} reducer={reducer} path={'/dota-gsi/live'}>
+        {currentUser && <Tether url={getWSUrl(process.env.API_URL + '/dota-gsi/live/' + currentUser.frameApiKey)}>
             <WelcomeScreen />
-        </ContextProvider>
+        </Tether>}
     </PageFrame>;
 }
