@@ -102,10 +102,20 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
-"@esportlayers/io@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.2.0.tgz#81d2c73f46f857cafd5b7683a817ed6e676bc2f0"
-  integrity sha512-iFMFO5vX318jm0uQ90iwRoJMMcIqjE8y4OtJfh0nSqQAEx06Z57a8nlJJpeAZua1zcn4SKd12K1o4svujeLuwQ==
+"@esportlayers/io@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.2.2.tgz#cdf8101d5b72be3596e79798bcb72ae258d31495"
+  integrity sha512-36XbwTts0kO/oyTpsevvMv3yUxsMxY+LsDpXNzGxyZl20+rwDcqVImDjB49OaEQ/DIHqV9Xse4tinRVsQWQvRQ==
+  dependencies:
+    "@esportlayers/morphling" "^1.1.1"
+
+"@esportlayers/morphling@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@esportlayers/morphling/-/morphling-1.1.1.tgz#02962be071e4bbbeb427e7f402656aa9b06d7b59"
+  integrity sha512-ivNzVP9Q1gPwrS7HaYQCnsIgCb2QvvJh9jfJR7VOeDDoQ/I9pi3bb/qcu+iNcvVVYPfRlvwlzj579tGMYL+OvA==
+  dependencies:
+    dayjs "^1.9.7"
+    lodash "^4.17.20"
 
 "@fullhuman/postcss-purgecss@^3.0.0":
   version "3.1.3"
