@@ -6,7 +6,7 @@ import {getWSUrl} from '@esportlayers/io';
 import PageView from '../components/Pages/Dashboard/PageView';
 
 const Tether = dynamic(
-    () => (import('@esportlayers/io').then((mod) => mod.Tether)),
+    () => (import('@esportlayers/io')),
     { ssr: false }
 );
 

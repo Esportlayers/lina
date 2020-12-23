@@ -1,24 +1,13 @@
-import { isGsiConnectedMessage, useTetherListener } from "@esportlayers/io";
-import { ReactElement, useEffect, useState } from "react";
-import Indicator from "../../Ui/indicator/Indicator";
+import { ReactElement } from "react";
+import Activity from "./Header/Activity";
+import GSIConnected from "./Header/GSIConnected";
 
 export default function DashboardHeader(): ReactElement {
-    const msg = useTetherListener();
-    const [connected, setConnected] = useState(false);
-
-    useEffect(() => {
-        if(msg && isGsiConnectedMessage(msg)) {
-            setConnected(msg.value);
-        }
-    }, [msg]);
 
     return <header>
-        <div className={'headeRow'}>
-            <Indicator active={connected} />
-            <div className={'gsiConnectedLabel'}>
-                {connected && 'GSI connected'}
-                {!connected && 'GSI disconnected'}
-            </div>
+        <div className={'headerRow'}>
+            <GSIConnected />
+            <Activity />
         </div>
 
 
@@ -31,16 +20,14 @@ export default function DashboardHeader(): ReactElement {
                 padding: .75rem 0;
                 box-shadow: 0 0 15px rgba(0,0,0,.3);
                 font-size: .95rem;
+                height: 3rem;
             }    
 
-            .headeRow {
+            .headerRow {
                 display: flex;
                 align-items: center;
                 padding: 0 1rem;
-            }
-
-            .gsiConnectedLabel {
-                width: 130px;
+                height: 100%;
             }
         `}</style>
     </header>

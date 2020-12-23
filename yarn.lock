@@ -102,10 +102,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
-"@esportlayers/io@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.2.2.tgz#cdf8101d5b72be3596e79798bcb72ae258d31495"
-  integrity sha512-36XbwTts0kO/oyTpsevvMv3yUxsMxY+LsDpXNzGxyZl20+rwDcqVImDjB49OaEQ/DIHqV9Xse4tinRVsQWQvRQ==
+"@esportlayers/io@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.2.4.tgz#adf7e39a4b7fe7fd438f6df708b6aeb8f980ee93"
+  integrity sha512-pfYun8iWMwLTknrge4Fj4aZzPvU5rFNvJHQrDM43mxHwc/W5fcTf9tqTS9x94qGs+vedfNDMhq9zWJHQOVYCUw==
   dependencies:
     "@esportlayers/morphling" "^1.1.1"
 
