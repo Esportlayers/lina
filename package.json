@@ -1,7 +1,10 @@
 {
-  "name": "webapp",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@esportlayers/lina",
+  "version": "1.0.0",
+  "description": "Esportlayers streamdota Front-End App implementation",
+  "repository": "git@github.com:michaelketzer/esportlayers-lina.git",
+  "author": "Michael Ketzer <46134133+michaelketzer@users.noreply.github.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
