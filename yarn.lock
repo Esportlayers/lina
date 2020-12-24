@@ -102,17 +102,17 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
-"@esportlayers/io@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.2.4.tgz#adf7e39a4b7fe7fd438f6df708b6aeb8f980ee93"
-  integrity sha512-pfYun8iWMwLTknrge4Fj4aZzPvU5rFNvJHQrDM43mxHwc/W5fcTf9tqTS9x94qGs+vedfNDMhq9zWJHQOVYCUw==
+"@esportlayers/io@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.2.5.tgz#fb5e854f294a728695bbc2e18872e0dab3e91470"
+  integrity sha512-+W/VfckBpgKYtM9vGPUjgwH3AFtqksfFBJuaXSe4s0fy4h5Z22O0IclUos4lohm1wvqMVkMeaXUugNCifmgKBw==
   dependencies:
-    "@esportlayers/morphling" "^1.1.1"
+    "@esportlayers/morphling" "^1.1.2"
 
-"@esportlayers/morphling@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@esportlayers/morphling/-/morphling-1.1.1.tgz#02962be071e4bbbeb427e7f402656aa9b06d7b59"
-  integrity sha512-ivNzVP9Q1gPwrS7HaYQCnsIgCb2QvvJh9jfJR7VOeDDoQ/I9pi3bb/qcu+iNcvVVYPfRlvwlzj579tGMYL+OvA==
+"@esportlayers/morphling@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@esportlayers/morphling/-/morphling-1.1.2.tgz#e6f71bb1a345d9db792ba473a887fb963c1cebd5"
+  integrity sha512-+7XRjFXMAYKf1MXAeDekwHOa7+gAwRUGQbqHRb+wMpWKxcIYyom5SpsOvA9OlRtGIMlvxDBgKcCqwK0PXYF8uA==
   dependencies:
     dayjs "^1.9.7"
     lodash "^4.17.20"
