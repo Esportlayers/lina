@@ -3,14 +3,18 @@ import ActiveVoting from "./Header/ActiveVoting";
 import Activity from "./Header/Activity";
 import GSIConnected from "./Header/GSIConnected";
 import IconLoader from '../../Ui/loader/IconLoader';
+import MatchId from "./Header/MatchId";
+import MatchState from "./Header/MatchState";
 
 export default function DashboardHeader(): ReactElement {
 
     return <header>
         <div className={'headerRow'}>
             <GSIConnected />
-            <Activity />
             <ActiveVoting />
+            <Activity />
+            <MatchId />
+            <MatchState />
         </div>
 
         <style jsx>{`
