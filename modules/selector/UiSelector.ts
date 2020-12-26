@@ -5,6 +5,8 @@ import { loadCurrentUser } from "../reducer/Ui";
 import { State } from "../Store";
 
 export const currentUserSelector = (state: State): User | null => state.ui.currentUser;
+export const loadedVoteSeasonsSelector = (state: State): boolean => state.ui.loadedEntities.voteSeasons; 
+export const loadedVoteRoundsSelector = (state: State): number[] => state.ui.loadedEntities.voteRounds;
 
 export function useCurrentUser(auth?: string): User | null {
 	const user = useSelector(currentUserSelector);

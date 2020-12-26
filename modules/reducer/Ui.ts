@@ -2,23 +2,49 @@ import { User } from '@streamdota/shared-types';
 import {
 	LOAD_CURRENT_USER_SUCCESS,
 	LOAD_CURRENT_USER_REQUEST,
-	LOAD_CURRENT_USER_FAILURE
+	LOAD_CURRENT_USER_FAILURE,
+	LOAD_CURRENT_VOTE_ROUND_SUCCESS,
+	LOAD_VOTE_SEASONS_SUCCESS,
+	UPDATE_CURRENT_USER_REQUEST,
+	UPDATE_CURRENT_USER_SUCCESS,
+	UPDATE_CURRENT_USER_FAILURE
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
 import { ActionDispatcher, CALL_API } from '../middleware/NetworkMiddlewareTypes';
 import NetworkError from '../middleware/NetworkError';
+import { VoteRoundData } from '@esportlayers/io';
+import { currentUserSelector } from '../selector/UiSelector';
 
 export interface Ui {
 	currentUser: User | null;
+	currentVoteRound: VoteRoundData | null;
+	loadedEntities: {
+		voteRounds: number[];
+		voteSeasons: boolean;
+	};
 }
 
 export const initialUiState: Ui = {
 	currentUser: null,
+	currentVoteRound: null,
+	loadedEntities: {
+		voteRounds: [],
+		voteSeasons: false,
+	},
 };
 
 interface CurrentUserSuccess extends ApiActionResponse<User> {
 	type: typeof LOAD_CURRENT_USER_SUCCESS;
+}
+
+interface EntityLoaded<T> {
+	type: T;
+}
+
+interface VoteRoundUpdateSuccess {
+	type: typeof LOAD_CURRENT_VOTE_ROUND_SUCCESS;
+	response: VoteRoundData;
 }
 
 const { addReducer, combinedReducer } = createReducer<Ui>(initialUiState);
@@ -33,6 +59,30 @@ addReducer<CurrentUserSuccess>(LOAD_CURRENT_USER_SUCCESS, (state, { response: cu
 		},
 	};
 });
+
+addReducer<VoteRoundUpdateSuccess>(LOAD_CURRENT_VOTE_ROUND_SUCCESS, (state, { response: voteRound }) => {
+	return {
+		...state,
+		currentVoteRound: voteRound,
+	};
+});
+
+const flatLoadedEntities = [
+	['voteSeasons', LOAD_VOTE_SEASONS_SUCCESS, true],
+];
+
+for(const [key, listener, loaded] of flatLoadedEntities) {
+	addReducer<EntityLoaded<typeof listener>>(listener, (state) => {
+		return {
+			...state,
+			loadedEntities: {
+				...state.loadedEntities,
+				//@ts-ignore
+				[key]: loaded,
+			},
+		};
+	});
+}
 
 export const uiReducer = combinedReducer;
 
@@ -52,6 +102,30 @@ export function loadCurrentUser(frameApiKey?: string): ActionDispatcher<Promise<
 
 		if (!response || (response as NetworkError).responseStatus === 401) {
 			location.href = `${process.env.API_URL}/auth/twitch`;
+		}
+	};
+}
+
+
+export function updateCurrentUser(data: Partial<User>): ActionDispatcher<Promise<void>> {
+	return async (dispatch, getState) => {
+		if (currentUserSelector(getState())) {
+			await dispatch<Promise<Response | NetworkError>>({
+				[CALL_API]: {
+					endpoint: `${process.env.API_URL}/user/baseData`,
+					method: 'patch',
+					types: {
+						requestType: UPDATE_CURRENT_USER_REQUEST,
+						successType: UPDATE_CURRENT_USER_SUCCESS,
+						failureType: UPDATE_CURRENT_USER_FAILURE,
+					},
+					options: {
+						data,
+					},
+				},
+			});
+
+			await dispatch(loadCurrentUser());
 		}
 	};
 }

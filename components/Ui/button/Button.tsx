@@ -8,11 +8,13 @@ interface Props {
     ghost?: boolean;
     big?: boolean;
     del?: boolean;
+    small?: boolean;
+    noDropShadow?: boolean;
 }
 
-export default function Button({big, children, del, ghost, onClick}: Props): ReactElement {
+export default function Button({big, children, del, ghost, onClick, small, noDropShadow}: Props): ReactElement {
     return <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}>
-        <div className={classNames('btn', {big, del, ghost})} onClick={onClick}>
+        <div className={classNames('btn', {big, del, ghost, noDropShadow, small})} onClick={onClick}>
             {children}
         </div>
         <style jsx>{`
@@ -44,8 +46,17 @@ export default function Button({big, children, del, ghost, onClick}: Props): Rea
             font-size: 1.2rem;
         }
 
-        .btn:hover {
+        .small {
+            padding: .4rem .5rem;
+            font-size: .8rem;
+        }
+
+        .btn:hover:not(.noDropShadow) {
             box-shadow: 2px 2px 1.2rem 0 rgba(0,0,0,0.8);
+        }
+
+        .noDropShadow {
+            box-shadow: none;
         }
         `}</style>
     </motion.div>

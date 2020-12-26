@@ -1,6 +1,8 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
+import ActiveVoting from "./Header/ActiveVoting";
 import Activity from "./Header/Activity";
 import GSIConnected from "./Header/GSIConnected";
+import IconLoader from '../../Ui/loader/IconLoader';
 
 export default function DashboardHeader(): ReactElement {
 
@@ -8,8 +10,8 @@ export default function DashboardHeader(): ReactElement {
         <div className={'headerRow'}>
             <GSIConnected />
             <Activity />
+            <ActiveVoting />
         </div>
-
 
         <style jsx>{`
             header {

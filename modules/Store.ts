@@ -5,11 +5,23 @@ import thunk from 'redux-thunk';
 import networkMiddleware from './middleware/NetworkMiddleware';
 import { initialUiState, Ui, uiReducer } from './reducer/Ui';
 import LogRocket from 'logrocket';
+import { voteRoundReducer, VoteRoundState } from './reducer/VoteRound';
+import { voteSeasonReducer, VoteSeasonState } from './reducer/VoteSeason';
+import { combiner } from './reducer/util/Combiner';
+import { entitiesReducer } from './reducer/util/EntityStates';
 
 export interface State {
+	entities: {
+		voteRound: VoteRoundState;
+		voteSeason: VoteSeasonState;
+    };
     ui: Ui;
 }
 const initial: State = {
+	entities: {
+        voteRound: undefined,
+		voteSeason: undefined,
+    },
     ui: initialUiState,
 };
 
@@ -22,7 +34,12 @@ interface HydrateAction {
 addReducer<HydrateAction>(HYDRATE, (store) => ({ ...store }));
 
 export const storeReducer = combineReducers<State>({
-	...stateReducer,
+    ...stateReducer,
+	//@ts-ignore
+	entities: combiner({
+		voteRound: entitiesReducer(voteRoundReducer, 'voteRound'),
+		voteSeason: entitiesReducer(voteSeasonReducer, 'voteSeason'),
+    }),
     ui: uiReducer,
 });
 
