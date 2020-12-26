@@ -2,9 +2,6 @@ import React, { ReactElement } from "react";
 import ActiveVoting from "./Header/ActiveVoting";
 import Activity from "./Header/Activity";
 import GSIConnected from "./Header/GSIConnected";
-import IconLoader from '../../Ui/loader/IconLoader';
-import MatchId from "./Header/MatchId";
-import MatchState from "./Header/MatchState";
 
 export default function DashboardHeader(): ReactElement {
 
@@ -13,8 +10,6 @@ export default function DashboardHeader(): ReactElement {
             <GSIConnected />
             <ActiveVoting />
             <Activity />
-            <MatchId />
-            <MatchState />
         </div>
 
         <style jsx>{`

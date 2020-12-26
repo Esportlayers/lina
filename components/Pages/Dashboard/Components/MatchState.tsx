@@ -1,6 +1,5 @@
 import { GsiGameStateMessage, isGsiGameStateMessage, useTetherMessageListener } from "@esportlayers/io";
 import { ReactElement } from "react";
-import Divider from "./Divider";
 
 const stateMessage = {
     "DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD": 'Waiting for players',
@@ -17,10 +16,7 @@ export default function MatchState(): ReactElement | null {
     const {value: state} = useTetherMessageListener<GsiGameStateMessage>(isGsiGameStateMessage) || {value: null};
 
     if(state) {
-        return <>
-            <Divider />
-            <div>Match State: {stateMessage[state]}</div>
-        </>;
+        return <div>Match State: {stateMessage[state]}</div>;
     }
 
     return null;
