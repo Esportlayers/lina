@@ -1,4 +1,4 @@
-import { GsiGameStateMessage, isGsiGameStateMessage, useTetherMessageListener } from "@esportlayers/io";
+import { EventTypes, GsiGameStateMessage, useTetherMessageListener } from "@esportlayers/io";
 import { ReactElement } from "react";
 
 const stateMessage = {
@@ -13,7 +13,7 @@ const stateMessage = {
 };
 
 export default function MatchState(): ReactElement | null {
-    const {value: state} = useTetherMessageListener<GsiGameStateMessage>(isGsiGameStateMessage) || {value: null};
+    const {value: state} = useTetherMessageListener<GsiGameStateMessage>(EventTypes.gsi_game_state) || {value: null};
 
     if(state) {
         return <div>Match State: {stateMessage[state]}</div>;

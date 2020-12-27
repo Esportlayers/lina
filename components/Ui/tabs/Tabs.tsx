@@ -1,11 +1,12 @@
 import classNames from "classnames";
-import { motion } from "framer-motion";
-import React, { ReactElement, useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
 import debounce from 'lodash/debounce';
 
 export interface Tab {
     name: string;
     value: string;
+    view: React.FC;
 }
 
 interface Props {
@@ -71,36 +72,58 @@ export default function Tabs({active, setActive, tabs}: Props): ReactElement {
         acc[value] = React.createRef();
         return acc;
     }, {});
+    const Component = useMemo(() => tabs.find(({value}) => value === active).view, [tabs, active]);
 
+    return <div className={'tabsContainer'}>
+        <div className={'tabs'}>
+            {tabs.map(({value, name}) => <div 
+                ref={tabRefs[value]}
+                key={value}
+                onClick={() => {
+                    setAnimating(true);
+                    setActive(value);
+                }}
+                className={classNames('tab', {active: active === value, animating})}
+            >
+                {name}
+            </div>)}
 
-    return <div className={'tabs'}>
-        {tabs.map(({value, name}) => <div 
-        
-            ref={tabRefs[value]}
-            key={value}
-            onClick={() => {
-                setAnimating(true);
-                setActive(value);
-            }}
-            className={classNames('tab', {active: active === value, animating})}
-        >
-            {name}
-        </div>)}
+            <Underline 
+                active={active}
+                activeTabRef={tabRefs[active]}
+                finishAnimating={() => setAnimating(false)}
+                animating={animating}
+            />
+        </div>
 
-        <Underline 
-            active={active}
-            activeTabRef={tabRefs[active]}
-            finishAnimating={() => setAnimating(false)}
-            animating={animating}
-        />
+        <AnimatePresence exitBeforeEnter>
+            <div className={'content'}>
+                <motion.div
+                    key={active}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <Component />
+                </motion.div>
+            </div>
+        </AnimatePresence>
 
         <style jsx>{`
+            .tabsContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                height: 100%;
+            }
+
             .tabs {
                 display: flex;
                 border-bottom: 2px solid rgba(0,0,0,.15);
                 width: 100%;
                 margin-top: .5rem;
                 position: relative;
+                flex-shrink: 0;
             }
 
             .tab {
@@ -134,6 +157,13 @@ export default function Tabs({active, setActive, tabs}: Props): ReactElement {
 
             .tab.active.animating:after {
                 background-color: transparent;
+            }
+
+            .content {
+                flex-grow: 1;
+                max-height: 100%;
+                overflow-y: scroll;
+                padding: 1.25rem 2rem;
             }
         `}</style>
     </div>

@@ -11,13 +11,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "@esportlayers/io": "^1.3.1",
-    "@streamdota/shared-types": "^1.3.2",
+    "@esportlayers/io": "^1.5.3",
+    "@streamdota/shared-types": "^1.3.4",
     "animated-scroll-to": "^2.0.12",
     "asmcrypto-lite": "^1.1.0",
     "autoprefixer": "^10.1.0",
     "classnames": "^2.2.6",
-    "dayjs": "^1.9.7",
+    "dayjs": "^1.9.8",
     "dotenv": "^8.2.0",
     "framer-motion": "^3.1.1",
     "lodash": "^4.17.20",
