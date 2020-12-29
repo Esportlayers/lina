@@ -10,11 +10,12 @@ interface Props {
     del?: boolean;
     small?: boolean;
     noDropShadow?: boolean;
+    disabled?: boolean;
 }
 
-export default function Button({big, children, del, ghost, onClick, small, noDropShadow}: Props): ReactElement {
-    return <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}>
-        <div className={classNames('btn', {big, del, ghost, noDropShadow, small})} onClick={onClick}>
+export default function Button({big, children, del, ghost, onClick, small, disabled, noDropShadow}: Props): ReactElement {
+    return <motion.div whileHover={{scale: disabled ? 1 : 1.05}} whileTap={{scale: disabled ? 1 : 0.95}}>
+        <div className={classNames('btn', {big, del, disabled, ghost, noDropShadow, small})} onClick={onClick}>
             {children}
         </div>
         <style jsx>{`
@@ -27,7 +28,7 @@ export default function Button({big, children, del, ghost, onClick, small, noDro
             font-size: .9rem;
             font-weight: bold;
             box-shadow: 2px 2px 1rem 0 rgba(0,0,0,0.5);
-            transition: box-shadow 120ms ease-in-out;
+            transition: all 120ms ease-in-out;
             user-select: none;
             display: inline-flex;
         }
@@ -35,6 +36,12 @@ export default function Button({big, children, del, ghost, onClick, small, noDro
         .ghost {
             box-shadow: none;
             background: transparent;
+        }
+
+        .disabled {
+            box-shadow: none;
+            pointer-events: none;
+            filter: grayscale(.8);
         }
 
         .del {
@@ -51,7 +58,7 @@ export default function Button({big, children, del, ghost, onClick, small, noDro
             font-size: .8rem;
         }
 
-        .btn:hover:not(.noDropShadow) {
+        .btn:hover:not(.noDropShadow):not(.disabled) {
             box-shadow: 2px 2px 1.2rem 0 rgba(0,0,0,0.8);
         }
 

@@ -9,25 +9,25 @@ interface Props {
 export default function BannedHeroes({data}: Props): ReactElement {
     return <div className={'bansGrid'}>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban0_class} prefix={'h'}/>
+            {data.ban0_class.length > 0 && <HeroAvatar heroClass={data.ban0_class} prefix={'h'}/>}
         </div>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban1_class} prefix={'h'}/>
+            {data.ban1_class.length > 0 && <HeroAvatar heroClass={data.ban1_class} prefix={'h'}/>}
         </div>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban2_class} prefix={'h'}/>
+            {data.ban2_class.length > 0 && <HeroAvatar heroClass={data.ban2_class} prefix={'h'}/>}
         </div>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban3_class} prefix={'h'}/>
+            {data.ban3_class.length > 0 && <HeroAvatar heroClass={data.ban3_class} prefix={'h'}/>}
         </div>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban4_class} prefix={'h'}/>
+            {data.ban4_class.length > 0 && <HeroAvatar heroClass={data.ban4_class} prefix={'h'}/>}
         </div>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban5_class} prefix={'h'}/>
+            {data.ban5_class.length > 0 && <HeroAvatar heroClass={data.ban5_class} prefix={'h'}/>}
         </div>
         <div className={'entry'}>
-            <HeroAvatar heroClass={data.ban6_class} prefix={'h'} />
+            {data.ban6_class.length > 0 && <HeroAvatar heroClass={data.ban6_class} prefix={'h'} />}
         </div>
 
         <style jsx>{`
@@ -45,6 +45,7 @@ export default function BannedHeroes({data}: Props): ReactElement {
                 border: 1px solid rgba(0,0,0,.2);
                 box-shadow: 2px 2px 10px rgba(0,0,0,.1);
                 filter: grayscale(.5);
+                min-height: 52px;
             }  
         `}</style>
 

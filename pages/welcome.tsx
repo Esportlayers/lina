@@ -6,7 +6,7 @@ import { useCurrentUser } from '../modules/selector/UiSelector';
 import {getWSUrl} from '@esportlayers/io';
 
 const Tether = dynamic(
-    () => (import('@esportlayers/io').then((mod) => mod.Tether)),
+    () => (import('@esportlayers/io')),
     { ssr: false }
 );
 

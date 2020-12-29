@@ -1,15 +1,17 @@
+import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
 import { useAbortFetch } from "../../../../../../hooks/abortFetch";
 import { getDefaultHeader } from "../../../../../../modules/middleware/Network";
-import Button from "../../../../../Ui/button/Button";
+import ShowStats from "./ShowStats";
 
 interface Props {
     heroId: number;
     heroClass: string;
+    overlayActive: boolean;
+    onShowOverlay: () => void;
 }
 
-
-interface HeroOverview {
+export interface HeroOverview {
     index: number;
     heroId: number;
     matchCount: number;
@@ -33,7 +35,7 @@ export async function fetchHeroStats(abortController: AbortController, leagueId:
     return null;
 }
 
-export default function PickedHero({heroId, heroClass}: Props): ReactElement {
+export default React.memo(function PickedHero({heroId, heroClass, overlayActive, onShowOverlay}: Props): ReactElement {
     const [stats] = useAbortFetch(fetchHeroStats, '7.27', heroId);
     const games = stats?.matchCount || 0;
     const wins = stats?.matchWins || 0;
@@ -76,15 +78,11 @@ export default function PickedHero({heroId, heroClass}: Props): ReactElement {
         </div>
 
         <div className={'details'}>
-            <Button small noDropShadow>Stats</Button>
+            <ShowStats heroId={heroId} heroClass={heroClass} rawStats={stats} disabled={overlayActive} onActivate={onShowOverlay} />
         </div>
 
         <style jsx>{`
             .entry {
-                border-radius: 1rem;
-                overflow: hidden;
-                border: 1px solid rgba(0,0,0,.2);
-                box-shadow: 2px 2px 10px rgba(0,0,0,.1);
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
@@ -116,4 +114,4 @@ export default function PickedHero({heroId, heroClass}: Props): ReactElement {
             }
         `}</style>
     </div>;
-}
+});
