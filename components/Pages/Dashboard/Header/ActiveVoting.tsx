@@ -6,7 +6,7 @@ import { useVoteSeasons } from "../../../../modules/selector/VoteSeasons";
 import Button from "../../../Ui/button/Button";
 import Toggle from "../../../Ui/toggle/Toggle";
 import Divider from "./Divider";
-
+import Link from 'next/link';
 
 export default function ActiveVoting(): ReactElement {
     const seasons = useVoteSeasons();
@@ -24,9 +24,11 @@ export default function ActiveVoting(): ReactElement {
     if(!seasons) {
         return <>
             <Divider />
-            <Button small noDropShadow>
-                Configure Voting
-            </Button>
+            <Link href={'/settings/voting'}>
+                <Button small noDropShadow>
+                    Configure Voting
+                </Button>
+            </Link>
         </>;
     }
     return <>
