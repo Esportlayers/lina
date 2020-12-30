@@ -9,6 +9,10 @@ interface Props {
 
 const items = [
     {
+        name: 'General',
+        type: 'header',
+    },
+    {
         name: 'Vote system',
         page: 'voteSystem',
         type: 'page',
@@ -18,8 +22,8 @@ const items = [
         type: 'header',
     },
     {
-        name: 'Voting',
-        page: 'voting',
+        name: 'W/L Stats',
+        page: 'wLStats',
         type: 'page',
     },
     {
@@ -49,21 +53,26 @@ const items = [
 ]
 
 export default function SettingsNavigation({active}: Props): ReactElement {
-
     return <div className={'menu'}>
         <div className={'menuHeader'}>
             <Image src={'/logo.PNG'} width={60} height={60} alt={'logo'} />
             <div className={'title'}>StreamDota</div>
         </div>
 
+        <Link href={'/dashboard'}>
+            <div className={'item page'}>
+                Dashboard
+            </div>
+        </Link>
+
         <div className={'list'}>
             {items.map(({name, page, type}) => {
                 if(type === 'header') {
-                    return <div className={classNames('item', type)}>
+                    return <div className={classNames('item', type)} key={name}>
                         {name}
                     </div>;
                 }
-                return <Link href={'/settings/' + page} key={'name'}>
+                return <Link href={'/settings/' + page} key={name}>
                     <div className={classNames('item', type, {active: type === 'page' && page === active})}>
                         {name}
                     </div>
@@ -79,7 +88,8 @@ export default function SettingsNavigation({active}: Props): ReactElement {
             }
 
             .item {
-                padding: .75rem 1rem;
+                padding: .5rem 1rem;
+                margin: .25rem 0;
                 border-left: 4px solid transparent;
                 font-size: .9rem;
                 transition: all 120ms ease-in-out; 
