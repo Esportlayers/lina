@@ -7,7 +7,9 @@ import {
 	LOAD_VOTE_SEASONS_SUCCESS,
 	UPDATE_CURRENT_USER_REQUEST,
 	UPDATE_CURRENT_USER_SUCCESS,
-	UPDATE_CURRENT_USER_FAILURE
+	UPDATE_CURRENT_USER_FAILURE,
+	LOAD_VOTE_SEASON_TOPLIST_SUCCESS,
+	LOAD_VOTE_OVERLAY_SUCCESS
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -22,6 +24,8 @@ export interface Ui {
 	loadedEntities: {
 		voteRounds: number[];
 		voteSeasons: boolean;
+		voteSeasonToplist: number[];
+		voteOverlay: boolean;
 	};
 }
 
@@ -31,6 +35,8 @@ export const initialUiState: Ui = {
 	loadedEntities: {
 		voteRounds: [],
 		voteSeasons: false,
+		voteSeasonToplist: [],
+		voteOverlay: false,
 	},
 };
 
@@ -69,6 +75,7 @@ addReducer<VoteRoundUpdateSuccess>(LOAD_CURRENT_VOTE_ROUND_SUCCESS, (state, { re
 
 const flatLoadedEntities = [
 	['voteSeasons', LOAD_VOTE_SEASONS_SUCCESS, true],
+	['voteOverlay', LOAD_VOTE_OVERLAY_SUCCESS, true],
 ];
 
 for(const [key, listener, loaded] of flatLoadedEntities) {
@@ -79,6 +86,32 @@ for(const [key, listener, loaded] of flatLoadedEntities) {
 				...state.loadedEntities,
 				//@ts-ignore
 				[key]: loaded,
+			},
+		};
+	});
+}
+
+interface LoadedVoteSeasonAsset<T> {
+	type: T;
+	options: {
+		urlParams: {
+			seasonId: number;
+		};
+	};
+}
+
+
+const voteSeasonAssetsLoaded  = [
+	['voteSeasonToplist', LOAD_VOTE_SEASON_TOPLIST_SUCCESS],
+];
+
+for(const [key, listener] of voteSeasonAssetsLoaded) {
+	addReducer<LoadedVoteSeasonAsset<typeof listener>>(listener, (state, {options: {urlParams: {seasonId}}}) => {
+		return {
+			...state,
+			loadedEntities: {
+				...state.loadedEntities,
+				[key]: state.loadedEntities[key].concat(seasonId),
 			},
 		};
 	});

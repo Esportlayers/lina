@@ -6,7 +6,9 @@ import { State } from "../Store";
 
 export const currentUserSelector = (state: State): User | null => state.ui.currentUser;
 export const loadedVoteSeasonsSelector = (state: State): boolean => state.ui.loadedEntities.voteSeasons; 
+export const loadedVoteOverlaySelector = (state: State): boolean => state.ui.loadedEntities.voteOverlay; 
 export const loadedVoteRoundsSelector = (state: State): number[] => state.ui.loadedEntities.voteRounds;
+export const loadedVoteSeasonToplistSelector = (state: State): number[] => state.ui.loadedEntities.voteSeasonToplist;
 
 export function useCurrentUser(auth?: string): User | null {
 	const user = useSelector(currentUserSelector);

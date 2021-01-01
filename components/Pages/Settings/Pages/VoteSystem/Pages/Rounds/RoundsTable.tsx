@@ -5,7 +5,6 @@ import { ReactElement, useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { loadVoteRounds } from "../../../../../../../modules/reducer/VoteRound";
 import { useVoteRounds } from "../../../../../../../modules/selector/VoteRound";
-import DateCellRenderer from "../../../../../../Ui/table/DateCellRenderer";
 import Table, { TableProps } from "../../../../../../Ui/table/Table";
 import ActionCellRenderer from "./ActionCellRenderer";
 import CreatedDateCellRenderer from "./CreatedDateCellRenderer";
@@ -19,6 +18,7 @@ interface Props {
 function getRowDefinition(_hasMultiChannels: boolean): TableProps<VoteRound>['rowDefinitions'] {
     return [
         {
+            contentCenter: true,
             label: '#',
             accessKey: 'round',
             width: '2rem',

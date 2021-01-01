@@ -1,12 +1,13 @@
-import { access } from "fs";
+import classNames from "classnames";
 import { ReactElement } from "react";
 import NoDataCellRenderer from "./NoDataCellRenderer";
 
 export interface TableProps<T extends object> {
     rowDefinitions: Array<{
+        contentCenter?: boolean;
         label?: string;
         accessKey: string;
-        renderer?: React.FC<T>;
+        renderer?: React.FC<T & {rowIndex: number}>;
         showLabel?: boolean;
         width?: string;
     }>; 
@@ -22,10 +23,10 @@ export default function Table<T extends object>({rowDefinitions, rows}: TablePro
         </thead>
         <tbody>
             {rows.map((row, idx) => <tr key={idx}>
-                {rowDefinitions.map(({accessKey, renderer}) => {
+                {rowDefinitions.map(({accessKey, contentCenter, renderer}) => {
                 const Comp = renderer;
-                return <td key={accessKey}>
-                    {Comp  && <Comp {...row} />}
+                return <td key={accessKey} className={classNames({contentCenter})}>
+                    {Comp  && <Comp {...row} rowIndex={idx} />}
                     {!Comp && row[accessKey]}
                 </td>})}
             </tr>)}
@@ -60,6 +61,10 @@ export default function Table<T extends object>({rowDefinitions, rows}: TablePro
 
             tr:hover td {
                 background-color: rgba(0,0,0,.1);
+            }
+
+            .contentCenter {
+                text-align: center;
             }
         `}</style>
     </table>;
