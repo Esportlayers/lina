@@ -23,7 +23,7 @@ export default function Edit({id, name: initialName}: Props): ReactElement {
     }, [dispatch, name]);
 
     return <>
-        <Button onClick={() => setShow(true)}>Edit</Button>
+        <Button small onClick={() => setShow(true)}>Edit</Button>
 
         <Modal open={show}>
             <NudgeFromBottom delay={.1}>

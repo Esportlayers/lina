@@ -32,11 +32,12 @@ export default function Button({big, children, del, ghost, onClick, small, disab
             user-select: none;
             display: inline-flex;
             border: none;
-            color: #FFF;
+            color: #000;
         }
 
         .ghost {
             box-shadow: none;
+            color: #FFF;
             background: transparent;
         }
 
@@ -48,6 +49,7 @@ export default function Button({big, children, del, ghost, onClick, small, disab
 
         .del {
             background-color: var(--delete-red);
+            color: #FFF;
         }
 
         .big {

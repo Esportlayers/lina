@@ -1,5 +1,5 @@
 import { State } from '../Store';
-import { BetRound as VoteRound } from '@streamdota/shared-types';
+import { BetRound as VoteRound, BetRoundStats as VoteRoundStats } from '@streamdota/shared-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { VoteRoundData } from '@esportlayers/io';
@@ -8,10 +8,10 @@ import { loadedVoteRoundsSelector } from './UiSelector';
 
 export const voteRoundEntitiesSelector = (state: State): VoteRoundState => state.entities.voteRound;
 
-export const voteRoundsSelector = (state: State): VoteRound[] | undefined =>
+export const voteRoundsSelector = (state: State): VoteRoundStats[] | undefined =>
 	state.entities.voteRound ? Object.values(state.entities.voteRound) : undefined;
 
-export function useVoteRounds(seasonId: number): VoteRound[] | undefined {
+export function useVoteRounds(seasonId: number): VoteRoundStats[] | undefined {
 	const rounds = useSelector(voteRoundsSelector);
 	const loaded = (useSelector(loadedVoteRoundsSelector) || []).includes(seasonId);
 	const dispatch = useDispatch();

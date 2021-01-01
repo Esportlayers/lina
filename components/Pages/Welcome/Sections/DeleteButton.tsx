@@ -62,10 +62,6 @@ export default function DeleteButton(): ReactElement {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 3rem;
-
-                & .btn {
-                    color: red;
-                }
             }
         `}</style>
     </>;

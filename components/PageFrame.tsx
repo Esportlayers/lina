@@ -33,6 +33,8 @@ export default function PageFrame({children}: {children: ReactNode}): ReactEleme
             a {
                 color: var(--primary-accent);
                 text-decoration: none;
+                cursor: pointer;
+                user-select: none;
             }
 
             a:hover {

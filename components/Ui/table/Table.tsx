@@ -1,7 +1,8 @@
 import { access } from "fs";
 import { ReactElement } from "react";
+import NoDataCellRenderer from "./NoDataCellRenderer";
 
-interface Props<T extends object> {
+export interface TableProps<T extends object> {
     rowDefinitions: Array<{
         label?: string;
         accessKey: string;
@@ -12,7 +13,7 @@ interface Props<T extends object> {
     rows: Array<T>;
 }
 
-export default function Table<T extends object>({rowDefinitions, rows}: Props<T>): ReactElement {
+export default function Table<T extends object>({rowDefinitions, rows}: TableProps<T>): ReactElement {
     return <table>
         <thead>
             <tr>
@@ -20,7 +21,6 @@ export default function Table<T extends object>({rowDefinitions, rows}: Props<T>
             </tr>
         </thead>
         <tbody>
-            
             {rows.map((row, idx) => <tr key={idx}>
                 {rowDefinitions.map(({accessKey, renderer}) => {
                 const Comp = renderer;
@@ -29,6 +29,10 @@ export default function Table<T extends object>({rowDefinitions, rows}: Props<T>
                     {!Comp && row[accessKey]}
                 </td>})}
             </tr>)}
+
+            {rows.length === 0 && <tr>
+                <td colSpan={rowDefinitions.length}><NoDataCellRenderer /></td>
+            </tr>}
         </tbody>
 
         <style jsx>{`

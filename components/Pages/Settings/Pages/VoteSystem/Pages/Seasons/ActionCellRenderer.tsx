@@ -1,6 +1,5 @@
 import { BetSeason } from "@streamdota/shared-types";
 import { ReactElement } from "react";
-import Button from "../../../../../../Ui/button/Button";
 import Delete from "./Actions/Delete";
 import Edit from "./Actions/Edit";
 

@@ -20,7 +20,7 @@ export default function Delete({id, name}: Props): ReactElement {
     }, [dispatch, id]);
 
     return <>
-        <Button ghost onClick={() => setShow(true)}>Delete</Button>
+        <Button small ghost onClick={() => setShow(true)}>Delete</Button>
         <Modal open={show}>
             <NudgeFromBottom delay={.1}>
                 <ModalHeader>Delete Season</ModalHeader>
