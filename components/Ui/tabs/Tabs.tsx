@@ -14,6 +14,7 @@ interface Props {
     setActive: (a: string) => void;
     tabs: Tab[];
     relaxedContent?: boolean;
+    maxHeight?: boolean;
 }
 
 const Underline = ({ activeTabRef, active, finishAnimating, animating }) => {
@@ -66,7 +67,7 @@ const Underline = ({ activeTabRef, active, finishAnimating, animating }) => {
 };
 
 
-export default function Tabs({active, relaxedContent, setActive, tabs}: Props): ReactElement {
+export default function Tabs({active, maxHeight, relaxedContent, setActive, tabs}: Props): ReactElement {
     const [animating, setAnimating] = useState(false);
 
     const tabRefs = tabs.reduce((acc, {value}) => {
@@ -75,7 +76,7 @@ export default function Tabs({active, relaxedContent, setActive, tabs}: Props): 
     }, {});
     const Component = useMemo(() => tabs.find(({value}) => value === active).view, [tabs, active]);
 
-    return <div className={'tabsContainer'}>
+    return <div className={classNames('tabsContainer', {maxHeight})}>
         <div className={'tabs'}>
             {tabs.map(({value, name}) => <div 
                 ref={tabRefs[value]}
@@ -116,6 +117,11 @@ export default function Tabs({active, relaxedContent, setActive, tabs}: Props): 
                 flex-direction: column;
                 align-items: stretch;
                 height: 100%;
+            }
+            
+            .maxHeight {
+                height: 100vh;
+                overflow: hidden;
             }
 
             .tabs {
@@ -165,6 +171,11 @@ export default function Tabs({active, relaxedContent, setActive, tabs}: Props): 
                 max-height: 100%;
                 overflow-y: scroll;
                 padding: 1.25rem 2rem;
+            }
+
+            .maxHeight .content {
+                max-height: 100%;
+                overflow-y: scroll;
             }
 
             .relaxedContent {
