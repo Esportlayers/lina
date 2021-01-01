@@ -48,9 +48,7 @@ export default function DeleteButton(): ReactElement {
                     <Button ghost onClick={() => setShowDeleteDialog(false)}>Cancel</Button>
                 </NudgeFromBottom>
             </div>
-
         </Modal>
-
         <style jsx>{`
             h4 {
                 margin: 0 0 2rem 0;
@@ -64,6 +62,10 @@ export default function DeleteButton(): ReactElement {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 3rem;
+
+                & .btn {
+                    color: red;
+                }
             }
         `}</style>
     </>;

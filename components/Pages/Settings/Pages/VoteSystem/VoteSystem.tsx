@@ -1,12 +1,18 @@
 import { ReactElement, useState } from "react";
 import Tabs, { Tab } from "../../../../Ui/tabs/Tabs";
 import BotCommands from "./Pages/BotCommands";
+import General from "./Pages/General";
 import Overlays from "./Pages/Overlays";
 import Rounds from "./Pages/Rounds";
 import Seasons from "./Pages/Seasons";
 import Toplist from "./Pages/Toplist";
 
 const tabs: Tab[] = [
+    {
+        name: 'General',
+        value: 'general',
+        view: General,
+    },
     {
         name: 'Seasons',
         value: 'seasons',
@@ -37,6 +43,6 @@ const tabs: Tab[] = [
 export default function VoteSystem(): ReactElement {
     const [active, setActive] = useState('seasons');
     return <div className={'voting'}>
-        <Tabs active={active} setActive={setActive} tabs={tabs} />
+        <Tabs active={active} setActive={setActive} tabs={tabs} relaxedContent/>
     </div>;
 }

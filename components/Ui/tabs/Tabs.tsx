@@ -13,6 +13,7 @@ interface Props {
     active: string;
     setActive: (a: string) => void;
     tabs: Tab[];
+    relaxedContent?: boolean;
 }
 
 const Underline = ({ activeTabRef, active, finishAnimating, animating }) => {
@@ -65,7 +66,7 @@ const Underline = ({ activeTabRef, active, finishAnimating, animating }) => {
 };
 
 
-export default function Tabs({active, setActive, tabs}: Props): ReactElement {
+export default function Tabs({active, relaxedContent, setActive, tabs}: Props): ReactElement {
     const [animating, setAnimating] = useState(false);
 
     const tabRefs = tabs.reduce((acc, {value}) => {
@@ -97,7 +98,7 @@ export default function Tabs({active, setActive, tabs}: Props): ReactElement {
         </div>
 
         <AnimatePresence exitBeforeEnter>
-            <div className={'content'}>
+            <div className={classNames('content', {relaxedContent})}>
                 <motion.div
                     key={active}
                     initial={{ opacity: 0 }}
@@ -164,6 +165,10 @@ export default function Tabs({active, setActive, tabs}: Props): ReactElement {
                 max-height: 100%;
                 overflow-y: scroll;
                 padding: 1.25rem 2rem;
+            }
+
+            .relaxedContent {
+                padding: 2rem 2.75rem;
             }
         `}</style>
     </div>

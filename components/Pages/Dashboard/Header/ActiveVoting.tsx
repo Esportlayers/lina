@@ -24,9 +24,9 @@ export default function ActiveVoting(): ReactElement {
     if(!seasons) {
         return <>
             <Divider />
-            <Link href={'/settings/voting'}>
+            <Link href={'/settings/voteSystem'}>
                 <Button small noDropShadow>
-                    Configure Voting
+                    Configure vote system
                 </Button>
             </Link>
         </>;

@@ -15,9 +15,9 @@ interface Props {
 
 export default function Button({big, children, del, ghost, onClick, small, disabled, noDropShadow}: Props): ReactElement {
     return <motion.div whileHover={{scale: disabled ? 1 : 1.05}} whileTap={{scale: disabled ? 1 : 0.95}}>
-        <div className={classNames('btn', {big, del, disabled, ghost, noDropShadow, small})} onClick={onClick}>
+        <button className={classNames('btn', {big, del, disabled, ghost, noDropShadow, small})} onClick={onClick}>
             {children}
-        </div>
+        </button>
         <style jsx>{`
         .btn {
             padding: .75rem 1rem;
@@ -28,9 +28,11 @@ export default function Button({big, children, del, ghost, onClick, small, disab
             font-size: .9rem;
             font-weight: bold;
             box-shadow: 2px 2px 1rem 0 rgba(0,0,0,0.5);
-            transition: all 120ms ease-in-out;
+            transition: all 240ms ease-in-out;
             user-select: none;
             display: inline-flex;
+            border: none;
+            color: #FFF;
         }
 
         .ghost {
@@ -60,6 +62,9 @@ export default function Button({big, children, del, ghost, onClick, small, disab
 
         .btn:hover:not(.noDropShadow):not(.disabled) {
             box-shadow: 2px 2px 1.2rem 0 rgba(0,0,0,0.8);
+        }
+        .btn.ghost:hover:not(.noDropShadow):not(.disabled) {
+            box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.8);
         }
 
         .noDropShadow {
