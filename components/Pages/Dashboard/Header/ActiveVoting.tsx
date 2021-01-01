@@ -8,7 +8,11 @@ import Toggle from "../../../Ui/toggle/Toggle";
 import Divider from "./Divider";
 import Link from 'next/link';
 
-export default function ActiveVoting(): ReactElement {
+interface Props {
+    noDivider?: boolean;
+}
+
+export default function ActiveVoting({noDivider = false}: Props): ReactElement {
     const seasons = useVoteSeasons();
     const currentUser = useCurrentUser();
     const dispatch = useDispatch();
@@ -23,7 +27,7 @@ export default function ActiveVoting(): ReactElement {
 
     if(!seasons) {
         return <>
-            <Divider />
+            {!noDivider && <Divider />}
             <Link href={'/settings/voteSystem'}>
                 <Button small noDropShadow>
                     Configure vote system
@@ -31,12 +35,13 @@ export default function ActiveVoting(): ReactElement {
             </Link>
         </>;
     }
-    return <>
-        <Divider />
-        <Toggle checked={currentUser.useBets} onChange={toggleUseBets} label={'Voting active'}/>
 
-        {currentUser.useBets && <>
-            <Divider />
+    return <>
+        {!noDivider && <Divider />}
+        <Toggle checked={currentUser?.useBets || false} onChange={toggleUseBets} label={'Voting active'}/>
+
+        {currentUser && currentUser.useBets && <>
+            {!noDivider && <Divider />}
             <Toggle checked={currentUser.useAutomaticVoting} onChange={toggleAutomaticVoting} label={'Automatic voting'}/>
         </>}
     </>;

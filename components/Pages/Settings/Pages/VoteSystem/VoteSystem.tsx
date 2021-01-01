@@ -41,7 +41,7 @@ const tabs: Tab[] = [
 ];
 
 export default function VoteSystem(): ReactElement {
-    const [active, setActive] = useState('seasons');
+    const [active, setActive] = useState('general');
     return <div className={'voting'}>
         <Tabs active={active} setActive={setActive} tabs={tabs} relaxedContent/>
     </div>;
