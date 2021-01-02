@@ -197,10 +197,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@esportlayers/io@^1.5.5":
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.5.5.tgz#6f3f72258dd4821a84a5b88e260e9d65fa13993d"
-  integrity sha512-Y4ybrN288fsDUkGOvZoWHyL9Q19L7XkQtck5YqmzjUN4xMkHBqhFvr5rBUqjlqbcov/gb3ribU0EGHBcEtdY2w==
+"@esportlayers/io@^1.5.6":
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/@esportlayers/io/-/io-1.5.6.tgz#a1e94fe4353f75a67853cceb8af93302beb6e03d"
+  integrity sha512-1AgRKZ1JpLzhSqH3n547aV+2TVIcvk6ntamYDMB/xOWdOWnztBbOnuDXRxxruEYzlRDBoc130QDLoXmIFhObNA==
   dependencies:
     "@esportlayers/morphling" "^1.2.0"
 
@@ -298,10 +298,10 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
   integrity sha512-3c+yGKvVP5Y9TYBEibGNR+kLtijnj7mYrXRg+WpFb2X9xm04g/DXYkfg4hmzJQosc9snFNUPkbYIhu+KAm6jJw==
 
-"@types/node@^14.11.10", "@types/node@^14.14.16":
-  version "14.14.17"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.17.tgz#29fab92f3986c0e379968ad3c2043683d8020dbb"
-  integrity sha512-G0lD1/7qD60TJ/mZmhog76k7NcpLWkPVGgzkRy3CTlnFu4LUQh5v2Wa661z6vnXmD8EQrnALUyf0VRtrACYztw==
+"@types/node@^14.11.10", "@types/node@^14.14.19":
+  version "14.14.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.19.tgz#5135176a8330b88ece4e9ab1fdcfc0a545b4bab4"
+  integrity sha512-4nhBPStMK04rruRVtVc6cDqhu7S9GZai0fpXgPXrFpcPX6Xul8xnrjSdGB4KPBVYG/R5+fXWdCM8qBoiULWGPQ==
 
 "@types/normalizr@^2.0.18":
   version "2.0.18"
@@ -327,10 +327,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@^7.1.14":
-  version "7.1.14"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.14.tgz#694609eb906ffc2da4b01f0a1e4f27c1937ac33a"
-  integrity sha512-WItBNJRC8N/HsgKFXxX8t9NjUY1vv3YTzj9m8HvmaaYRTgy3hgZMIs5ZWAJHQ58nISSakIvS6T91nhJV4iBuaA==
+"@types/react-redux@^7.1.15":
+  version "7.1.15"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.15.tgz#19075884db94101be762accef924d266a603fb1b"
+  integrity sha512-+piY42tUflPfI7y9Vy3UkG6MEMuJlrxfdtgeUcWmd5Z0qB57NXAPG6smkqu1DNXluo/KDyXPeRYhcFzMwt1BEA==
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.0"
     "@types/react" "*"
