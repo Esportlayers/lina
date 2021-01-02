@@ -1,6 +1,8 @@
 import { useVoteValue } from "@esportlayers/io";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ReactElement } from "react";
+import ChatParticipations from "./VoteOverlay/ChatParticipations";
+import Participants from "./VoteOverlay/Participants";
 import Status from "./VoteOverlay/Status";
 
 const variants: Variants = {
@@ -14,7 +16,11 @@ export default function VoteOverlay(): ReactElement {
         {voteState && <motion.div initial={'hidden'} animate={'visible'} exit={'hidden'} variants={variants} className={'voteSideBar'}>
             <div className={'voteOverlay'}>
                 <h2>Voting</h2>
-                <Status />
+                <div className={'voteDataGrid'}>
+                    <Status />
+                    <Participants />
+                    <ChatParticipations />
+                </div>
             </div>
 
             <style jsx global>{`
@@ -32,6 +38,12 @@ export default function VoteOverlay(): ReactElement {
                     font-size: 1.25rem;
                     text-transform: uppercase;
                     color: var(--secondary-accent);
+                }
+
+                .voteDataGrid {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-row-gap: 2rem;
                 }
             `}</style>
             <style jsx>{`
