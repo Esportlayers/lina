@@ -1,6 +1,6 @@
 import { useVoteValue } from "@esportlayers/io";
 import { ReactElement } from "react";
-
+import AnimatedNumber from "animated-number-react";
 
 export default function Participants(): ReactElement | null {
     const [state] = useVoteValue();
@@ -13,7 +13,7 @@ export default function Participants(): ReactElement | null {
             </div>
 
             <div className={'participations'}>
-                {state.totalVotesCount}
+                <AnimatedNumber value={state.totalVotesCount} formatValue={(value) => value.toFixed(0)} />
             </div>
 
             <style jsx>{`
@@ -35,7 +35,7 @@ export default function Participants(): ReactElement | null {
                     width: 100%;
                 }
 
-                .participations {
+                .participations, .participations :global(span) {
                     font-family: monospace;
                 }
             `}</style>

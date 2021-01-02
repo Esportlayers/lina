@@ -11,7 +11,7 @@ interface Props {
 export default function Toggle({checked, label, onChange}: Props): ReactElement {
     return <label>
         <ReactToggle
-            checked={checked}
+            checked={Boolean(checked)}
             onChange={(e) => onChange(e.target.checked)}
         />
         <span className={'label'}>{label}</span>

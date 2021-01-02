@@ -29,9 +29,11 @@ export default function ActiveVoting({noDivider = false}: Props): ReactElement {
         return <>
             {!noDivider && <Divider />}
             <Link href={'/settings/voteSystem'}>
-                <Button small noDropShadow>
-                    Configure vote system
-                </Button>
+                <a>
+                    <Button small noDropShadow>
+                        Configure vote system
+                    </Button>
+                </a>
             </Link>
         </>;
     }
