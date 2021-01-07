@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 
 
 export default function Test(): ReactElement {
+    throw new Error('Hallo Dominic');
     return <div className={'wrapper'}>
 
         <video width={'150px'} loop autoPlay muted>
