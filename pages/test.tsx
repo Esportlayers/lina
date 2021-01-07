@@ -2,10 +2,13 @@ import { ReactElement } from "react";
 
 
 export default function Test(): ReactElement {
-    throw new Error('Hallo Dominic');
+    const onError = () => {
+        throw new Error('Hallo Dominic');
+    };
+    
     return <div className={'wrapper'}>
 
-        <video width={'150px'} loop autoPlay muted>
+        <video width={'150px'} loop autoPlay muted onClick={onError}>
             <source src={'/draftmodels_none.mov'} type="video/quicktime" />
             <source src={'/arcwarden_300.webm'} type="video/webm" />
         </video>
