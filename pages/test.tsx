@@ -3,7 +3,6 @@ import { ReactElement } from "react";
 
 export default function Test(): ReactElement {
     return <div className={'wrapper'}>
-
         <video width={'150px'} loop autoPlay muted>
             <source src={'/arc.mov'} type="video/quicktime" />
             <source src={'/arc.webm'} type="video/webm" />
