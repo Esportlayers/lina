@@ -2,6 +2,7 @@ import { useVoteValue } from "@esportlayers/io";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ReactElement } from "react";
 import ChatParticipations from "./VoteOverlay/ChatParticipations";
+import Distribution from "./VoteOverlay/Distribution";
 import Participants from "./VoteOverlay/Participants";
 import Status from "./VoteOverlay/Status";
 
@@ -20,6 +21,7 @@ export default function VoteOverlay(): ReactElement {
                     <Status />
                     <Participants />
                     <ChatParticipations />
+                    <Distribution />
                 </div>
             </div>
 

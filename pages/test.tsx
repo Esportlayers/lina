@@ -5,8 +5,8 @@ export default function Test(): ReactElement {
     return <div className={'wrapper'}>
 
         <video width={'150px'} loop autoPlay muted>
-            <source src={'/draftmodels_none.mov'} type="video/quicktime" />
-            <source src={'/arcwarden_300.webm'} type="video/webm" />
+            <source src={'/arc.mov'} type="video/quicktime" />
+            <source src={'/arc.webm'} type="video/webm" />
         </video>
 
         <style jsx global>{`
