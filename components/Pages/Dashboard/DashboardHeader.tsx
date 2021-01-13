@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import ActiveVoting from "./Header/ActiveVoting";
 import Activity from "./Header/Activity";
 import GSIConnected from "./Header/GSIConnected";
+import UseKeywordListener from "./Header/UseKeywordListener";
 
 export default function DashboardHeader(): ReactElement {
 
@@ -9,6 +10,7 @@ export default function DashboardHeader(): ReactElement {
         <div className={'headerRow'}>
             <GSIConnected />
             <ActiveVoting />
+            <UseKeywordListener />
             <Activity />
         </div>
 
