@@ -30,8 +30,8 @@ export default function PickedHeroes({data, overlayActive, onShowOverlay}: Props
             .picksGrid {
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
-                grid-column-gap: 2rem;
-            }    
+                grid-column-gap: 1rem;
+            }
 
             .entry {
                 border-radius: 1rem;
@@ -40,6 +40,22 @@ export default function PickedHeroes({data, overlayActive, onShowOverlay}: Props
                 box-shadow: 2px 2px 10px rgba(0,0,0,.1);
                 min-height: 415px;
             }    
+
+            @media screen and (max-width: 1160px) {
+                .entry {
+                    min-height: 365px;
+                }
+            }
+
+            @media screen and (max-width: 1000px) {
+                .picksGrid {
+                    order: 3;
+                }
+
+                .picksGrid + .picksGrid {
+                    order: 6;
+                }   
+            }
         `}</style>
     </div>;
 }

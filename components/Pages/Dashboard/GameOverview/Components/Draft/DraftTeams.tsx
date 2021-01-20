@@ -105,6 +105,17 @@ export default function DraftTeams({matchId}: Props): ReactElement {
                 color: var(--primary-accent);
                 font-weight: bold;
             }
+
+            @media screen and (max-width: 1000px) {
+                .teamHeader {
+                    order: 1;
+                }
+
+                .teamHeader + .teamHeader {
+                    order: 4;
+                    margin-top: 4rem;
+                }
+            }
         `}</style>
     </>;
 }

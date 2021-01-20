@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
 import { useAbortFetch } from "../../../../../../hooks/abortFetch";
@@ -45,7 +46,7 @@ export default React.memo(function PickedHero({heroId, heroClass, overlayActive,
     const pickRate = totalGamesCount > 0 ? Math.floor((games * 100) / totalGamesCount) : 0;
 
     return <div className={'entry'}>
-        <video width={'100%'} loop autoPlay muted>
+        <video width={'100%'} loop autoPlay muted height={'150px'}>
             <source src={process.env.API_URL + `/static/heroes/videos/${heroClass}.mp4`} type="video/mp4" />
             <source src="movie.ogg" type="video/ogg" />
         </video>
@@ -53,8 +54,9 @@ export default React.memo(function PickedHero({heroId, heroClass, overlayActive,
         <div className={'details'}>
             <div className={'statsValue'}>
                 <div className={'stats'}>
-                    {wins}/{games} ({winRate}%)
+                    {wins} - {games}
                 </div>
+                <div className={classNames('winRate', {positive: winRate > 60, negative: winRate < 40})}>{winRate}%</div>
                 <div className={'label'}>
                     WINRATE
                 </div>
@@ -111,6 +113,25 @@ export default React.memo(function PickedHero({heroId, heroClass, overlayActive,
                 font-size: .8rem;
                 color: rgba(255,255,255,.6);
                 margin-top: .1rem;
+            }
+
+            .winRate {
+                font-weight: bold;
+                margin: 2px 0 2px 0;
+            }
+
+            .positive {
+                color: var(--primary-accent);
+            }
+
+            .negative {
+                color: var(--delete-red);
+            }
+
+            @media screen and (max-width: 1160px) {
+                .details {
+                    padding: 1.5rem .5rem .5rem .5rem;
+                }
             }
         `}</style>
     </div>;

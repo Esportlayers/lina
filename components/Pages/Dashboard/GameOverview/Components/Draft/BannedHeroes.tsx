@@ -35,7 +35,7 @@ export default function BannedHeroes({data}: Props): ReactElement {
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
                 grid-column-gap: 2rem;
-            }  
+            }
 
             .entry {
                 border-radius: 1rem;
@@ -47,6 +47,22 @@ export default function BannedHeroes({data}: Props): ReactElement {
                 filter: grayscale(.5);
                 min-height: 52px;
             }  
+
+            @media screen and (max-width: 1160px) {
+                .bansGrid {
+                    grid-column-gap: .5rem;
+                }
+            }   
+
+            @media screen and (max-width: 1000px) {
+                .bansGrid {
+                    order: 2;
+                }
+
+                .bansGrid + .bansGrid {
+                    order: 5;
+                }
+            }
         `}</style>
 
     </div>;

@@ -18,7 +18,26 @@ export default function Draft(): ReactElement {
                 grid-row-gap: 2rem;
                 align-items: center;
                 padding: 2rem 0;
-            }    
+            }  
+
+            @media screen and (max-width: 1310px) {
+                .draftGrid {
+                    grid-column-gap: 4rem;
+                }
+            }
+
+            @media screen and (max-width: 1240px) {
+                .draftGrid {
+                    font-size: .9rem;
+                }
+            }
+
+            @media screen and (max-width: 1000px) {
+                .draftGrid {
+                    grid-template-columns:1fr;
+                    grid-row-gap: 2rem;
+                }
+            }
         `}</style>
     </div>;
 }
