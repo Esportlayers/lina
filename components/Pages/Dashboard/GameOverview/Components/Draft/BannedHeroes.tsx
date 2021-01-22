@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import {TeamDraftData} from '@esportlayers/morphling';
-import HeroAvatar from "./HeroAvatar";
+import HeroAvatar from "../../../Components/HeroAvatar";
 
 interface Props {
     data: TeamDraftData;

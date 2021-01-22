@@ -1,4 +1,5 @@
-import { ReactElement, useState } from "react";
+import { EventTypes, GsiGameStateMessage, useTetherMessageListener } from "@esportlayers/io";
+import { ReactElement, useEffect, useState } from "react";
 import Tabs from "../../../Ui/tabs/Tabs";
 import Draft from "./Draft";
 import InGame from "./InGame";
@@ -15,6 +16,16 @@ const tabs = [{
 
 export default function GameOverview(): ReactElement {
     const [view, setView] = useState('draft');
+    const {value: gamestate} = useTetherMessageListener<GsiGameStateMessage>(EventTypes.gsi_game_state) || {value: null};
+
+    useEffect(() => {
+        if(gamestate === "DOTA_GAMERULES_STATE_TEAM_SHOWCASE") {
+            setView('ingame');
+        } else if(!gamestate) {
+            setView('draft');
+        }
+    }, [gamestate]);
+
     return <div className={'gameOverview'}>
         <Tabs active={view} setActive={setView} tabs={tabs} />
 
