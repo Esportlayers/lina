@@ -39,6 +39,7 @@ export default function HeroImage({playerIndex}: Props): ReactElement {
                 margin-left: -10%;
                 position: relative;
                 z-index: -1;
+                height: 100%;
             }
 
             .index-6 .image, .index-7 .image, .index-8 .image, .index-9 .image, .index-10 .image {

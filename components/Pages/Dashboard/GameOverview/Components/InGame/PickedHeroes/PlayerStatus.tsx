@@ -19,7 +19,7 @@ export default function PlayerStatus({playerIndex}: Props): ReactElement {
         return null;
     }, [playerIndex, playerStates]);
     
-    return <div className={classNames('playerStatus', {dead: player && !player.alive})}>
+    return <div className={classNames('playerStatus', `index-${playerIndex}`, {dead: player && !player.alive})}>
         {player && <>
             {player.alive && <>
                 <div className={'health'}>
@@ -37,12 +37,21 @@ export default function PlayerStatus({playerIndex}: Props): ReactElement {
         </>}
 
         <style jsx>{`
+            .playerStatus {
+            }
+
             .dead {
                 background-color: #333;
                 margin-top: -.3rem;
                 position: relative;
                 z-index: 2;
+                transform: skew(-10deg);
             }
+
+            .index-6.dead, .index-7.dead, .index-8.dead, .index-9.dead, .index-10.dead {
+                transform: skew(10deg);
+            }
+            
             .health, .mana {
                 height: 6px;
                 width: 100%;
