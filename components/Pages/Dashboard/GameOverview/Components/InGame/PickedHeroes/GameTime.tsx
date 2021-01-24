@@ -1,11 +1,10 @@
+import { useTetherMessageListener } from "@esportlayers/io";
 import { ReactElement } from "react";
 
 
 export default function GameTime(): ReactElement {
     return <div className={'gameTime'}>
         <div className={'content'}>
-
-            Streamdota
         </div>
 
         <style jsx>{`

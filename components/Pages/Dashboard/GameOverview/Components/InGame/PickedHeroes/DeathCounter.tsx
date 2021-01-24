@@ -1,14 +1,27 @@
-import { ReactElement } from "react";
+import { ReactElement, useMemo } from "react";
 import classNames from 'classnames';
+import { EventTypes, GsiPlayersStateMessage, useTetherMessageListener } from "@esportlayers/io";
+import AnimatedNumber from "animated-number-react";
 
+const formatter = (value) => value.toFixed(0);
 interface Props {
     dire?: boolean;
 }
 
 export default function DeathCounter({dire}: Props): ReactElement {
+    const {value: playerStates} = useTetherMessageListener<GsiPlayersStateMessage>(EventTypes.gsi_players_state) || {value: null};
+
+    const deaths = useMemo(() => {
+        if(playerStates && playerStates.length) {
+            let players = dire ? playerStates.slice(0, 5) : playerStates.slice(5);
+            return players.reduce((acc, {deaths}) => acc + deaths, 0)
+        }
+        return 0;
+    }, [dire, playerStates]);
+
     return <div className={classNames('deathCounter', {dire})}>
         <div className={'content'}>
-
+            <AnimatedNumber value={deaths} formatValue={formatter} />
         </div>
 
         <style jsx>{`
@@ -27,6 +40,14 @@ export default function DeathCounter({dire}: Props): ReactElement {
 
             .content {
                 transform: skew(-10deg);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                font-size: 1.7rem;
+                font-weight: bold;
+                color: #CCC;
+                line-height: 1.7rem;
             }
 
             .dire .content {

@@ -37,7 +37,7 @@ export async function fetchHeroStats(abortController: AbortController, leagueId:
 }
 
 export default React.memo(function PickedHero({heroId, heroClass, overlayActive, onShowOverlay}: Props): ReactElement {
-    const [stats] = useAbortFetch(fetchHeroStats, '7.27', heroId);
+    const [stats] = useAbortFetch(fetchHeroStats, '7.28', heroId);
     const games = stats?.matchCount || 0;
     const wins = stats?.matchWins || 0;
     const totalGamesCount = stats?.totalGamesCount || 0;
