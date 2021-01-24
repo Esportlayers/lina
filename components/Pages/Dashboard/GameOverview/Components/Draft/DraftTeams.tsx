@@ -32,90 +32,94 @@ export default function DraftTeams({matchId}: Props): ReactElement {
     const radiantActive = draft && draft.activeteam === 2;
     const activeTeamRemaining = draft && draft.activeteam_time_remaining;
 
-    return <>
-        <div className={'teamHeader'}>
-            <div className={'team'}>
-                <div className={'teamLogo'}>
-                    <Image width={80} height={80} src={radiantLogoUrl} alt={'radiant logo'}/>
+    if(draft && Object.values(draft).length > 0) {
+        return <>
+            <div className={'teamHeader'}>
+                <div className={'team'}>
+                    <div className={'teamLogo'}>
+                        <Image width={80} height={80} src={radiantLogoUrl} alt={'radiant logo'}/>
+                    </div>
+
+                    <div className={'name'}>{teams.radiant.name}</div>
                 </div>
 
-                <div className={'name'}>{teams.radiant.name}</div>
+                <div className={'draftTiminig'}>
+                    <div className={classNames('duration', {active: radiantActive && activeTeamRemaining !== 0})}>{radiantActive ? secondsToTime(activeTeamRemaining) : '0:30'}</div>
+                    <div className={classNames('duration', {active: radiantActive && activeTeamRemaining === 0})}>{draft ? secondsToTime(draft.radiant_bonus_time) : '0:00'}</div>
+                </div>
             </div>
+            
+            <div className={'teamHeader'}>
+                <div className={'team'}>
+                    <div className={'teamLogo'}>
+                        <Image width={80} height={80} src={direLogoUrl} alt={'dire logo'}/>
+                    </div>
 
-            <div className={'draftTiminig'}>
-                <div className={classNames('duration', {active: radiantActive && activeTeamRemaining !== 0})}>{radiantActive ? secondsToTime(activeTeamRemaining) : '0:30'}</div>
-                <div className={classNames('duration', {active: radiantActive && activeTeamRemaining === 0})}>{draft ? secondsToTime(draft.radiant_bonus_time) : '0:00'}</div>
-            </div>
-        </div>
-        
-        <div className={'teamHeader'}>
-            <div className={'team'}>
-                <div className={'teamLogo'}>
-                    <Image width={80} height={80} src={direLogoUrl} alt={'dire logo'}/>
+                    <div className={'name'}>{teams.dire.name}</div>
                 </div>
 
-                <div className={'name'}>{teams.dire.name}</div>
+                <div className={'draftTiminig'}>
+                    <div className={classNames('duration', {active: !radiantActive && activeTeamRemaining !== 0})}>{!radiantActive ? secondsToTime(activeTeamRemaining) : '0:30'}</div>
+                    <div className={classNames('duration', {active: !radiantActive && activeTeamRemaining === 0})}>{draft ? secondsToTime(draft.dire_bonus_time) : '0:00'}</div>
+                </div>
             </div>
 
-            <div className={'draftTiminig'}>
-                <div className={classNames('duration', {active: !radiantActive && activeTeamRemaining !== 0})}>{!radiantActive ? secondsToTime(activeTeamRemaining) : '0:30'}</div>
-                <div className={classNames('duration', {active: !radiantActive && activeTeamRemaining === 0})}>{draft ? secondsToTime(draft.dire_bonus_time) : '0:00'}</div>
-            </div>
-        </div>
-
-        <style jsx>{`
-            .teamHeader {
-                display: flex;
-                align-items: center;
-                text-transform: uppercase;
-                justify-content: space-between;
-            }
-
-            .team {
-                display: flex;
-                align-items: center;
-            }
-
-            .name {
-                font-size: 2rem;
-                font-weight: bold;
-                margin-left: 2rem;
-            }
-
-            .teamLogo {
-                border-radius: .5rem;
-                overflow: hidden;
-                height: 80px;
-            }
-
-            .draftTiminig {
-                width: 5rem;
-                text-align: right;
-                display: flex;
-                flex-direction: column;
-                line-height: 1.5em;
-            }
-
-            .duration {
-                transition: font-size 120ms ease-in-out, color 120ms ease-in-out;
-            }
-
-            .active {
-                font-size: 1.5rem;
-                color: var(--primary-accent);
-                font-weight: bold;
-            }
-
-            @media screen and (max-width: 1000px) {
+            <style jsx>{`
                 .teamHeader {
-                    order: 1;
+                    display: flex;
+                    align-items: center;
+                    text-transform: uppercase;
+                    justify-content: space-between;
                 }
 
-                .teamHeader + .teamHeader {
-                    order: 4;
-                    margin-top: 4rem;
+                .team {
+                    display: flex;
+                    align-items: center;
                 }
-            }
-        `}</style>
-    </>;
+
+                .name {
+                    font-size: 2rem;
+                    font-weight: bold;
+                    margin-left: 2rem;
+                }
+
+                .teamLogo {
+                    border-radius: .5rem;
+                    overflow: hidden;
+                    height: 80px;
+                }
+
+                .draftTiminig {
+                    width: 5rem;
+                    text-align: right;
+                    display: flex;
+                    flex-direction: column;
+                    line-height: 1.5em;
+                }
+
+                .duration {
+                    transition: font-size 120ms ease-in-out, color 120ms ease-in-out;
+                }
+
+                .active {
+                    font-size: 1.5rem;
+                    color: var(--primary-accent);
+                    font-weight: bold;
+                }
+
+                @media screen and (max-width: 1000px) {
+                    .teamHeader {
+                        order: 1;
+                    }
+
+                    .teamHeader + .teamHeader {
+                        order: 4;
+                        margin-top: 4rem;
+                    }
+                }
+            `}</style>
+        </>;
+    }
+
+    return null;
 }

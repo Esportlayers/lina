@@ -1,7 +1,8 @@
 import { EventTypes, GsiPlayersStateMessage, useTetherMessageListener } from "@esportlayers/io";
 import classNames from "classnames";
-import { ReactElement, useMemo } from "react";
+import { ReactElement, useEffect, useMemo, useState } from "react";
 import AnimatedNumber from "animated-number-react";
+import { useInterval } from "../../../../../../VoteOverlay/Status";
 
 const formatter = (value) => value.toFixed(0);
 
@@ -11,6 +12,8 @@ interface Props {
 
 export default function PlayerStatus({playerIndex}: Props): ReactElement {
     const {value: playerStates} = useTetherMessageListener<GsiPlayersStateMessage>(EventTypes.gsi_players_state) || {value: null};
+    const [respawn, setRespawn] = useState(0);
+    useInterval(() => respawn > 0 && setRespawn(s => --s));
 
     const player = useMemo(() => {
         if(playerStates && playerStates.length > 0) {
@@ -18,6 +21,8 @@ export default function PlayerStatus({playerIndex}: Props): ReactElement {
         }
         return null;
     }, [playerIndex, playerStates]);
+
+    useEffect(() => setRespawn(player?.respawn_seconds || 0), [player]);
     
     return <div className={classNames('playerStatus', `index-${playerIndex}`, {dead: player && !player.alive})}>
         {player && <>
@@ -31,7 +36,7 @@ export default function PlayerStatus({playerIndex}: Props): ReactElement {
             </>}
             {!player.alive && player.heroId && player.heroId !== -1 && <div className={classNames('playerDead', {canBb: player.canBuyBack})}>
                 <div className={'respawn'}>
-                    <AnimatedNumber value={player.respawn_seconds} formatValue={formatter} />
+                    <AnimatedNumber value={respawn} formatValue={formatter} />
                 </div>
             </div>}
         </>}

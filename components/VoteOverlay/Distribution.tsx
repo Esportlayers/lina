@@ -16,7 +16,7 @@ export default function Distribution(): ReactElement | null {
             <div className={'votings'}>
                 <AnimatedNumber value={state.teamACount} formatValue={(value) => value.toFixed(0)}/>
                 <div className={'slider'}>
-                    <div className={'progress'} style={{height: Math.floor((state.teamBCount * 100) / state.totalVotesCount) + '%'}}/>
+                    <div className={'progress'} style={{height: Math.floor((state.teamACount * 100) / state.totalVotesCount) + '%'}}/>
                 </div>
                 <AnimatedNumber value={state.teamBCount} formatValue={(value) => value.toFixed(0)}/>
             </div>

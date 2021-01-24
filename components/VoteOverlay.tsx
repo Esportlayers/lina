@@ -7,8 +7,8 @@ import Participants from "./VoteOverlay/Participants";
 import Status from "./VoteOverlay/Status";
 
 const variants: Variants = {
-    hidden: {x: '100%', transition: {duration: .24}},
-    visible: {x: 0, transition: {duration: .24}},
+    hidden: {width: 0, transition: {duration: .24}},
+    visible: {width: 'auto', transition: {duration: .24}},
 }
 
 export default function VoteOverlay(): ReactElement {
@@ -27,13 +27,11 @@ export default function VoteOverlay(): ReactElement {
 
             <style jsx global>{`
                 .voteSideBar {
-                    position: fixed;
-                    right: 0;
-                    top: 0;
-                    bottom: 0;
                     background-color: var(--anthrazit);
                     box-shadow: -2px 0 10px rgba(0,0,0,.2);
                     padding: .75rem 1rem;
+                    position: relative;
+                    z-index: 1;
                 }    
 
                 h2 {

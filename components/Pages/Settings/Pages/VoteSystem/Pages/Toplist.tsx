@@ -19,7 +19,7 @@ export default function Toplist(): ReactElement {
             </div>
         </div>
 
-        {season && currentUser && <Tether url={getWSUrl(process.env.API_URL + '/dota-gsi/live/' + currentUser.frameApiKey)}>
+        {season && currentUser && <Tether url={'wss://api.streamdota.com/dota-gsi/live/81f8c9aa-ed7b-47be-8f17-9ad01cb47fff'}>
             <ToplistTable seasonId={season} filter={filter} />
         </Tether>}
 

@@ -12,7 +12,7 @@ export default function Rounds(): ReactElement {
     return <div>
         <SeasonSelector season={season} onChange={setSeason} />
 
-        {season && currentUser && <Tether url={getWSUrl(process.env.API_URL + '/dota-gsi/live/' + currentUser.frameApiKey)}>
+        {season && currentUser && <Tether url={'wss://api.streamdota.com/dota-gsi/live/81f8c9aa-ed7b-47be-8f17-9ad01cb47fff'}>
             <RoundsTable seasonId={season} />
         </Tether>}
     </div>;
