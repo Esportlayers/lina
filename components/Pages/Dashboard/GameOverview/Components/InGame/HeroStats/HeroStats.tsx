@@ -1,6 +1,7 @@
 import { EventTypes, GsiPlayersStateMessage, useTetherMessageListener } from "@esportlayers/io";
 import classNames from "classnames";
-import { ReactElement, useMemo, useState } from "react";
+import { ReactElement, useCallback, useMemo, useState } from "react";
+import { getDefaultHeader, post } from "../../../../../../../modules/middleware/Network";
 import Button from "../../../../../../Ui/button/Button";
 import Player from "./Player";
 import Type from "./Type";
@@ -25,6 +26,7 @@ const buttonTypes = [
 
 export default function HeroStats(): ReactElement {
     const [activeType, setActiveType] = useState<Types>(Types.gpm);
+    const [loading, setLoading] = useState(false);
     const {value: playerStates} = useTetherMessageListener<GsiPlayersStateMessage>(EventTypes.gsi_players_state) || {value: null};
 
     const values = useMemo(() => {
@@ -39,6 +41,15 @@ export default function HeroStats(): ReactElement {
         }
         return Array(10).fill({value: 0, percentage: 0});
     }, [activeType, playerStates]);
+
+
+    const showStats = useCallback(async () => {
+        if(!loading) {
+            setLoading(true);
+            await post(process.env.API_URL + '/casting/overlay', {data: {type: 'playerCompareGraph', data: values, dataType: activeType}}, getDefaultHeader());
+            setTimeout(() => setLoading(false), 10000);
+        }
+    }, [loading, values, activeType]);
 
     return <div className={'heroStats'}>
         <div className={'heroStatsGrid'}>
@@ -58,8 +69,7 @@ export default function HeroStats(): ReactElement {
         </div>
 
         <div className={'types'}>
-            <Button>Share stats</Button>
-
+            <Button onClick={showStats}>Share stats</Button>
         </div>
 
         <style jsx>{`
