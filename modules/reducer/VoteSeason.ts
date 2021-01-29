@@ -65,7 +65,7 @@ export function createVoteSeason(data: Partial<VoteSeason>): ActionDispatcher<Pr
 	return async (dispatch) => {
 		await dispatch<Promise<Response | NetworkError>>({
 			[CALL_API]: {
-				endpoint: `${process.env.API_URL}/betSeason/1`,
+				endpoint: `${process.env.API_URL}/betSeason`,
 				method: 'post',
 				types: {
 					requestType: CREATE_VOTE_SEASON_REQUEST,

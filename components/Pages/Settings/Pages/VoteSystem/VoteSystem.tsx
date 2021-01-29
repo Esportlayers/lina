@@ -1,11 +1,12 @@
 import { ReactElement, useState } from "react";
 import Tabs, { Tab } from "../../../../Ui/tabs/Tabs";
-import BotCommands from "./Pages/BotCommands";
 import General from "./Pages/General";
-import Overlays from "./Pages/Overlays";
+import Overlays from "./Pages/Analytics";
 import Rounds from "./Pages/Rounds";
 import Seasons from "./Pages/Seasons";
 import Toplist from "./Pages/Toplist";
+import Analytics from "./Pages/Analytics";
+import Chat from "./Pages/Chat";
 
 const tabs: Tab[] = [
     {
@@ -19,6 +20,11 @@ const tabs: Tab[] = [
         view: Seasons,
     },
     {
+        name: 'Analytics',
+        value: 'analytics',
+        view: Analytics,
+    },
+    {
         name: 'Rounds',
         value: 'rounds',
         view: Rounds,
@@ -29,9 +35,9 @@ const tabs: Tab[] = [
         view: Toplist,
     },
     {
-        name: 'Bot Commands',
-        value: 'botCommands',
-        view: BotCommands,
+        name: 'Chat interaction',
+        value: 'chat',
+        view: Chat,
     },
     {
         name: 'Overlays',

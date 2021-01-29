@@ -12,9 +12,11 @@ import { entitiesReducer } from './reducer/util/EntityStates';
 import { teamsReducer, TeamsState } from './reducer/Teams';
 import { voteSeasonToplistReducer, VoteSeasonToplistState } from './reducer/VoteSeasonToplist';
 import { voteOverlayReducer, VoteOverlayState } from './reducer/VoteOverlay';
+import { botCommandReducer, BotCommandState } from './reducer/BotCommands';
 
 export interface State {
 	entities: {
+		botCommands: BotCommandState;
 		teams: TeamsState;
 		voteRound: VoteRoundState;
 		voteSeason: VoteSeasonState;
@@ -25,6 +27,7 @@ export interface State {
 }
 const initial: State = {
 	entities: {
+		botCommands: undefined,
 		teams: undefined,
         voteRound: undefined,
 		voteSeason: undefined,
@@ -46,6 +49,7 @@ export const storeReducer = combineReducers<State>({
     ...stateReducer,
 	//@ts-ignore
 	entities: combiner({
+		botCommands: entitiesReducer(botCommandReducer, 'botCommands'),
 		teams: entitiesReducer(teamsReducer, 'teams'),
 		voteRound: entitiesReducer(voteRoundReducer, 'voteRound'),
 		voteSeason: entitiesReducer(voteSeasonReducer, 'voteSeason'),

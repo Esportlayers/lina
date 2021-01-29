@@ -9,6 +9,11 @@ interface Props {
 
 const items = [
     {
+        name: 'Account',
+        page: 'account',
+        type: 'page',
+    },
+    {
         name: 'General',
         type: 'header',
     },
@@ -61,7 +66,7 @@ export default function SettingsNavigation({active}: Props): ReactElement {
 
         <Link href={'/dashboard'}>
             <div className={'item page'}>
-                Dashboard
+                Back to Dashboard
             </div>
         </Link>
 

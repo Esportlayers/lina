@@ -9,7 +9,8 @@ import {
 	UPDATE_CURRENT_USER_SUCCESS,
 	UPDATE_CURRENT_USER_FAILURE,
 	LOAD_VOTE_SEASON_TOPLIST_SUCCESS,
-	LOAD_VOTE_OVERLAY_SUCCESS
+	LOAD_VOTE_OVERLAY_SUCCESS,
+	LOAD_COMMANDS_SUCCESS
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -22,6 +23,7 @@ export interface Ui {
 	currentUser: User | null;
 	currentVoteRound: VoteRoundData | null;
 	loadedEntities: {
+		botCommands: boolean;
 		voteRounds: number[];
 		voteSeasons: boolean;
 		voteSeasonToplist: number[];
@@ -33,6 +35,7 @@ export const initialUiState: Ui = {
 	currentUser: null,
 	currentVoteRound: null,
 	loadedEntities: {
+		botCommands: false,
 		voteRounds: [],
 		voteSeasons: false,
 		voteSeasonToplist: [],
@@ -74,6 +77,7 @@ addReducer<VoteRoundUpdateSuccess>(LOAD_CURRENT_VOTE_ROUND_SUCCESS, (state, { re
 });
 
 const flatLoadedEntities = [
+	['botCommands', LOAD_COMMANDS_SUCCESS, true],
 	['voteSeasons', LOAD_VOTE_SEASONS_SUCCESS, true],
 	['voteOverlay', LOAD_VOTE_OVERLAY_SUCCESS, true],
 ];
