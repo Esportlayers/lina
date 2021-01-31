@@ -9,7 +9,8 @@ export default function PageFrame({children}: {children: ReactNode}): ReactEleme
                 --anthrazit: #41464d;
                 --twitch: #772ce8;
                 --primary-accent: #24d46a;
-                --secondary-accent: #e8772c;
+                --primary-accent-darken: #1aa551;
+                --secondary-accent: #fd761c;
                 --secondary-accent-darken: #c96725;
                 --delete-red:#f83b3b;
             }

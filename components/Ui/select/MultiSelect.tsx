@@ -1,25 +1,23 @@
-import classNames from "classnames";
 import { ReactElement } from "react";
 import Label from "../label/label";
 
 
 interface Props {
-    selected: string;
-    onSelect: (value: string) => void;
+    selected: string[];
+    onSelect: (value: string[]) => void;
     options: Array<{
         value: string;
         name: string;
     }>;
     label: string;
-    secondary?: boolean;
 }
 
-export default function Select({label, selected, onSelect, options, secondary}: Props): ReactElement {
+export default function MultiSelect({label, selected, onSelect, options}: Props): ReactElement {
     return <label>
         <Label label={label} />
         <br />
-        <span className={classNames('selectWrapper', {secondary})}>
-            <select value={selected} onChange={(e) => onSelect(e.target.value)}>
+        <span className={'selectWrapper'}>
+            <select value={selected} onChange={(e) => onSelect(e.target.value as unknown as string[])} multiple>
                 {options.map(({name, value}) => <option key={value} value={value}>{name}</option>)}
             </select>
 
@@ -63,11 +61,6 @@ export default function Select({label, selected, onSelect, options, secondary}: 
                 outline: none !important;
                 border-color: var(--primary-accent);
                 box-shadow: 0 0 5px var(--primary-accent);
-            }
-
-            .secondary select:focus {
-                border-color: var(--secondary-accent);
-                box-shadow: 0 0 5px var(--secondary-accent);
             }
 
             select::-ms-expand {

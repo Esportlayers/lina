@@ -9,6 +9,7 @@ import Input from "../../../Ui/input/Input";
 import TextArea from "../../../Ui/input/TextArea";
 import Checkbox from "../../../Ui/toggle/Checkbox";
 import Loader from "../../../Ui/loader/Loader";
+import CommandAccess from "./CommandAccess";
 
 const replace = {
     UPTIME: '4 Stunden und 20 Minuten',
@@ -77,6 +78,7 @@ export default function CommandList({commandType = 'default', replaceVars = {}, 
                 </div>
                 <TextArea value={message} disabled={noResponse} onBlur={async (message) => dispatch(updateCommand(id, { message }))} />
                 <div>
+                    <CommandAccess command={props} onChange={async (command) => dispatch(updateCommand(id, command))} />
                 </div>
                 <div>
                 </div>

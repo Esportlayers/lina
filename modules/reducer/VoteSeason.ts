@@ -16,6 +16,8 @@ import {
 	DELETE_VOTE_SEASON_REQUEST,
 	DELETE_VOTE_SEASON_SUCCESS,
 	DELETE_VOTE_SEASON_FAILURE,
+	LOAD_VOTE_SEASON_STATS_REQUEST,
+	LOAD_VOTE_SEASON_STATS_SUCCESS,
 } from './Actions';
 import { loadCurrentUser } from './Ui';
 import { currentUserSelector } from '../selector/UiSelector';

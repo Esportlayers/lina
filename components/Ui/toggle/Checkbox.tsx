@@ -11,17 +11,21 @@ interface Props {
 export default function Checkbox({checked, onChange, label}: Props): ReactElement {
     return <div className={classNames('checkbox', {checked})}>
         <input type={'checkbox'} checked={Boolean(checked)} />
-        <div className={'label'} onClick={() => onChange(!checked)} >
+        <div className={classNames('label', {noLabel: !label})} onClick={() => onChange(!checked)} >
             {label && <Label label={label} />}
         </div>
 
         <style jsx>{`
+            .checkbox {
+                margin-bottom: .5rem;
+                margin-right: 1.5rem; 
+            }
             input {
                 display: none;
             }    
 
             .label {
-                padding-left: 2rem;
+                padding-left: 2.25rem;
                 cursor: pointer;
                 position: relative;
                 user-select: none;
@@ -31,7 +35,6 @@ export default function Checkbox({checked, onChange, label}: Props): ReactElemen
                 content: ' ';
                 position: absolute;
                 left: .25rem;
-                top: -.25rem;
                 bottom: 0;
                 width: 1.5rem;
                 height: 1.5rem;
@@ -55,10 +58,19 @@ export default function Checkbox({checked, onChange, label}: Props): ReactElemen
                 transform: rotate(45deg);
                 content: "";
                 position: absolute;
+                top: .25rem;
             }
 
             :not(.checked) .label:hover::before {
                 background-color: rgba(0,0,0,.2);
+            }
+
+            .noLabel::before {
+                top: -.25rem;
+            }
+
+            .checked .noLabel::after {
+                top: 0rem;
             }
         `}</style>
     </div>

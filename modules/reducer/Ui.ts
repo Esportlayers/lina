@@ -10,7 +10,8 @@ import {
 	UPDATE_CURRENT_USER_FAILURE,
 	LOAD_VOTE_SEASON_TOPLIST_SUCCESS,
 	LOAD_VOTE_OVERLAY_SUCCESS,
-	LOAD_COMMANDS_SUCCESS
+	LOAD_COMMANDS_SUCCESS,
+	LOAD_VOTE_SEASON_STATS_SUCCESS
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -26,6 +27,7 @@ export interface Ui {
 		botCommands: boolean;
 		voteRounds: number[];
 		voteSeasons: boolean;
+		voteSeasonStats: number[];
 		voteSeasonToplist: number[];
 		voteOverlay: boolean;
 	};
@@ -38,6 +40,7 @@ export const initialUiState: Ui = {
 		botCommands: false,
 		voteRounds: [],
 		voteSeasons: false,
+		voteSeasonStats: [],
 		voteSeasonToplist: [],
 		voteOverlay: false,
 	},
@@ -107,6 +110,7 @@ interface LoadedVoteSeasonAsset<T> {
 
 const voteSeasonAssetsLoaded  = [
 	['voteSeasonToplist', LOAD_VOTE_SEASON_TOPLIST_SUCCESS],
+	['voteSeasonStats', LOAD_VOTE_SEASON_STATS_SUCCESS],
 ];
 
 for(const [key, listener] of voteSeasonAssetsLoaded) {

@@ -25,7 +25,7 @@ export default function Placeholder({placeholder}: Props): ReactElement {
                 margin: .5rem;
                 padding: .25rem .75rem;
                 font-family: monospace;
-                font-size: .7rem;
+                font-size: .8rem;
             }
         `}</style>
     </div>;
