@@ -27,3 +27,20 @@ export function useVoteSeasons(): VoteSeason[] | undefined {
 
 	return seasons;
 }
+
+export function useVoteSeason(seasonId: number): VoteSeason | undefined {
+	const seasons = useSelector(voteSeasonEntitiesSelector);
+	const loaded = useSelector(loadedVoteSeasonsSelector);
+	const dispatch = useDispatch();
+
+	useEffect(
+		() => {
+			if (!loaded) {
+				dispatch(loadVoteSeasons());
+			}
+		},
+		[ loaded ]
+	);
+
+	return seasons[seasonId];
+}
