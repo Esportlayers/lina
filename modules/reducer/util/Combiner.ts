@@ -1,4 +1,4 @@
-import isPlainObject from 'is-plain-object';
+import {isPlainObject} from 'is-plain-object';
 
 function applyNextState(previousState: object, nextState: object): object {
   if (isPlainObject(previousState) && isPlainObject(nextState)) {

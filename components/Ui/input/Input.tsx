@@ -1,17 +1,17 @@
 import { ReactElement, useEffect, useState } from "react";
 import Label from "../label/label";
 
-interface Props {
+interface Props<T> {
     autoFocus?: boolean;
     label?: string;
-    value: string;
-    onChange?: (value: string) => void;
-    onBlur?: (value: string) => void;
+    value: T;
+    onChange?: (value: T) => void;
+    onBlur?: (value: T) => void;
     type?: HTMLInputElement['type'];
 }
 
-export default function Input({autoFocus, label, onBlur, onChange, type = 'text', value}: Props): ReactElement {
-    const [val, setVal] = useState(value);
+export default function Input<T extends any>({autoFocus, label, onBlur, onChange, type = 'text', value}: Props<T>): ReactElement {
+    const [val, setVal] = useState<T>(value);
     useEffect(() => setVal(value), [value]);
     return <label>
         {label && <>
@@ -19,10 +19,10 @@ export default function Input({autoFocus, label, onBlur, onChange, type = 'text'
             <br />
         </>}
         <span className={'inputWrapper'}>
-            <input autoFocus={autoFocus} type={type} value={val} onChange={(e) => {
-                setVal(e.target.value);
-                onChange && onChange(e.target.value)
-            }} onBlur={(e) => onBlur && onBlur(e.target.value)} />
+            <input autoFocus={autoFocus} type={type} value={val + ''} onChange={(e) => {
+                setVal(e.target.value as T);
+                onChange && onChange(e.target.value as T)
+            }} onBlur={(e) => onBlur && onBlur(e.target.value as T)} />
         </span>
 
         <style jsx>{`
@@ -40,7 +40,6 @@ export default function Input({autoFocus, label, onBlur, onChange, type = 'text'
                 background-color: rgba(0,0,0,.1);
                 color: #FFF;
                 outline: none;
-                padding-right: 2rem;
                 border: 1px solid transparent;
                 transition: border-color 120ms ease-in-out, box-shadow 120ms ease-in-out, background-color 240ms ease-in-out;
             }

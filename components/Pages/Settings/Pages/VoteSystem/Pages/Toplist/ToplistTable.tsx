@@ -1,5 +1,7 @@
 import { BetSeasonToplist as VoteSeasonToplist } from "@streamdota/shared-types";
+import classNames from "classnames";
 import { ReactElement, useMemo } from "react";
+import { useVoteSeasons } from "../../../../../../../modules/selector/VoteSeasons";
 import { useVoteSeasonToplist } from "../../../../../../../modules/selector/VoteSeasonToplist";
 import IndexRankingCellRenderer from "../../../../../../Ui/table/IndexRankingCellRenderer";
 import Table, { TableProps } from "../../../../../../Ui/table/Table";
@@ -10,7 +12,7 @@ interface Props {
     seasonId: number;
 }
 
-const rowDefinition: TableProps<VoteSeasonToplist>['rowDefinitions'] = [
+const rowDefinition: (winnerCount: number) => TableProps<VoteSeasonToplist>['rowDefinitions'] = (winnerCount) => [
     {
         label: '#',
         accessKey: 'rank',
@@ -20,8 +22,18 @@ const rowDefinition: TableProps<VoteSeasonToplist>['rowDefinitions'] = [
     {
         label: 'Name',
         accessKey: 'name',
+        renderer: ({rowIndex, name}) => <div className={classNames({isWinner: rowIndex + 1 <= winnerCount})}>
+            {name}
+            <style jsx>{`
+                .isWinner {
+                    font-size: 1rem;
+                    color: var(--primary-accent);
+                    font-weight: bold;
+                }    
+            `}</style>
+        </div>,
     }, {
-        label: 'Participations',
+        label: 'Entrants',
         accessKey: 'total',
     }, {
         label: 'Correct',
@@ -36,7 +48,14 @@ const rowDefinition: TableProps<VoteSeasonToplist>['rowDefinitions'] = [
 
 export default function ToplistTable({filter, seasonId}: Props): ReactElement {
     const toplist = useVoteSeasonToplist(seasonId);
-
+    const seasons = useVoteSeasons();
+    const winnerCount = useMemo(() => {
+        if(seasons && seasonId) {
+            const relevantSeason = seasons.find(({id}) => id === seasonId);
+            return relevantSeason?.winnerCount || 1;
+        }
+        return 1;
+    }, [seasons, seasonId]);
     const rows = useMemo(() => {
         if(toplist && filter.length > 0) {
             const lower = filter.toLocaleLowerCase();
@@ -45,5 +64,5 @@ export default function ToplistTable({filter, seasonId}: Props): ReactElement {
         return toplist || [];
     }, [toplist, filter]);
 
-    return <Table<VoteSeasonToplist> rows={rows} rowDefinitions={rowDefinition} />;
+    return <Table<VoteSeasonToplist> rows={rows} rowDefinitions={rowDefinition(winnerCount)} />;
 }
