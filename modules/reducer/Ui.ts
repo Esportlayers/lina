@@ -19,6 +19,7 @@ import { ActionDispatcher, CALL_API } from '../middleware/NetworkMiddlewareTypes
 import NetworkError from '../middleware/NetworkError';
 import { VoteRoundData } from '@esportlayers/io';
 import { currentUserSelector } from '../selector/UiSelector';
+import LogRocket from 'logrocket';
 
 export interface Ui {
 	currentUser: User | null;
@@ -143,6 +144,12 @@ export function loadCurrentUser(frameApiKey?: string): ActionDispatcher<Promise<
 
 		if (!response || (response as NetworkError).responseStatus === 401) {
 			location.href = `${process.env.API_URL}/auth/twitch`;
+		} else if(typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+			const user = response as unknown as User;
+			LogRocket.identify(user.id + '', {
+				name: user.displayName,
+				twitchId: user.twitchId,
+			});
 		}
 	};
 }
