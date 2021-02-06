@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import ActiveVoting from "../../../../Dashboard/Header/ActiveVoting";
 import CurrentSeason from "./General/CurrentSeason";
+import StreamDelay from "./General/StreamDelay";
 import TeamNames from "./General/TeamNames";
 import VoteDuration from "./General/VoteDuration";
 
@@ -11,6 +12,7 @@ export default function General(): ReactElement {
         </div>
         <CurrentSeason />
         <TeamNames />
+        <StreamDelay />
         <VoteDuration />
 
         <style jsx>{`

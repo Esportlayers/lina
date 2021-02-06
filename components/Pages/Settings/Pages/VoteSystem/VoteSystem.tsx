@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import Tabs, { Tab } from "../../../../Ui/tabs/Tabs";
 import General from "./Pages/General";
-import Overlays from "./Pages/Analytics";
+import Overlays from "./Pages/Overlays";
 import Rounds from "./Pages/Rounds";
 import Seasons from "./Pages/Seasons";
 import Toplist from "./Pages/Toplist";

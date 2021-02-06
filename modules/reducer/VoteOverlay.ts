@@ -60,5 +60,6 @@ export function patchVoteOverlay(data: Partial<BetOverlay>): ActionDispatcher<Pr
 				}
 			},
 		});
+		await dispatch(loadVoteOverlay());
 	};
 }

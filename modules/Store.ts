@@ -14,10 +14,12 @@ import { voteSeasonToplistReducer, VoteSeasonToplistState } from './reducer/Vote
 import { voteOverlayReducer, VoteOverlayState } from './reducer/VoteOverlay';
 import { botCommandReducer, BotCommandState } from './reducer/BotCommands';
 import { voteSeasonStatsReducer, VoteSeasonStatsState } from './reducer/VoteSeasonStats';
+import { FontState, googleFontReducer } from './reducer/GoogleFont';
 
 export interface State {
 	entities: {
 		botCommands: BotCommandState;
+		googleFont: FontState;
 		teams: TeamsState;
 		voteRound: VoteRoundState;
 		voteSeason: VoteSeasonState;
@@ -30,6 +32,7 @@ export interface State {
 const initial: State = {
 	entities: {
 		botCommands: undefined,
+		googleFont: undefined,
 		teams: undefined,
         voteRound: undefined,
 		voteSeason: undefined,
@@ -53,6 +56,7 @@ export const storeReducer = combineReducers<State>({
 	//@ts-ignore
 	entities: combiner({
 		botCommands: entitiesReducer(botCommandReducer, 'botCommands'),
+		googleFont: entitiesReducer(googleFontReducer, 'googleFont'),
 		teams: entitiesReducer(teamsReducer, 'teams'),
 		voteRound: entitiesReducer(voteRoundReducer, 'voteRound'),
 		voteSeason: entitiesReducer(voteSeasonReducer, 'voteSeason'),

@@ -11,7 +11,8 @@ import {
 	LOAD_VOTE_SEASON_TOPLIST_SUCCESS,
 	LOAD_VOTE_OVERLAY_SUCCESS,
 	LOAD_COMMANDS_SUCCESS,
-	LOAD_VOTE_SEASON_STATS_SUCCESS
+	LOAD_VOTE_SEASON_STATS_SUCCESS,
+	LOAD_GOOGLE_FONTS_SUCCESS
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -26,6 +27,7 @@ export interface Ui {
 	currentVoteRound: VoteRoundData | null;
 	loadedEntities: {
 		botCommands: boolean;
+		googleFonts: boolean;
 		voteRounds: number[];
 		voteSeasons: boolean;
 		voteSeasonStats: number[];
@@ -39,6 +41,7 @@ export const initialUiState: Ui = {
 	currentVoteRound: null,
 	loadedEntities: {
 		botCommands: false,
+		googleFonts: false,
 		voteRounds: [],
 		voteSeasons: false,
 		voteSeasonStats: [],
@@ -82,6 +85,7 @@ addReducer<VoteRoundUpdateSuccess>(LOAD_CURRENT_VOTE_ROUND_SUCCESS, (state, { re
 
 const flatLoadedEntities = [
 	['botCommands', LOAD_COMMANDS_SUCCESS, true],
+	['googleFonts', LOAD_GOOGLE_FONTS_SUCCESS, true],
 	['voteSeasons', LOAD_VOTE_SEASONS_SUCCESS, true],
 	['voteOverlay', LOAD_VOTE_OVERLAY_SUCCESS, true],
 ];

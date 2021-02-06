@@ -1,6 +1,5 @@
 import classNames from "classnames";
-import { stat } from "fs";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useCurrentUser } from "../../../../../../modules/selector/UiSelector";
 import { useVoteSeasonStats } from "../../../../../../modules/selector/VoteSeasonStats";
 import SeasonSelector from "../SeasonSelector";

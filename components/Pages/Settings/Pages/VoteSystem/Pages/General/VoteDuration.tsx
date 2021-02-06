@@ -21,6 +21,7 @@ export default function VoteDuration(): ReactElement {
         <style jsx>{`
             .voteDuration {
                 width: 10rem;
+                margin-bottom: 3rem;
             }    
         `}</style>
     </div>;
