@@ -21,7 +21,7 @@ export default function General(): ReactElement {
         <div>
             <SettingsTitle>Dota WL Reset</SettingsTitle>
             <Description>When should the stats be reseted</Description>
-                <br />
+            <br />
             <div>
                 <Radio checked={user?.dotaStatsFrom === 'session'} onClick={() => patchUser({dotaStatsFrom: 'session'})} label={'Session - Resetting after stream has ended'} regularLabel />
                 <Radio checked={user?.dotaStatsFrom === 'day'} onClick={() => patchUser({dotaStatsFrom: 'day'})} label={'Day - Counter resets after a day and is reseted at 0:00'} regularLabel />
