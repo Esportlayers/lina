@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import Tabs, { Tab } from "../../../../Ui/tabs/Tabs";
 import Chat from "./Pages/Chat";
 import General from "./Pages/General/General";
+import Overlay from "./Pages/Overlay/Overlay";
 
 
 const tabs: Tab[] = [
@@ -18,7 +19,7 @@ const tabs: Tab[] = [
     {
         name: 'Overlay',
         value: 'overlay',
-        view: () => <>Overlay</>,
+        view: () => <Overlay />,
     },
 ];
     
