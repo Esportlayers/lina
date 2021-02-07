@@ -12,7 +12,6 @@ const labelMap = {
 
 export default function RoundsDataTooltip({ active, payload, label }): ReactElement {
     if (active && payload?.length) {
-        console.log(payload);   
         return <div className={'tooltip'}>
             <div className={'header'}>Round #{label}</div>
             <div className={'grid'}>

@@ -50,8 +50,6 @@ export default function CommandList({commandType = 'default', replaceVars = {}, 
     const [msg, setMsg] = useState('');
     const [act, setAct] = useState(false);
 
-    console.log(commands);
-
     const create = useCallback(async () => {
         if(msg.length > 0 && cmd.length > 0) {
             dispatch(createCommand({active: act, command: cmd, message: msg, type: commandType}));

@@ -19,8 +19,6 @@ export function useDotaStats(): DotaStatsState | undefined {
 		},
 		[ loaded ]
     );
-    
-    console.log(dotaStats);
 
 	return dotaStats;
 }

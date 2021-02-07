@@ -5,7 +5,6 @@ import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-    console.log('Registered log rocket');
     LogRocket.init('07xsnw/streamdota');
     setupLogRocketReact(LogRocket);
 }

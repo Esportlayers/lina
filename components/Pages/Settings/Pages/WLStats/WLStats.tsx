@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 import Tabs, { Tab } from "../../../../Ui/tabs/Tabs";
+import Chat from "./Pages/Chat";
 import General from "./Pages/General/General";
 
 
@@ -12,7 +13,7 @@ const tabs: Tab[] = [
     {
         name: 'Chat interaction',
         value: 'chat',
-        view: () => <>Chat</>,
+        view: () => <Chat />,
     },
     {
         name: 'Overlay',

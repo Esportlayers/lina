@@ -27,7 +27,6 @@ export default function RoundsDataChart({roundsData, compareRoundsData}: Props):
         })
     }, [roundsData, compareRoundsData]);
 
-    console.log(fullDataSet);
     const stroke = useMemo(() => ({stroke: strokeColor}), []);
     const fill = useMemo(() => ({fill: strokeColor, fontSize: '.8rem'}), []);
 
