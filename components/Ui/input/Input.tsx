@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import Label from "../label/label";
 
-interface Props<T> {
+interface Props<T> extends Omit<HTMLFormElement, 'type' | 'value'> {
     autoFocus?: boolean;
     label?: string;
     value: T;
@@ -10,7 +10,7 @@ interface Props<T> {
     type?: HTMLInputElement['type'];
 }
 
-export default function Input<T extends any>({autoFocus, label, onBlur, onChange, type = 'text', value}: Props<T>): ReactElement {
+export default function Input<T extends any>({autoFocus, label, onBlur, onChange, type = 'text', value, ...props}: Props<T>): ReactElement {
     const [val, setVal] = useState<T>(value);
     useEffect(() => setVal(value), [value]);
     return <label>
@@ -22,7 +22,7 @@ export default function Input<T extends any>({autoFocus, label, onBlur, onChange
             <input autoFocus={autoFocus} type={type} value={val + ''} onChange={(e) => {
                 setVal(e.target.value as T);
                 onChange && onChange(e.target.value as T)
-            }} onBlur={(e) => onBlur && onBlur(e.target.value as T)} />
+            }} onBlur={(e) => onBlur && onBlur(e.target.value as T)} {...props} />
         </span>
 
         <style jsx>{`

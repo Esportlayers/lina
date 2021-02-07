@@ -17,9 +17,11 @@ import { voteSeasonStatsReducer, VoteSeasonStatsState } from './reducer/VoteSeas
 import { FontState, googleFontReducer } from './reducer/GoogleFont';
 import { dotaOverlayReducer, DotaOverlayState } from './reducer/DotaOverlay';
 import { dotaStatsReducer, DotaStatsState } from './reducer/DotaStats';
+import { antiSnipeOverlayReducer, AntiSnipeOverlayState } from './reducer/AntiSnipeOverlay';
 
 export interface State {
 	entities: {
+		antiSnipeOverlay: AntiSnipeOverlayState;
 		botCommands: BotCommandState;
 		dotaOverlay: DotaOverlayState;
 		dotaStats: DotaStatsState;
@@ -35,6 +37,7 @@ export interface State {
 }
 const initial: State = {
 	entities: {
+		antiSnipeOverlay: undefined,
 		botCommands: undefined,
 		dotaOverlay: undefined,
 		dotaStats: undefined,
@@ -61,6 +64,7 @@ export const storeReducer = combineReducers<State>({
     ...stateReducer,
 	//@ts-ignore
 	entities: combiner({
+		antiSnipeOverlay: entitiesReducer(antiSnipeOverlayReducer, 'antiSnipeOverlay'),
 		botCommands: entitiesReducer(botCommandReducer, 'botCommands'),
 		dotaOverlay: entitiesReducer(dotaOverlayReducer, 'dotaOverlay'),
 		dotaStats: entitiesReducer(dotaStatsReducer, 'dotaStats'),

@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
 import VoteSystem from "./Pages/VoteSystem/VoteSystem";
 import WLStats from "./Pages/WLStats/WLStats";
-
+import AntiSnipeOverlay from "./Pages/AntiSnipeOverlay";
 
 interface Props {
     active: string;
@@ -19,6 +19,7 @@ export default function SettingsPages({active}: Props): ReactElement {
             >
                 {active === 'voteSystem' && <VoteSystem />}
                 {active === 'wLStats' && <WLStats />}
+                {active === 'antiSnipe' && <AntiSnipeOverlay />}
             </motion.div>
         </div>
     </AnimatePresence>
