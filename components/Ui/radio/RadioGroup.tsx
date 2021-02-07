@@ -17,7 +17,7 @@ export default function RadioGroup({checked, label, regularLabel, options, setCh
     return <div className={'radioGroup'}>
         <Label label={label} />
         <div className={'responsiveRow'}>
-            {options.map(({value, name}) => <div className={'item'}>
+            {options.map(({value, name}) => <div className={'item'} key={value}>
                 <Radio checked={checked === value} onClick={() => setChecked(value)} label={name} regularLabel/>
             </div>)}
         </div>

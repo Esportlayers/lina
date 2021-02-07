@@ -16,7 +16,7 @@ export default function StreamDelay(): ReactElement {
     useEffect(() => setDuration(user?.streamDelay || 0), [user]);
 
     return <div className={'delay'}>
-        <Input label={'Chat delay (seconds)'} value={'' + duration} onChange={onChange} />
+        <Input label={'Chat delay (seconds)'} value={'' + duration} onChange={onChange} type={'number'} />
 
         <style jsx>{`
             .delay {

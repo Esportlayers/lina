@@ -8,7 +8,7 @@ interface Props {
 
 export default function Label({label, regularLabel}: Props): ReactElement {
     return <span className={classNames('label', {regularLabel})}>
-        <span>{label}</span>
+        <span className={'content'}>{label}</span>
 
         <style jsx>{`
             .label {
@@ -17,10 +17,15 @@ export default function Label({label, regularLabel}: Props): ReactElement {
                 font-size: .8rem;
                 margin-bottom: .25rem;
                 font-weight: bold;
+                width: 100%;
             }  
 
             .regularLabel {
                 font-weight: normal;
+            }
+
+            .content {
+                width: 100%;
             }
         `}</style>
     </span>;

@@ -11,7 +11,7 @@ interface Props {
 
 export default function Radio({checked, regularLabel, onClick, label}: Props): ReactElement {
     return <div className={classNames('radio', {checked})}>
-        <input type={'radio'} checked={Boolean(checked)} />
+        <input type={'radio'} checked={Boolean(checked)} onChange={() => false} />
         <div className={classNames('label', {noLabel: !label})} onClick={onClick} >
             {label && <Label label={label} regularLabel/>}
         </div>

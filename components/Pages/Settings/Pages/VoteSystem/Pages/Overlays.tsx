@@ -7,12 +7,13 @@ import GoogleVariantSelect from "../../../../../Ui/radio/GoogleVariantSelect";
 import GoogleFontSelect from "../../../../../Ui/select/GoogleFontSelect";
 import Tabs, { Tab } from "../../../../../Ui/tabs/Tabs";
 import SettingsTitle from "../../../SettingsTitle";
+import DistributionOverlay from "./Overlays/DistributionOverlay";
 
 const tabs: Tab[] = [
     {
         name: 'Distribution',
         value: 'distribution',
-        view: () => <>Distribution</>,
+        view: () => <DistributionOverlay />,
     },
     {
         name: 'Timer',
@@ -26,12 +27,16 @@ const tabs: Tab[] = [
     },
 ];
 
+
+export function usePatchVoteOverlay(): (data: Partial<VoteOverlayState>) => void {
+    const dispatch = useDispatch();
+    return useCallback((data: Partial<VoteOverlayState>) => dispatch(patchVoteOverlay(data)), [dispatch]);
+}
+
 export default function Overlays(): ReactElement {
     const overlay = useVoteOverlay();
-    const dispatch = useDispatch();
-    const patchOverlay = useCallback((data: Partial<VoteOverlayState>) => dispatch(patchVoteOverlay(data)), [dispatch]);
     const [view, setView] = useState('distribution');
-
+    const patchOverlay = usePatchVoteOverlay();
     return <div>
         <SettingsTitle>Font Family</SettingsTitle>
         <Description>All <a href={'https://fonts.google.com'} target={'_blank'}>Google Fonts</a> are available, please check the google page and select the font you like.</Description>
@@ -45,6 +50,5 @@ export default function Overlays(): ReactElement {
         <br />
         
         <Tabs active={view} setActive={setView} tabs={tabs} relaxedContent/>
-
     </div>;
 }

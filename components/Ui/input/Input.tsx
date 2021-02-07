@@ -28,6 +28,7 @@ export default function Input<T extends any>({autoFocus, label, onBlur, onChange
         <style jsx>{`
             label {
                 position: relative;
+                width: 100%;
             }    
 
             input {

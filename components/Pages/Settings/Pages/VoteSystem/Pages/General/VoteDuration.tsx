@@ -16,7 +16,7 @@ export default function VoteDuration(): ReactElement {
     useEffect(() => setDuration(overlay?.timerDuration || 0), [overlay]);
 
     return <div className={'voteDuration'}>
-        <Input label={'Vote duration (seconds)'} value={'' + duration} onChange={onChange} />
+        <Input label={'Vote duration (seconds)'} value={'' + duration} onChange={onChange} type={'number'}  />
 
         <style jsx>{`
             .voteDuration {

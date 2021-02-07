@@ -168,12 +168,10 @@ export default function Tabs({active, maxHeight, relaxedContent, setActive, tabs
 
             .content {
                 flex-grow: 1;
-                max-height: 100%;
-                overflow-y: scroll;
                 padding: 1.25rem 2rem;
             }
 
-            .maxHeight .content {
+            .maxHeight > .content {
                 max-height: 100%;
                 overflow-y: scroll;
             }
