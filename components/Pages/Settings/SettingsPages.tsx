@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { AnimatePresence, motion } from 'framer-motion';
 import VoteSystem from "./Pages/VoteSystem/VoteSystem";
+import WLStats from "./Pages/WLStats/WLStats";
 
 
 interface Props {
@@ -17,6 +18,7 @@ export default function SettingsPages({active}: Props): ReactElement {
                 exit={{ opacity: 0 }}
             >
                 {active === 'voteSystem' && <VoteSystem />}
+                {active === 'wLStats' && <WLStats />}
             </motion.div>
         </div>
     </AnimatePresence>

@@ -15,10 +15,14 @@ import { voteOverlayReducer, VoteOverlayState } from './reducer/VoteOverlay';
 import { botCommandReducer, BotCommandState } from './reducer/BotCommands';
 import { voteSeasonStatsReducer, VoteSeasonStatsState } from './reducer/VoteSeasonStats';
 import { FontState, googleFontReducer } from './reducer/GoogleFont';
+import { dotaOverlayReducer, DotaOverlayState } from './reducer/DotaOverlay';
+import { dotaStatsReducer, DotaStatsState } from './reducer/DotaStats';
 
 export interface State {
 	entities: {
 		botCommands: BotCommandState;
+		dotaOverlay: DotaOverlayState;
+		dotaStats: DotaStatsState;
 		googleFont: FontState;
 		teams: TeamsState;
 		voteRound: VoteRoundState;
@@ -32,6 +36,8 @@ export interface State {
 const initial: State = {
 	entities: {
 		botCommands: undefined,
+		dotaOverlay: undefined,
+		dotaStats: undefined,
 		googleFont: undefined,
 		teams: undefined,
         voteRound: undefined,
@@ -56,6 +62,8 @@ export const storeReducer = combineReducers<State>({
 	//@ts-ignore
 	entities: combiner({
 		botCommands: entitiesReducer(botCommandReducer, 'botCommands'),
+		dotaOverlay: entitiesReducer(dotaOverlayReducer, 'dotaOverlay'),
+		dotaStats: entitiesReducer(dotaStatsReducer, 'dotaStats'),
 		googleFont: entitiesReducer(googleFontReducer, 'googleFont'),
 		teams: entitiesReducer(teamsReducer, 'teams'),
 		voteRound: entitiesReducer(voteRoundReducer, 'voteRound'),

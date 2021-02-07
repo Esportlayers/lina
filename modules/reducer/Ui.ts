@@ -12,7 +12,9 @@ import {
 	LOAD_VOTE_OVERLAY_SUCCESS,
 	LOAD_COMMANDS_SUCCESS,
 	LOAD_VOTE_SEASON_STATS_SUCCESS,
-	LOAD_GOOGLE_FONTS_SUCCESS
+	LOAD_GOOGLE_FONTS_SUCCESS,
+	LOAD_DOTA_STATS_SUCCESS,
+	LOAD_DOTA_OVERLAY_SUCCESS
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -27,6 +29,8 @@ export interface Ui {
 	currentVoteRound: VoteRoundData | null;
 	loadedEntities: {
 		botCommands: boolean;
+		dotaOverlay: boolean;
+		dotaStats: boolean;
 		googleFonts: boolean;
 		voteRounds: number[];
 		voteSeasons: boolean;
@@ -41,6 +45,8 @@ export const initialUiState: Ui = {
 	currentVoteRound: null,
 	loadedEntities: {
 		botCommands: false,
+		dotaOverlay: false,
+		dotaStats: false,
 		googleFonts: false,
 		voteRounds: [],
 		voteSeasons: false,
@@ -85,6 +91,8 @@ addReducer<VoteRoundUpdateSuccess>(LOAD_CURRENT_VOTE_ROUND_SUCCESS, (state, { re
 
 const flatLoadedEntities = [
 	['botCommands', LOAD_COMMANDS_SUCCESS, true],
+	['dotaOverlay', LOAD_DOTA_OVERLAY_SUCCESS, true],
+	['dotaStats', LOAD_DOTA_STATS_SUCCESS, true],
 	['googleFonts', LOAD_GOOGLE_FONTS_SUCCESS, true],
 	['voteSeasons', LOAD_VOTE_SEASONS_SUCCESS, true],
 	['voteOverlay', LOAD_VOTE_OVERLAY_SUCCESS, true],
