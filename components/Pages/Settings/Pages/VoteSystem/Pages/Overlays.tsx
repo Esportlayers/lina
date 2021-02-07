@@ -8,6 +8,7 @@ import GoogleFontSelect from "../../../../../Ui/select/GoogleFontSelect";
 import Tabs, { Tab } from "../../../../../Ui/tabs/Tabs";
 import SettingsTitle from "../../../SettingsTitle";
 import DistributionOverlay from "./Overlays/DistributionOverlay";
+import TimerOverlay from "./Overlays/TimerOverlay";
 
 const tabs: Tab[] = [
     {
@@ -18,7 +19,7 @@ const tabs: Tab[] = [
     {
         name: 'Timer',
         value: 'timer',
-        view: () => <>Timer</>,
+        view: () => <TimerOverlay />,
     },
     {
         name: 'Toplist',
