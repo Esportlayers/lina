@@ -7,10 +7,8 @@ import { useVoteOverlay } from "../../../../../../../modules/selector/VoteOverla
 import BrowserSource from "../../../../../../Ui/browsersource/BrowserSource";
 import ColorPicker from "../../../../../../Ui/input/Color";
 import Input from "../../../../../../Ui/input/Input";
-import Toggle from "../../../../../../Ui/toggle/Toggle";
 import SettingsTitle from "../../../../SettingsTitle";
 import { usePatchVoteOverlay } from "../Overlays";
-import DistributionSlider from "./DistributionSlider";
 import Timer from "./Timer";
 
 export default function TimerOverlay(): ReactElement {

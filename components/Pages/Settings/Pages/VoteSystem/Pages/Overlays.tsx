@@ -9,6 +9,7 @@ import Tabs, { Tab } from "../../../../../Ui/tabs/Tabs";
 import SettingsTitle from "../../../SettingsTitle";
 import DistributionOverlay from "./Overlays/DistributionOverlay";
 import TimerOverlay from "./Overlays/TimerOverlay";
+import ToplistOverlay from "./Overlays/ToplistOverlay";
 
 const tabs: Tab[] = [
     {
@@ -24,7 +25,7 @@ const tabs: Tab[] = [
     {
         name: 'Toplist',
         value: 'toplist',
-        view: () => <>Toplist</>,
+        view: () => <ToplistOverlay />,
     },
 ];
 
