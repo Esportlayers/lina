@@ -11,7 +11,6 @@ import Radio from "../../../Ui/toggle/Radio";
 import SettingsTitle from "../SettingsTitle";
 import Preview from "./WLStats/Pages/AntiSnipeOverlay/Preview";
 
-
 export default function AntiSnipeOverlay(): ReactElement {
     const overlay = useAntiSnipeOvelay();
     const user = useCurrentUser();
