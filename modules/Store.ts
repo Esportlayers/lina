@@ -18,6 +18,7 @@ import { FontState, googleFontReducer } from './reducer/GoogleFont';
 import { dotaOverlayReducer, DotaOverlayState } from './reducer/DotaOverlay';
 import { dotaStatsReducer, DotaStatsState } from './reducer/DotaStats';
 import { antiSnipeOverlayReducer, AntiSnipeOverlayState } from './reducer/AntiSnipeOverlay';
+import { roshOverlayReducer, RoshOverlayState } from './reducer/RoshanOverlay';
 
 export interface State {
 	entities: {
@@ -26,6 +27,7 @@ export interface State {
 		dotaOverlay: DotaOverlayState;
 		dotaStats: DotaStatsState;
 		googleFont: FontState;
+		roshOverlay: RoshOverlayState;
 		teams: TeamsState;
 		voteRound: VoteRoundState;
 		voteSeason: VoteSeasonState;
@@ -42,6 +44,7 @@ const initial: State = {
 		dotaOverlay: undefined,
 		dotaStats: undefined,
 		googleFont: undefined,
+		roshOverlay: undefined,
 		teams: undefined,
         voteRound: undefined,
 		voteSeason: undefined,
@@ -69,6 +72,7 @@ export const storeReducer = combineReducers<State>({
 		dotaOverlay: entitiesReducer(dotaOverlayReducer, 'dotaOverlay'),
 		dotaStats: entitiesReducer(dotaStatsReducer, 'dotaStats'),
 		googleFont: entitiesReducer(googleFontReducer, 'googleFont'),
+		roshOverlay: entitiesReducer(roshOverlayReducer, 'roshOverlay'),
 		teams: entitiesReducer(teamsReducer, 'teams'),
 		voteRound: entitiesReducer(voteRoundReducer, 'voteRound'),
 		voteSeason: entitiesReducer(voteSeasonReducer, 'voteSeason'),

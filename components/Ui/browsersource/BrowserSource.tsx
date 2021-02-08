@@ -7,8 +7,8 @@ import Toggle from "../toggle/Toggle";
 
 interface Props {
     hasIndividualSource?: boolean;
-    individualSource: boolean;
-    setIndividualSource: (source: boolean) => void;
+    individualSource?: boolean;
+    setIndividualSource?: (source: boolean) => void;
     route: string;
 }
 
@@ -36,12 +36,12 @@ export default function BrowserSource({
             <br />
             <Label label={'Frame Source'} />
             <div className={'frame'}>
-                {getFrameUrl(route, user.frameApiKey, false)}
+                {getFrameUrl(route, user?.frameApiKey, false)}
             </div>
             <br />
             <Label label={'TestingFrame Source'} />
             <div className={'frame'}>
-                {getFrameUrl(route, user.frameApiKey, true)}
+                {getFrameUrl(route, user?.frameApiKey, true)}
             </div>
         </div>}
 

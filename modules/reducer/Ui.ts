@@ -15,7 +15,8 @@ import {
 	LOAD_GOOGLE_FONTS_SUCCESS,
 	LOAD_DOTA_STATS_SUCCESS,
 	LOAD_DOTA_OVERLAY_SUCCESS,
-	LOAD_ANTI_SNIPE_OVERLAY_SUCCESS
+	LOAD_ANTI_SNIPE_OVERLAY_SUCCESS,
+	LOAD_ROSH_OVERLAY_SUCCESS
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -34,6 +35,7 @@ export interface Ui {
 		dotaOverlay: boolean;
 		dotaStats: boolean;
 		googleFonts: boolean;
+		roshOverlay: boolean;
 		voteRounds: number[];
 		voteSeasons: boolean;
 		voteSeasonStats: number[];
@@ -51,6 +53,7 @@ export const initialUiState: Ui = {
 		dotaOverlay: false,
 		dotaStats: false,
 		googleFonts: false,
+		roshOverlay: false,
 		voteRounds: [],
 		voteSeasons: false,
 		voteSeasonStats: [],
@@ -98,6 +101,7 @@ const flatLoadedEntities = [
 	['dotaOverlay', LOAD_DOTA_OVERLAY_SUCCESS, true],
 	['dotaStats', LOAD_DOTA_STATS_SUCCESS, true],
 	['googleFonts', LOAD_GOOGLE_FONTS_SUCCESS, true],
+	['roshOverlay', LOAD_ROSH_OVERLAY_SUCCESS, true],
 	['voteSeasons', LOAD_VOTE_SEASONS_SUCCESS, true],
 	['voteOverlay', LOAD_VOTE_OVERLAY_SUCCESS, true],
 ];
