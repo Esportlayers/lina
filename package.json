@@ -41,7 +41,7 @@
     "react-sparkle": "^1.0.8",
     "react-toggle": "^4.1.1",
     "react-websocket": "^2.1.0",
-    "recharts": "^2.0.4",
+    "recharts": "^2.0.6",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
