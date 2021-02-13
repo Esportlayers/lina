@@ -11,7 +11,9 @@ export function useAbortFetch<T>(fetcher: (controller: AbortController, ...props
 
     useEffect(() => {
         load();
-        return () => abortController.abort;
+        return () => {
+            abortController.abort
+        };
     }, [])
 
 
