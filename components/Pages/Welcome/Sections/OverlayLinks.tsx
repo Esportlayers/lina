@@ -1,16 +1,44 @@
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useCurrentUser } from "../../../../modules/selector/UiSelector";
 import Container from "../../../Ui/container/Container";
 import { FullPageSliderProps } from "../../../Ui/fullpageslide/FullPageSlide";
 import NudgeFromBottom from "../../../Ui/motion/NudgeFromBottom";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Button from "../../../Ui/button/Button";
+import Toggle from "../../../Ui/toggle/Toggle";
+import { useDispatch } from "react-redux";
+import { User } from "@streamdota/shared-types";
+import { updateCurrentUser } from "../../../../modules/reducer/Ui";
+
+const availableOverlays = [
+    'useDotaStatsOverlay',
+    'useMinimapOverlay',
+    'useRoshanTimerOverlay',
+    'useDraftStatsOverlay',
+    'useHeroStatsOverlay',
+    'useVoteTimerOverlay',
+    'useVoteToplistOverlay',
+    'useVoteDistributionOverlay',
+];
+
+const labelMap = {
+    useDotaStatsOverlay: 'Dota WL',
+    useMinimapOverlay: 'Anti Snipe Overlay',
+    useRoshanTimerOverlay: 'Roshan Timer',
+    useDraftStatsOverlay: 'Draft Stats',
+    useHeroStatsOverlay: 'Hero Stats',
+    useVoteTimerOverlay: 'Vote Timer',
+    useVoteToplistOverlay: 'Vote Toplist',
+    useVoteDistributionOverlay: 'Vote Distribution',
+}
 
 export default function OverlayLinks({onContinue}: FullPageSliderProps): ReactElement {
     const currentUser = useCurrentUser();
-    const link = 'https://frames.streamdota.com/overlay?apiKey=' + (currentUser && currentUser.frameApiKey);
+    const link = process.env.FRAME_API_URL + '/general?auth=' + (currentUser && currentUser.frameApiKey);
     const [isCopied, setIsCopied] = useState(false);
+    const dispatch = useDispatch();
+    const patch = useCallback((data: Partial<User>) => dispatch(updateCurrentUser(data)), [dispatch]);
 
     useEffect(() => {
         isCopied && setTimeout(() => setIsCopied(false), 5000);
@@ -51,10 +79,21 @@ export default function OverlayLinks({onContinue}: FullPageSliderProps): ReactEl
 
         <br />
         <br />
+
+        <NudgeFromBottom delay={.8}>
+            <h3>Active Overlays</h3>
+
+            {currentUser && <div className={'activeGrid'}>
+                {availableOverlays.map((key) => <div className={'key'}>
+                    <Toggle checked={currentUser[key]} label={labelMap[key]} onChange={(checked) => patch({[key]: checked})} />
+                </div>)}
+            </div>}
+        </NudgeFromBottom>
+
         <br />
         <br />
         
-        <NudgeFromBottom delay={.8}>
+        <NudgeFromBottom delay={1}>
             <Button onClick={onContinue}>
                 I created the browser source
             </Button>
@@ -65,7 +104,7 @@ export default function OverlayLinks({onContinue}: FullPageSliderProps): ReactEl
                 border-radius: .25rem;
                 background-color: rgba(0,0,0,.2);
                 padding: 1rem 5.5rem 1rem 1.5rem;
-                max-width: 50vw;
+                max-width: 70vw;
                 margin: 0 auto 0 auto;
                 text-align: left;
                 position: relative;
@@ -88,6 +127,15 @@ export default function OverlayLinks({onContinue}: FullPageSliderProps): ReactEl
             .resolution {
                 font-size: .8rem;
                 margin-top: 1rem;
+            }
+
+            .activeGrid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 2rem;
+                max-width: 500px;
+                margin: 3rem auto;
+                justify-content: center;
             }
         `}</style>
     </Container>

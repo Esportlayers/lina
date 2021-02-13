@@ -60,7 +60,12 @@ export default function RoshanTimer(): ReactElement {
             <br />
 
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource route={'/casting/roshanTimer'} individualSource/>
+            <BrowserSource 
+                route={'/casting/roshanTimer'} 
+                individualSource={user?.individualOverlayRoshTimer} 
+                hasIndividualSource 
+                setIndividualSource={(individualOverlayRoshTimer) => patchUser({individualOverlayRoshTimer})}
+            />
         </div>
         <style jsx>{`
             .overlay {
