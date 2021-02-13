@@ -26,7 +26,17 @@ export default function SettingsPages({active}: Props): ReactElement {
                 {active === 'roshanTimer' && <RoshanTimer />}
                 {active === 'draftStats' && <DraftStats />}
                 {active === 'heroStats' && <HeroStats />}
+                {active === 'account' && <div className={'container'}>
+                    Work in progress
+                </div>}
             </motion.div>
+
+            <style jsx>{`
+                .container {
+                    text-align: center;
+                    padding: 5rem;
+                }    
+            `}</style>
         </div>
     </AnimatePresence>
 }
