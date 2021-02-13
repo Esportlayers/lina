@@ -71,7 +71,14 @@ export default function ToplistOverlay(): ReactElement {
             <br />
             <br />
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource route={'/betting/toplist'} hasIndividualSource individualSource={user.individualOverlayVoteToplist} setIndividualSource={(individualOverlayVoteToplist) => patchUser({individualOverlayVoteToplist})} />
+            <BrowserSource 
+                route={'/betting/toplist'} 
+                hasIndividualSource 
+                individualSource={user.individualOverlayVoteToplist} 
+                setIndividualSource={(individualOverlayVoteToplist) => patchUser({individualOverlayVoteToplist})} 
+                overlayActive={Boolean(user?.useVoteToplistOverlay)}
+                setOverlayActive={(useVoteToplistOverlay) => patchUser({useVoteToplistOverlay})}
+            />
         </div>
 
         <div>

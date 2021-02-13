@@ -46,7 +46,14 @@ export default function TimerOverlay(): ReactElement {
 
             <br /><br /><br />
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource route={'/betting/timer'} hasIndividualSource individualSource={user.individualOverlayVoteTimer} setIndividualSource={(individualOverlayVoteTimer) => patchUser({individualOverlayVoteTimer})} />
+            <BrowserSource 
+                route={'/betting/timer'} 
+                hasIndividualSource 
+                individualSource={user.individualOverlayVoteTimer} 
+                setIndividualSource={(individualOverlayVoteTimer) => patchUser({individualOverlayVoteTimer})} 
+                overlayActive={Boolean(user?.useVoteTimerOverlay)}
+                setOverlayActive={(useVoteTimerOverlay) => patchUser({useVoteTimerOverlay})}
+            />
         </div>
 
         <style jsx>{`

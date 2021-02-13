@@ -65,6 +65,8 @@ export default function RoshanTimer(): ReactElement {
                 individualSource={user?.individualOverlayRoshTimer} 
                 hasIndividualSource 
                 setIndividualSource={(individualOverlayRoshTimer) => patchUser({individualOverlayRoshTimer})}
+                overlayActive={Boolean(user?.useRoshanTimerOverlay)}
+                setOverlayActive={(useRoshanTimerOverlay) => patchUser({useRoshanTimerOverlay})}
             />
         </div>
         <style jsx>{`

@@ -38,7 +38,14 @@ export default function AntiSnipeOverlay(): ReactElement {
             <br />
 
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource individualSource={Boolean(user?.individualOverlayMinimap)} setIndividualSource={(individualOverlayMinimap) => patchUser({individualOverlayMinimap})} hasIndividualSource route={'/antiSnipe'} />
+            <BrowserSource 
+                individualSource={Boolean(user?.individualOverlayMinimap)} 
+                setIndividualSource={(individualOverlayMinimap) => patchUser({individualOverlayMinimap})} 
+                hasIndividualSource 
+                route={'/antiSnipe'}
+                overlayActive={Boolean(user?.useMinimapOverlay)}
+                setOverlayActive={(useMinimapOverlay) => patchUser({useMinimapOverlay})}
+            />
         </div>
 
         <div>

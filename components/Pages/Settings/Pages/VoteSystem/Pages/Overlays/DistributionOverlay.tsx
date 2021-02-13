@@ -52,7 +52,14 @@ export default function DistributionOverlay(): ReactElement {
 
             <br /><br /><br />
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource route={'/betting/slider'} hasIndividualSource individualSource={user.individualOverlayVoteDistribution} setIndividualSource={(individualOverlayVoteDistribution) => patchUser({individualOverlayVoteDistribution})} />
+            <BrowserSource 
+                route={'/betting/slider'} 
+                hasIndividualSource 
+                individualSource={user.individualOverlayVoteDistribution} 
+                setIndividualSource={(individualOverlayVoteDistribution) => patchUser({individualOverlayVoteDistribution})} 
+                overlayActive={Boolean(user?.useVoteDistributionOverlay)}
+                setOverlayActive={(useVoteDistributionOverlay) => patchUser({useVoteDistributionOverlay})}
+            />
         </div>
 
         <style jsx>{`

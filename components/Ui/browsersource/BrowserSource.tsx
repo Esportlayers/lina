@@ -10,6 +10,8 @@ interface Props {
     individualSource?: boolean;
     setIndividualSource?: (source: boolean) => void;
     route: string;
+    overlayActive?: boolean;
+    setOverlayActive: (active: boolean) => void;
 }
 
 function getFrameUrl(path: string, auth: string, testing: boolean): string {
@@ -21,10 +23,15 @@ export default function BrowserSource({
     individualSource, 
     setIndividualSource,
     route,
+    overlayActive,
+    setOverlayActive,
 }: Props): ReactElement {
     const user = useCurrentUser();
 
     return <div>
+        <Toggle label={'Overlay active'} checked={overlayActive} onChange={setOverlayActive} />
+        <br />
+        <br />
         {hasIndividualSource && <div className={'individualSource'}>
             <Description>The overlay is automatically included in the general overlay. You can detach it with the following setting</Description>
             <br />

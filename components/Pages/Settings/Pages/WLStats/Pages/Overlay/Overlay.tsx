@@ -73,8 +73,13 @@ export default function Overlay(): ReactElement {
             <br />
 
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource individualSource={user.individualOverlayWLStats} route={'/dotaStats'} setIndividualSource={(individualOverlayWLStats) => patchUser({individualOverlayWLStats})} hasIndividualSource />
-
+            <BrowserSource 
+                individualSource={user.individualOverlayWLStats} 
+                route={'/dotaStats'} setIndividualSource={(individualOverlayWLStats) => patchUser({individualOverlayWLStats})} 
+                hasIndividualSource 
+                overlayActive={Boolean(user?.useDotaStatsOverlay)}
+                setOverlayActive={(useDotaStatsOverlay) => patchUser({useDotaStatsOverlay})}
+            />
         </div>
 
         <style jsx>{`

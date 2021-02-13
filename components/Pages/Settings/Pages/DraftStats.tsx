@@ -14,7 +14,13 @@ export default function DraftStats(): ReactElement {
     return <div className={'overlay'}>
         <div>
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource individualSource={Boolean(user?.individualOverlayDraftStats)} setIndividualSource={(individualOverlayDraftStats) => patchUser({individualOverlayDraftStats})} hasIndividualSource route={'/casting/draftStats'} />
+            <BrowserSource 
+                individualSource={Boolean(user?.individualOverlayDraftStats)} 
+                setIndividualSource={(individualOverlayDraftStats) => patchUser({individualOverlayDraftStats})} 
+                hasIndividualSource route={'/casting/draftStats'} 
+                overlayActive={Boolean(user?.useDraftStatsOverlay)}
+                setOverlayActive={(useDraftStatsOverlay) => patchUser({useDraftStatsOverlay})}
+            />
         </div>
         <style jsx>{`
             .overlay {

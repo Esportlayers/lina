@@ -14,7 +14,14 @@ export default function HeroStats(): ReactElement {
     return <div className={'overlay'}>
         <div>
             <SettingsTitle>Browser Source</SettingsTitle>
-            <BrowserSource individualSource={Boolean(user?.individualOverlayVoteHeroStats)} setIndividualSource={(individualOverlayVoteHeroStats) => patchUser({individualOverlayVoteHeroStats})} hasIndividualSource route={'/casting/playerCompareStats'} />
+            <BrowserSource 
+                individualSource={Boolean(user?.individualOverlayVoteHeroStats)} 
+                setIndividualSource={(individualOverlayVoteHeroStats) => patchUser({individualOverlayVoteHeroStats})} 
+                hasIndividualSource 
+                route={'/casting/playerCompareStats'} 
+                overlayActive={Boolean(user?.useHeroStatsOverlay)}
+                setOverlayActive={(useHeroStatsOverlay) => patchUser({useHeroStatsOverlay})}
+            />
         </div>
         <style jsx>{`
             .overlay {
