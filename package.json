@@ -13,7 +13,7 @@
   "dependencies": {
     "@esportlayers/io": "^1.7.1",
     "@sentry/browser": "^6.1.0",
-    "@streamdota/shared-types": "^1.4.1",
+    "@streamdota/shared-types": "^1.5.0",
     "@types/uuid": "^8.3.0",
     "animated-number-react": "^0.1.1",
     "animated-scroll-to": "^2.0.12",

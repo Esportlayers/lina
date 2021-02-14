@@ -315,10 +315,10 @@
     "@sentry/types" "6.1.0"
     tslib "^1.9.3"
 
-"@streamdota/shared-types@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@streamdota/shared-types/-/shared-types-1.4.1.tgz#3a39f65d1ff2a36ca437562562dd00ce8db34789"
-  integrity sha512-I0ZJxcI3CCQqFGPJl0aWWgjy1PHyE0DXyT/1ka/z6J1V/cmuuRpPwHMNsvLTLRrQU1XKMNtSbZ9QcTLbkzCxcA==
+"@streamdota/shared-types@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@streamdota/shared-types/-/shared-types-1.5.0.tgz#5ea76b7fb56ac95f314a523dfef7e56226f33135"
+  integrity sha512-Bvn5RO5wh71m0WIP0yX737FtoesGDief9nrpXnwfJhESeGWmk0DDh4WyMYd1ETYJ5J5HxQGG6KJHNbaIFmawpg==
 
 "@types/classnames@^2.2.11":
   version "2.2.11"
@@ -2045,9 +2045,9 @@ postcss@^7.0.26, postcss@^7.0.32:
     supports-color "^6.1.0"
 
 prebuild-install@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-6.0.0.tgz#669022bcde57c710a869e39c5ca6bf9cd207f316"
-  integrity sha512-h2ZJ1PXHKWZpp1caLw0oX9sagVpL2YTk+ZwInQbQ3QqNd4J03O6MpFNmMTJlkfgPENWqe5kP0WjQLqz5OjLfsw==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-6.0.1.tgz#5902172f7a40eb67305b96c2a695db32636ee26d"
+  integrity sha512-7GOJrLuow8yeiyv75rmvZyeMGzl8mdEX5gY69d6a6bHWmiPevwqFw+tQavhK0EYMaSg3/KD24cWqeQv1EWsqDQ==
   dependencies:
     detect-libc "^1.0.3"
     expand-template "^2.0.3"

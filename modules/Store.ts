@@ -19,6 +19,8 @@ import { dotaOverlayReducer, DotaOverlayState } from './reducer/DotaOverlay';
 import { dotaStatsReducer, DotaStatsState } from './reducer/DotaStats';
 import { antiSnipeOverlayReducer, AntiSnipeOverlayState } from './reducer/AntiSnipeOverlay';
 import { roshOverlayReducer, RoshOverlayState } from './reducer/RoshanOverlay';
+import { wordReducer, WordState } from './reducer/Word';
+import { wordGroupReducer, WordGroupState } from './reducer/WordGroup';
 
 export interface State {
 	entities: {
@@ -34,6 +36,8 @@ export interface State {
 		voteSeasonStats: VoteSeasonStatsState;
 		voteSeasonToplist: VoteSeasonToplistState;
 		voteOverlay: VoteOverlayState;
+		word: WordState;
+		wordGroup: WordGroupState;
     };
     ui: Ui;
 }
@@ -51,6 +55,8 @@ const initial: State = {
 		voteSeasonStats: undefined,
 		voteSeasonToplist: undefined,
 		voteOverlay: undefined,
+		word: undefined,
+		wordGroup: undefined,
     },
     ui: initialUiState,
 };
@@ -79,6 +85,8 @@ export const storeReducer = combineReducers<State>({
 		voteSeasonStats: entitiesReducer(voteSeasonStatsReducer, 'voteSeasonStats'),
 		voteSeasonToplist: entitiesReducer(voteSeasonToplistReducer, 'voteSeasonToplist'),
 		voteOverlay: entitiesReducer(voteOverlayReducer, 'voteOverlay'),
+		word: entitiesReducer(wordReducer, 'word'),
+		wordGroup: entitiesReducer(wordGroupReducer, 'wordGroup'),
     }),
     ui: uiReducer,
 });
