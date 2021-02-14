@@ -22,7 +22,7 @@ const Auth = () => {
         }
     }, [router]);
     
-    return <PageFrame>
+    return <PageFrame title={'Auth'}>
         <LoginInfo />
     </PageFrame>;
 }

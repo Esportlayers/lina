@@ -14,7 +14,7 @@ const Tether = dynamic(
 
 export default function Dashboard(): ReactElement {
     const currentUser = useCurrentUser();
-    return <PageFrame>
+    return <PageFrame title={'Dashboard'}>
         <div className={'page'}>
             {currentUser && <Tether url={getWSUrl(process.env.API_URL + '/dota-gsi/live/' + currentUser.frameApiKey)}>
                 <PageView />

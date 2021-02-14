@@ -13,7 +13,7 @@ const Tether = dynamic(
 
 export default function Welcome(): ReactElement {
     const currentUser = useCurrentUser();
-    return <PageFrame>
+    return <PageFrame title={'Welcome'}>
         {currentUser && <Tether url={getWSUrl(process.env.API_URL + '/dota-gsi/live/' + currentUser.frameApiKey)}>
             <WelcomeScreen />
         </Tether>}

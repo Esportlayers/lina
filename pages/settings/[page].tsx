@@ -8,7 +8,7 @@ export default function Settings(): ReactElement {
     const router = useRouter();
     const { page } = router.query;
 
-    return <PageFrame>
+    return <PageFrame title={'Settings'}>
         <div className={'pageContent'}>
             <div className={'navigation'}>
                 <SettingsNavigation active={page as string} />

@@ -3,13 +3,14 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Command } from "@streamdota/shared-types";
 import { useUserCommands } from "../../../../modules/selector/BotCommands";
-import { createCommand, updateCommand } from "../../../../modules/reducer/BotCommands";
+import { updateCommand } from "../../../../modules/reducer/BotCommands";
 import Label from "../../../Ui/label/label";
 import Input from "../../../Ui/input/Input";
 import TextArea from "../../../Ui/input/TextArea";
 import Checkbox from "../../../Ui/toggle/Checkbox";
 import Loader from "../../../Ui/loader/Loader";
 import CommandAccess from "./CommandAccess";
+import NewCommand from "./NewCommand";
 
 const replace = {
     UPTIME: '4 Stunden und 20 Minuten',
@@ -46,17 +47,6 @@ interface Props {
 export default function CommandList({commandType = 'default', replaceVars = {}, canCreate=true}: Props): ReactElement {
     const commands = useUserCommands(commandType);
     const dispatch = useDispatch();
-    const [cmd, setCmd] = useState('');
-    const [msg, setMsg] = useState('');
-    const [act, setAct] = useState(false);
-
-    const create = useCallback(async () => {
-        if(msg.length > 0 && cmd.length > 0) {
-            dispatch(createCommand({active: act, command: cmd, message: msg, type: commandType}));
-            setCmd('');
-            setMsg('');
-        }
-    }, [act, cmd, msg]);
 
     if(commands) {
         return <div className={'commandsGrid'}>
@@ -82,6 +72,8 @@ export default function CommandList({commandType = 'default', replaceVars = {}, 
                 </div>
                 <div className={'preview'}>{createPreview(message, replaceVars)}</div>
             </React.Fragment>)}
+
+            {canCreate && <NewCommand type={commandType} createPreview={(message) => createPreview(message, replaceVars)}/>}
 
             <style jsx>{`
                 .activeBox {

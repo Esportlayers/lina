@@ -12,7 +12,7 @@ export default function Home(): ReactElement {
     }
   }
 
-  return <PageFrame>
+  return <PageFrame title={'Login'}>
     <LoginInfo />
   </PageFrame>;
 }

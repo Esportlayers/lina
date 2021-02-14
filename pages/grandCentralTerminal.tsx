@@ -19,7 +19,7 @@ export default function GrandCentralTerminal(): ReactElement {
         }
     }, [currentUser])
 
-    return <PageFrame>
+    return <PageFrame title={'Grand Central Terminal'}>
         <LoginInfo />
     </PageFrame>;
 }
