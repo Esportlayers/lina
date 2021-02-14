@@ -69,7 +69,7 @@ export default function HeroStats(): ReactElement {
         </div>
 
         <div className={'types'}>
-            <Button onClick={showStats}>Share stats</Button>
+            <Button onClick={showStats} disabled={loading}>Share stats</Button>
         </div>
 
         <style jsx>{`
