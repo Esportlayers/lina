@@ -10,7 +10,7 @@ interface Props {
 
 export default function Checkbox({checked, onChange, label}: Props): ReactElement {
     return <div className={classNames('checkbox', {checked})}>
-        <input type={'checkbox'} checked={Boolean(checked)} />
+        <input type={'checkbox'} checked={Boolean(checked)} onChange={() => false} />
         <div className={classNames('label', {noLabel: !label})} onClick={() => onChange(!checked)} >
             {label && <Label label={label} />}
         </div>

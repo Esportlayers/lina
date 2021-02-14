@@ -33,9 +33,9 @@ export default function HeroStats(): ReactElement {
         if(playerStates && playerStates.length > 0) {
             const maxValue = playerStates.reduce((acc, player) => Math.max(player[activeType], acc), 0);
             return playerStates.map((player) => {
-                const value = player[activeType];
-                const percentage = maxValue > 0 ? Math.floor((value * 100) / maxValue) : 0;
-                return {percentage, value};
+                const absolute = player[activeType];
+                const percentage = maxValue > 0 ? Math.floor((absolute * 100) / maxValue) : 0;
+                return {percentage, absolute};
             });
 
         }
@@ -53,9 +53,9 @@ export default function HeroStats(): ReactElement {
 
     return <div className={'heroStats'}>
         <div className={'heroStatsGrid'}>
-            {values.slice(0, 5).map(({percentage, value}, idx) => <Player key={idx} percentage={percentage} value={value} />)}
+            {values.slice(0, 5).map(({percentage, absolute}, idx) => <Player key={idx} percentage={percentage} value={absolute} />)}
             <Type type={activeType} types={buttonTypes} />
-            {values.slice(5).map(({percentage, value}, idx) => <Player key={idx} percentage={percentage} value={value}/>)}
+            {values.slice(5).map(({percentage, absolute}, idx) => <Player key={idx} percentage={percentage} value={absolute}/>)}
         </div>
 
         <div className={'types'}>

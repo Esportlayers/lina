@@ -84,7 +84,7 @@ export default function OverlayLinks({onContinue}: FullPageSliderProps): ReactEl
             <h3>Active Overlays</h3>
 
             {currentUser && <div className={'activeGrid'}>
-                {availableOverlays.map((key) => <div className={'key'}>
+                {availableOverlays.map((key) => <div key={key} className={'key'}>
                     <Toggle checked={currentUser[key]} label={labelMap[key]} onChange={(checked) => patch({[key]: checked})} />
                 </div>)}
             </div>}

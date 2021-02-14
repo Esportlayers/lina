@@ -21,6 +21,7 @@ import {
 } from './Actions';
 import { loadCurrentUser } from './Ui';
 import { currentUserSelector } from '../selector/UiSelector';
+import { loadUserCommands } from './BotCommands';
 
 export interface VoteSeasonState {
 	[x: number]: VoteSeason;
@@ -63,7 +64,7 @@ export function loadVoteSeasons(): ActionDispatcher<Promise<void>> {
 	};
 }
 
-export function createVoteSeason(data: Partial<VoteSeason>): ActionDispatcher<Promise<void>> {
+export function createVoteSeason(data: Partial<VoteSeason>, firstSeason?: boolean): ActionDispatcher<Promise<void>> {
 	return async (dispatch) => {
 		await dispatch<Promise<Response | NetworkError>>({
 			[CALL_API]: {
@@ -82,6 +83,9 @@ export function createVoteSeason(data: Partial<VoteSeason>): ActionDispatcher<Pr
 
 		await dispatch(loadVoteSeasons());
 		await dispatch(loadCurrentUser());
+		if(firstSeason) {
+			dispatch(loadUserCommands());
+		}
 	};
 }
 

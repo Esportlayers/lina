@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useState } from "react";
+import { ReactElement, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { updateCurrentUser } from "../../../../modules/reducer/Ui";
 import { useCurrentUser } from "../../../../modules/selector/UiSelector";
@@ -7,12 +7,15 @@ import Button from "../../../Ui/button/Button";
 import Toggle from "../../../Ui/toggle/Toggle";
 import Divider from "./Divider";
 import Link from 'next/link';
+import { getWSUrl, Wisp } from "@esportlayers/io";
+import ManualStartVote from "./ManualStartVote";
 
 interface Props {
     noDivider?: boolean;
+    withManualStart?: boolean;
 }
 
-export default function ActiveVoting({noDivider = false}: Props): ReactElement {
+export default function ActiveVoting({noDivider = false, withManualStart = false}: Props): ReactElement {
     const seasons = useVoteSeasons();
     const currentUser = useCurrentUser();
     const dispatch = useDispatch();
@@ -24,6 +27,7 @@ export default function ActiveVoting({noDivider = false}: Props): ReactElement {
     const toggleAutomaticVoting = useCallback((useAutomaticVoting) => {
         dispatch(updateCurrentUser({useAutomaticVoting}));
     }, [dispatch])
+    
 
     if(!seasons) {
         return <>
@@ -45,6 +49,9 @@ export default function ActiveVoting({noDivider = false}: Props): ReactElement {
         {currentUser && currentUser.useBets && <>
             {!noDivider && <Divider />}
             <Toggle checked={currentUser.useAutomaticVoting} onChange={toggleAutomaticVoting} label={'Automatic voting'}/>
+            {withManualStart && currentUser && <Wisp url={getWSUrl(process.env.API_URL + '/bets/live/' + currentUser.frameApiKey)}>
+                <ManualStartVote />
+            </Wisp>}
         </>}
     </>;
 }
