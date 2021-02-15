@@ -83,7 +83,7 @@ export function createVoteRound(): ActionDispatcher<Promise<void>> {
 	};
 }
 
-export function updateVoteRound(betRoundId: number, data: Partial<VoteRound>): ActionDispatcher<Promise<void>> {
+export function updateVoteRound(betRoundId: number, data: Partial<VoteRound>, seasonId?: number): ActionDispatcher<Promise<void>> {
 	return async (dispatch) => {
 		await dispatch<Promise<Response | NetworkError>>({
 			[CALL_API]: {
@@ -102,6 +102,8 @@ export function updateVoteRound(betRoundId: number, data: Partial<VoteRound>): A
 				},
 			},
 		});
+
+		seasonId && await dispatch(loadVoteRounds(seasonId));
 	};
 }
 
