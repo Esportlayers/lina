@@ -10,7 +10,7 @@ import ModalHeader from "../../../../../../Ui/modal/ModalHeader";
 import NudgeFromBottom from "../../../../../../Ui/motion/NudgeFromBottom";
 
 
-export default function ActionCellRenderer({betSeason, id, result, round}: VoteRoundStats): ReactElement {
+export default function ActionCellRenderer({betSeason, id, result, round, status}: VoteRoundStats): ReactElement {
     const dispatch = useDispatch();
     const currentUser = useCurrentUser();
     const onChangeWinner = useCallback(async () => {
@@ -27,6 +27,13 @@ export default function ActionCellRenderer({betSeason, id, result, round}: VoteR
         setShowDelete(false);
         dispatch(deleteVoteRound(id));
     }, [dispatch]);
+
+    if(status === 'running') {
+        return <div>
+            <div><a onClick={async () => {dispatch(updateVoteRound(id, {result: currentUser?.teamAName.toLowerCase(), status: 'finished'}, betSeason))}}>Set winner to {currentUser?.teamAName}</a></div>
+            <div><a onClick={async () => {dispatch(updateVoteRound(id, {result: currentUser?.teamAName.toLowerCase(), status: 'finished'}, betSeason))}}>Set winner to {currentUser?.teamBName}</a></div>
+        </div>
+    }
 
     return <div>
         <div><a onClick={onChangeWinner}>Change winner</a></div>
