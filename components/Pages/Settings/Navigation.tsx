@@ -23,6 +23,11 @@ const items = [
         type: 'page',
     },
     {
+        name: 'Chat analysis',
+        page: 'chatAnalysis',
+        type: 'page',
+    },
+    {
         name: 'Gameplay tools',
         type: 'header',
     },

@@ -16,7 +16,7 @@ import {
 	LOAD_DOTA_STATS_SUCCESS,
 	LOAD_DOTA_OVERLAY_SUCCESS,
 	LOAD_ANTI_SNIPE_OVERLAY_SUCCESS,
-	LOAD_ROSH_OVERLAY_SUCCESS
+	LOAD_ROSH_OVERLAY_SUCCESS,
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -41,6 +41,7 @@ export interface Ui {
 		voteSeasonStats: number[];
 		voteSeasonToplist: number[];
 		voteOverlay: boolean;
+		wordGroups: boolean;
 	};
 }
 
@@ -59,6 +60,7 @@ export const initialUiState: Ui = {
 		voteSeasonStats: [],
 		voteSeasonToplist: [],
 		voteOverlay: false,
+		wordGroups: false,
 	},
 };
 
@@ -127,7 +129,6 @@ interface LoadedVoteSeasonAsset<T> {
 		};
 	};
 }
-
 
 const voteSeasonAssetsLoaded  = [
 	['voteSeasonToplist', LOAD_VOTE_SEASON_TOPLIST_SUCCESS],

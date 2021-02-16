@@ -13,6 +13,7 @@ export const loadedVoteSeasonToplistSelector = (state: State): number[] => state
 export const loadedVoteSeasonStatsSelector = (state: State): number[] => state.ui.loadedEntities.voteSeasonStats;
 export const loadedBotCommandsSelector = (state: State): boolean => state.ui.loadedEntities.botCommands;
 export const loadedGoogleFontsSelector = (state: State): boolean => state.ui.loadedEntities.googleFonts;
+export const loadedWordGroupsSelector = (state: State): boolean => state.ui.loadedEntities.wordGroups; 
 
 export function useCurrentUser(auth?: string): User | null {
 	const user = useSelector(currentUserSelector);

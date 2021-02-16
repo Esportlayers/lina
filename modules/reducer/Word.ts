@@ -4,6 +4,7 @@ import { schema } from 'normalizr';
 import { ActionDispatcher, CALL_API } from '../middleware/NetworkMiddlewareTypes';
 import NetworkError from '../middleware/NetworkError';
 import { CREATE_WORD_FAILURE, CREATE_WORD_REQUEST, CREATE_WORD_SUCCESS, DELETE_WORD_FAILURE, DELETE_WORD_REQUEST, DELETE_WORD_SUCCESS, UPDATE_WORD_FAILURE, UPDATE_WORD_REQUEST, UPDATE_WORD_SUCCESS } from './Actions';
+import { loadWordGroups } from './WordGroup';
 
 export interface WordState {
 	[x: number]: Word;

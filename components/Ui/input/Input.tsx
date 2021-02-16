@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import Label from "../label/label";
 
 interface Props<T> extends Omit<HTMLFormElement, 'type' | 'value'> {
@@ -8,11 +8,18 @@ interface Props<T> extends Omit<HTMLFormElement, 'type' | 'value'> {
     onChange?: (value: T) => void;
     onBlur?: (value: T) => void;
     type?: HTMLInputElement['type'];
+    onEnter?: (value: T) => void;
 }
 
-export default function Input<T extends any>({autoFocus, label, onBlur, onChange, type = 'text', value, ...props}: Props<T>): ReactElement {
+export default function Input<T extends any>({autoFocus, label, onBlur, onChange, onEnter, type = 'text', value, ...props}: Props<T>): ReactElement {
     const [val, setVal] = useState<T>(value);
     useEffect(() => setVal(value), [value]);
+    const onKeyDown = useCallback((e) => {
+        if(onEnter && e.key === 'Enter') {
+            onEnter(val);
+        }
+    }, [onEnter, val]);
+
     return <label>
         {label && <>
             <Label label={label} />
@@ -22,7 +29,7 @@ export default function Input<T extends any>({autoFocus, label, onBlur, onChange
             <input autoFocus={autoFocus} type={type} value={val + ''} onChange={(e) => {
                 setVal(e.target.value as T);
                 onChange && onChange(e.target.value as T)
-            }} onBlur={(e) => onBlur && onBlur(e.target.value as T)} {...props} />
+            }} onBlur={(e) => onBlur && onBlur(e.target.value as T)} onKeyDown={onKeyDown} {...props} />
         </span>
 
         <style jsx>{`
