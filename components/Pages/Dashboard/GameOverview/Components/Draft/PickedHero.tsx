@@ -36,6 +36,8 @@ export async function fetchHeroStats(abortController: AbortController, leagueId:
     return null;
 }
 
+export const baseUrl = 'https://api.streamdota.com/static/heroes/vids/';
+
 export default React.memo(function PickedHero({heroId, heroClass, overlayActive, onShowOverlay}: Props): ReactElement {
     const [stats] = useAbortFetch(fetchHeroStats, '7.28', heroId);
     const games = stats?.matchCount || 0;
@@ -46,9 +48,9 @@ export default React.memo(function PickedHero({heroId, heroClass, overlayActive,
     const pickRate = totalGamesCount > 0 ? Math.floor((games * 100) / totalGamesCount) : 0;
 
     return <div className={'entry'}>
-        <video width={'100%'} loop autoPlay muted height={'150px'}>
-            <source src={process.env.API_URL + `/static/heroes/videos/${heroClass}.mp4`} type="video/mp4" />
-            <source src="movie.ogg" type="video/ogg" />
+        <video height={'150'} loop autoPlay muted playsInline>
+            <source src={baseUrl + heroClass + '/300.mov'} type="video/quicktime" />
+            <source src={baseUrl + heroClass + '/300.webm'} type="video/webm" />
         </video>
 
         <div className={'details'}>
@@ -89,12 +91,18 @@ export default React.memo(function PickedHero({heroId, heroClass, overlayActive,
                 flex-direction: column;
                 justify-content: flex-end;
                 align-items: stretch;
+                position: relative;
+                padding-top: 150px;
             }    
 
             video {
                 border-top-right-radius: 1rem;
                 border-top-left-radius: 1rem;
                 object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .details {
