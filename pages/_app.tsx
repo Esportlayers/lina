@@ -14,7 +14,9 @@ if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
 }
 
 const WrappedApp: FC<AppProps> = ({Component, pageProps}) => (
-    <Component {...pageProps} />
+    <Sentry.ErrorBoundary fallback={"An error has occurred. This error was reported. Please try reloading the page!"}>
+        <Component {...pageProps} />
+    </Sentry.ErrorBoundary>
 );
 
 export default wrapper.withRedux(WrappedApp);
