@@ -54,7 +54,7 @@ export default React.memo(function PickedHero({heroId, heroClass, overlayActive,
         <div className={'details'}>
             <div className={'statsValue'}>
                 <div className={'stats'}>
-                    {wins} - {games}
+                    {wins} / {games}
                 </div>
                 <div className={classNames('winRate', {positive: winRate > 60, negative: winRate < 40})}>{winRate}%</div>
                 <div className={'label'}>
