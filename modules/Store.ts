@@ -21,6 +21,7 @@ import { antiSnipeOverlayReducer, AntiSnipeOverlayState } from './reducer/AntiSn
 import { roshOverlayReducer, RoshOverlayState } from './reducer/RoshanOverlay';
 import { wordReducer, WordState } from './reducer/Word';
 import { wordGroupReducer, WordGroupState } from './reducer/WordGroup';
+import { wordGroupAnalysesReducer, WordGroupAnalysesState } from './reducer/WordGroupAnalyses';
 
 export interface State {
 	entities: {
@@ -38,6 +39,7 @@ export interface State {
 		voteOverlay: VoteOverlayState;
 		word: WordState;
 		wordGroup: WordGroupState;
+		wordGroupAnalyses: WordGroupAnalysesState;
     };
     ui: Ui;
 }
@@ -57,6 +59,7 @@ const initial: State = {
 		voteOverlay: undefined,
 		word: undefined,
 		wordGroup: undefined,
+		wordGroupAnalyses: undefined,
     },
     ui: initialUiState,
 };
@@ -87,6 +90,7 @@ export const storeReducer = combineReducers<State>({
 		voteOverlay: entitiesReducer(voteOverlayReducer, 'voteOverlay'),
 		word: entitiesReducer(wordReducer, 'word'),
 		wordGroup: entitiesReducer(wordGroupReducer, 'wordGroup'),
+		wordGroupAnalyses: entitiesReducer(wordGroupAnalysesReducer, 'wordGroupAnalyses'),
     }),
     ui: uiReducer,
 });

@@ -6,6 +6,7 @@ import AntiSnipeOverlay from "./Pages/AntiSnipeOverlay";
 import RoshanTimer from "./Pages/RoshanTimer";
 import DraftStats from "./Pages/DraftStats";
 import HeroStats from "./Pages/HeroStats";
+import ChatAnalyses from "./Pages/ChatAnalyses/ChatAnalyses";
 
 interface Props {
     active: string;
@@ -26,6 +27,7 @@ export default function SettingsPages({active}: Props): ReactElement {
                 {active === 'roshanTimer' && <RoshanTimer />}
                 {active === 'draftStats' && <DraftStats />}
                 {active === 'heroStats' && <HeroStats />}
+                {active === 'chatAnalyses' && <ChatAnalyses />}
                 {active === 'account' && <div className={'container'}>
                     Work in progress
                 </div>}

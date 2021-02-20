@@ -4,6 +4,7 @@ import { schema } from 'normalizr';
 import { ActionDispatcher, CALL_API } from '../middleware/NetworkMiddlewareTypes';
 import NetworkError from '../middleware/NetworkError';
 import { CREATE_WORD_GROUP_FAILURE, CREATE_WORD_GROUP_REQUEST, CREATE_WORD_GROUP_SUCCESS, DELETE_WORD_GROUP_FAILURE, DELETE_WORD_GROUP_REQUEST, DELETE_WORD_GROUP_SUCCESS, LOAD_WORD_GROUPS_FAILURE, LOAD_WORD_GROUPS_REQUEST, LOAD_WORD_GROUPS_SUCCESS, UPDATE_WORD_GROUP_FAILURE, UPDATE_WORD_GROUP_REQUEST, UPDATE_WORD_GROUP_SUCCESS } from './Actions';
+import { word } from './Word';
 
 export interface WordGroupState {
 	[x: number]: WordGroup;
@@ -20,7 +21,9 @@ interface DeleteWordGroup {
 
 export const wordGroup = new schema.Entity(
     'wordGroup',
-	{},
+	{
+		words: [ word ],
+	},
 	{
 		processStrategy: (wordGroup: WordGroup) => ({
 			...wordGroup,
@@ -73,6 +76,7 @@ export function createWordGroup(name: string): ActionDispatcher<Promise<void>> {
                 }
 			},
 		});
+		await dispatch(loadWordGroups());
 	};
 }
 
