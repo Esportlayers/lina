@@ -40,9 +40,9 @@ export default function ChatAnalyses(): ReactElement {
                     <Checkbox label={'Use sentiment analysis'} checked={useSentimentAnalysis} onChange={(useSentimentAnalysis) => update(id, {useSentimentAnalysis})} />
                     <DeleteWord id={id} word={word} name={name} />
                 </div>)}
-                <div className={'wordTile'}>
+                {words.length < 5 && <div className={'wordTile'}>
                     <NewWord wordGroup={id} />
-                </div>
+                </div>}
             </div>
 
 
@@ -65,7 +65,7 @@ export default function ChatAnalyses(): ReactElement {
             <br />
         </div>)}
 
-        {wordGroups.length < 2 && <CreateWordGroup />}
+        {wordGroups.length < 1 && <CreateWordGroup />}
         
         <style jsx>{`
             .page {
