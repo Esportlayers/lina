@@ -23,8 +23,8 @@ const items = [
         type: 'page',
     },
     {
-        name: 'Chat analysis',
-        page: 'chatAnalysis',
+        name: 'Chat analyses',
+        page: 'chatAnalyses',
         type: 'page',
     },
     {

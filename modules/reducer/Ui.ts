@@ -17,6 +17,7 @@ import {
 	LOAD_DOTA_OVERLAY_SUCCESS,
 	LOAD_ANTI_SNIPE_OVERLAY_SUCCESS,
 	LOAD_ROSH_OVERLAY_SUCCESS,
+	LOAD_WORD_GROUP_ANALYSES_SUCCESS,
 } from './Actions';
 import { ApiActionResponse } from '../middleware/Network';
 import { createReducer } from './util/Reducer';
@@ -42,6 +43,7 @@ export interface Ui {
 		voteSeasonToplist: number[];
 		voteOverlay: boolean;
 		wordGroups: boolean;
+		wordGroupAnalyses: number[];
 	};
 }
 
@@ -61,6 +63,7 @@ export const initialUiState: Ui = {
 		voteSeasonToplist: [],
 		voteOverlay: false,
 		wordGroups: false,
+		wordGroupAnalyses: [],
 	},
 };
 
@@ -142,6 +145,31 @@ for(const [key, listener] of voteSeasonAssetsLoaded) {
 			loadedEntities: {
 				...state.loadedEntities,
 				[key]: state.loadedEntities[key].concat(seasonId),
+			},
+		};
+	});
+}
+
+interface LoadedWordGroupAsset<T> {
+	type: T;
+	options: {
+		urlParams: {
+			wordGroupId: number;
+		};
+	};
+}
+
+const wordGroupAssetsLoaded  = [
+	['wordGroupAnalyses', LOAD_WORD_GROUP_ANALYSES_SUCCESS],
+];
+
+for(const [key, listener] of wordGroupAssetsLoaded) {
+	addReducer<LoadedWordGroupAsset<typeof listener>>(listener, (state, {options: {urlParams: {wordGroupId}}}) => {
+		return {
+			...state,
+			loadedEntities: {
+				...state.loadedEntities,
+				[key]: state.loadedEntities[key].concat(wordGroupId),
 			},
 		};
 	});

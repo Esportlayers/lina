@@ -1,17 +1,28 @@
-import { ReactElement } from "react";
-import { useSelector } from "react-redux";
+import { Word } from "@streamdota/shared-types";
+import { ReactElement, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateWord } from "../../../../../modules/reducer/Word";
+import { loadWordGroups } from "../../../../../modules/reducer/WordGroup";
 import { useWordGroups, wordEntitiesSelector } from "../../../../../modules/selector/WordGroup";
 import Button from "../../../../Ui/button/Button";
 import Description from "../../../../Ui/description/Description";
+import Checkbox from "../../../../Ui/toggle/Checkbox";
 import SettingsTitle from "../../SettingsTitle";
 import CreateWordGroup from "./CreateWordGroup";
 import DeleteWord from "./DeleteWord";
 import DeleteWordGroup from "./DeleteWordGroup";
 import NewWord from "./NewWord";
+import Link from 'next/link';
 
-export default function ChatAnalysis(): ReactElement {
+export default function ChatAnalyses(): ReactElement {
     const wordEntities = useSelector(wordEntitiesSelector);
     const wordGroups = useWordGroups() || [];
+    const dispatch = useDispatch();
+
+    const update = useCallback(async (id: number, data: Partial<Word>) => {
+        dispatch(updateWord(id, data));
+		await dispatch(loadWordGroups());
+    }, [dispatch])
 
     return <div className={'page'}>
         <SettingsTitle>Chat Analysis</SettingsTitle>
@@ -24,8 +35,9 @@ export default function ChatAnalysis(): ReactElement {
             <SettingsTitle>{name}</SettingsTitle>
             <br />
             <div className={'wordGrid'}>
-                {words.map((id) => wordEntities[id]).filter(Boolean).map(({id, word}) => <div className={'wordTile'} key={id}>
+                {words.map((id) => wordEntities[id]).filter(Boolean).map(({id, word, useSentimentAnalysis}) => <div className={'wordTile'} key={id}>
                     <div className={'word'}>{word}</div>
+                    <Checkbox label={'Use sentiment analysis'} checked={useSentimentAnalysis} onChange={(useSentimentAnalysis) => update(id, {useSentimentAnalysis})} />
                     <DeleteWord id={id} word={word} name={name} />
                 </div>)}
                 <div className={'wordTile'}>
@@ -37,7 +49,11 @@ export default function ChatAnalysis(): ReactElement {
             <br />
             <br />
             <div className={'buttonRow'}>
-                <Button>Analyses</Button>
+                <Link as={`/settings/chatAnalyses/${id}`} href={'/settings/chatAnalyses/[wordGroupId]'}>
+                    <a>
+                        <Button>Analyses</Button>
+                    </a>
+                </Link>
                 &nbsp;
                 &nbsp;
                 &nbsp;
@@ -58,7 +74,7 @@ export default function ChatAnalysis(): ReactElement {
 
             .wordGrid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, 200px);
+                grid-template-columns: repeat(auto-fill, 300px);
                 grid-gap: 4rem;
             }
 
