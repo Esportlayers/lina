@@ -1,9 +1,10 @@
 import { EventTypes, GsiActivityMessage, GsiGameStateMessage, useTetherMessageListener } from "@esportlayers/io";
-import { ReactElement } from "react";
-import IconLoader from "../../Ui/loader/IconLoader";
+
 import DashboardHeader from "./DashboardHeader";
 import GameOverview from "./GameOverview/GameOverview";
+import IconLoader from "../../Ui/loader/IconLoader";
 import PlayerGameOverview from "./PlayerGameOverview/PlayerGameOverview";
+import { ReactElement } from "react";
 
 export default function PageView(): ReactElement {
     const {value: state} = useTetherMessageListener<GsiGameStateMessage>(EventTypes.gsi_game_state) || {value: null};
@@ -24,10 +25,9 @@ export default function PageView(): ReactElement {
 
         <style jsx>{`
             .content {
-                padding-top: 50px;
-                height: 100vh;
-                width: 100vw;
                 display: flex;
+                flex-direction: column;
+                flex-grow: 1;
                 align-items: stretch;
             }
             .loader {

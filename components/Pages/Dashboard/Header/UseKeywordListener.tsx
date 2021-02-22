@@ -1,10 +1,10 @@
 import { ReactElement, useCallback } from "react";
-import { useDispatch } from "react-redux";
+
+import Divider from "./Divider";
+import Toggle from "../../../Ui/toggle/Toggle";
 import { updateCurrentUser } from "../../../../modules/reducer/Ui";
 import { useCurrentUser } from "../../../../modules/selector/UiSelector";
-import Toggle from "../../../Ui/toggle/Toggle";
-import Divider from "./Divider";
-
+import { useDispatch } from "react-redux";
 
 export default function UseKeywordListener(): ReactElement {
     const currentUser = useCurrentUser();

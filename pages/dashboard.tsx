@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react';
+import {Wisp, getWSUrl} from '@esportlayers/io';
+
+import KeyWordListenerOverlay from '../components/KeyWordListenerOverlay/KeyWordListenerOverlay';
 import PageFrame from '../components/PageFrame';
-import dynamic from "next/dynamic";
-import { useCurrentUser } from '../modules/selector/UiSelector';
-import {getWSUrl, Wisp} from '@esportlayers/io';
 import PageView from '../components/Pages/Dashboard/PageView';
 import VoteOverlay from '../components/VoteOverlay';
-import KeyWordListenerOverlay from '../components/KeyWordListenerOverlay/KeyWordListenerOverlay';
+import dynamic from "next/dynamic";
+import { useCurrentUser } from '../modules/selector/UiSelector';
 
 const Tether = dynamic(
     () => (import('@esportlayers/io')),
@@ -17,13 +18,13 @@ export default function Dashboard(): ReactElement {
     return <PageFrame title={'Dashboard'}>
         <div className={'page'}>
             {currentUser && <Tether url={getWSUrl(process.env.API_URL + '/dota-gsi/live/' + currentUser.frameApiKey)}>
-                <PageView />
                 <KeyWordListenerOverlay />
-            </Tether>}
+                <PageView />
 
-            {currentUser && <Wisp url={getWSUrl(process.env.API_URL + '/bets/live/' + currentUser.frameApiKey)}>
-                <VoteOverlay />
-            </Wisp>}
+                <Wisp url={getWSUrl(process.env.API_URL + '/bets/live/' + currentUser.frameApiKey)}>
+                    <VoteOverlay />
+                </Wisp>
+            </Tether>}
         </div>
 
         <style jsx>{`

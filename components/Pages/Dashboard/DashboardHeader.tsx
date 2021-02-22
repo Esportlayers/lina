@@ -1,10 +1,11 @@
 import React, { ReactElement } from "react";
+
 import ActiveVoting from "./Header/ActiveVoting";
 import Activity from "./Header/Activity";
-import GSIConnected from "./Header/GSIConnected";
-import UseKeywordListener from "./Header/UseKeywordListener";
-import Link from 'next/link';
 import Divider from "./Header/Divider";
+import GSIConnected from "./Header/GSIConnected";
+import Link from 'next/link';
+import UseKeywordListener from "./Header/UseKeywordListener";
 
 export default function DashboardHeader(): ReactElement {
 
@@ -20,15 +21,13 @@ export default function DashboardHeader(): ReactElement {
             <Divider />
             <GSIConnected />
             <ActiveVoting withManualStart />
-            {/*<UseKeywordListener />*/}
+            <UseKeywordListener />
             <Activity />
         </div>
         <style jsx>{`
             header {
                 background-color: var(--anthrazit);
                 width: 100%;
-                position: fixed;
-                top: 0;
                 padding: .75rem 8rem .75rem 0;
                 box-shadow: 0 0 15px rgba(0,0,0,.3);
                 font-size: .95rem;
