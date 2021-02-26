@@ -11,9 +11,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@esportlayers/io": "^1.7.1",
-    "@sentry/react": "^6.1.0",
-    "@streamdota/shared-types": "^1.5.0",
+    "@esportlayers/io": "^1.7.2",
+    "@sentry/react": "^6.2.0",
+    "@streamdota/shared-types": "^1.5.2",
     "@types/uuid": "^8.3.0",
     "animated-number-react": "^0.1.1",
     "animated-scroll-to": "^2.0.12",
@@ -22,12 +22,12 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
-    "framer-motion": "^3.3.0",
+    "framer-motion": "^3.7.0",
     "is-plain-object": "^5.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "logrocket": "^1.0.14",
     "logrocket-react": "^4.0.1",
-    "next": "10.0.6",
+    "next": "10.0.7",
     "next-redux-wrapper": "^6.0.2",
     "normalizr": "^3.6.1",
     "react": "17.0.1",
@@ -42,17 +42,17 @@
     "react-sparkle": "^1.0.8",
     "react-toggle": "^4.1.1",
     "react-websocket": "^2.1.0",
-    "recharts": "^2.0.6",
+    "recharts": "^2.0.8",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "sass": "^1.32.7",
+    "sass": "^1.32.8",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.11",
     "@types/is-plain-object": "^2.0.4",
-    "@types/node": "^14.14.28",
+    "@types/node": "^14.14.31",
     "@types/normalizr": "^2.0.18",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
@@ -61,6 +61,6 @@
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "@types/reselect": "^2.2.0",
-    "typescript": "^4.1.5"
+    "typescript": "^4.2.2"
   }
 }
