@@ -77,16 +77,6 @@ export default function General(): ReactElement {
           label={"Hidden while picking"}
           disabled={Boolean(dotaOverlay?.alwaysVisible)}
         />
-
-        <br />
-        <br />
-        <SettingsTitle>Animation</SettingsTitle>
-        <br />
-        <Toggle
-          checked={Boolean(dotaOverlay?.noAnimation)}
-          onChange={(noAnimation) => patchOverlay({ noAnimation })}
-          label={"Disable fade in animation"}
-        />
       </div>
       <div>
         {user && (
