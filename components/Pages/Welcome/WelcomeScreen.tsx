@@ -1,27 +1,28 @@
-import { AnimatePresence, motion, Variants } from "framer-motion";
 import { FC, ReactElement, useCallback, useState } from "react";
-import Welcome from "./Sections/Welcome";
+import FullPageSlider, {
+  FullPageSliderProps,
+} from "../../Ui/fullpageslide/FullPageSlide";
+
 import DownloadConfig from "./Sections/DownloadConfig";
 import LocateConfig from "./Sections/LocateConfig";
-import WaitingForConnection from "./Sections/WaitingForConnection";
-import { useRouter } from "next/router";
-import FullPageSlider, { FullPageSliderProps } from "../../Ui/fullpageslide/FullPageSlide";
 import OverlayLinks from "./Sections/OverlayLinks";
-
+import WaitingForConnection from "./Sections/WaitingForConnection";
+import Welcome from "./Sections/Welcome";
+import { useRouter } from "next/router";
 
 const pages: FC<FullPageSliderProps>[] = [
-    Welcome,
-    DownloadConfig,
-    LocateConfig,
-    WaitingForConnection,
-    OverlayLinks,
+  Welcome,
+  DownloadConfig,
+  LocateConfig,
+  WaitingForConnection,
+  OverlayLinks,
 ];
 
 export default function WelcomeScreen(): ReactElement {
-    const router = useRouter();
-    const onFinish = useCallback(() => {
-        router.push('/grandCentralTerminal');
-    }, [router])
+  const router = useRouter();
+  const onFinish = useCallback(() => {
+    router.push("/dashboard");
+  }, [router]);
 
-    return <FullPageSlider pages={pages} onFinish={onFinish} />;
+  return <FullPageSlider pages={pages} onFinish={onFinish} />;
 }
