@@ -18,6 +18,11 @@ const items = [
     type: "header",
   },
   {
+    name: "Bot Commands",
+    page: "botCommands",
+    type: "page",
+  },
+  {
     name: "Vote system",
     page: "voteSystem",
     type: "page",
