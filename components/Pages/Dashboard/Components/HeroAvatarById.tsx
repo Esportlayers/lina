@@ -118,6 +118,7 @@ export const heroIdMap = {
     '119': 'dark_willow',
     '120': 'pangolier',
     '121': 'grimstroke',
+    '123': 'hoodwink',
     '126': 'void_spirit',
     '128': 'snapfire',
     '129': 'mars'
