@@ -1,43 +1,46 @@
-import { Word } from "@streamdota/shared-types";
 import { ReactElement, useCallback } from "react";
+import { loadWordGroups, updateWordGroup } from "../../../../../modules/reducer/WordGroup";
 import { useDispatch, useSelector } from "react-redux";
-import { updateWord } from "../../../../../modules/reducer/Word";
-import { loadWordGroups } from "../../../../../modules/reducer/WordGroup";
 import { useWordGroups, wordEntitiesSelector } from "../../../../../modules/selector/WordGroup";
+
 import Button from "../../../../Ui/button/Button";
-import Description from "../../../../Ui/description/Description";
 import Checkbox from "../../../../Ui/toggle/Checkbox";
-import SettingsTitle from "../../SettingsTitle";
 import CreateWordGroup from "./CreateWordGroup";
 import DeleteWord from "./DeleteWord";
 import DeleteWordGroup from "./DeleteWordGroup";
-import NewWord from "./NewWord";
+import Description from "../../../../Ui/description/Description";
 import Link from 'next/link';
+import NewWord from "./NewWord";
+import SettingsTitle from "../../SettingsTitle";
+import { Word } from "@streamdota/shared-types";
+import { updateWord } from "../../../../../modules/reducer/Word";
 
 export default function ChatAnalyses(): ReactElement {
     const wordEntities = useSelector(wordEntitiesSelector);
-    const wordGroups = useWordGroups() || [];
+    const wordGroups = useWordGroups() || [];
     const dispatch = useDispatch();
 
     const update = useCallback(async (id: number, data: Partial<Word>) => {
         dispatch(updateWord(id, data));
-		await dispatch(loadWordGroups());
+        await dispatch(loadWordGroups());
     }, [dispatch])
 
     return <div className={'page'}>
         <SettingsTitle>Chat Analysis</SettingsTitle>
         <Description>This section allows you to analyse messages in your stream on specific keywords. Analysis scope includes count, word-pairings, impressions & sentiment analysis.<br />This section is restricted, if you need more groups or keywords, please contact us.</Description>
-        
+
         <br />
         <br />
 
-        {wordGroups.map(({id, name, words}) => <div key={id}>
-            <SettingsTitle>{name}</SettingsTitle>
+        {wordGroups.map(({ active, id, name, words }) => <div key={id}>
+            <SettingsTitle>
+                <Checkbox label={name} checked={active} onChange={(active) => dispatch(updateWordGroup(id, { active }))} />
+            </SettingsTitle>
             <br />
             <div className={'wordGrid'}>
-                {words.map((id) => wordEntities[id]).filter(Boolean).map(({id, word, useSentimentAnalysis}) => <div className={'wordTile'} key={id}>
+                {words.map((id) => wordEntities[id]).filter(Boolean).map(({ id, word, useSentimentAnalysis }) => <div className={'wordTile'} key={id}>
                     <div className={'word'}>{word}</div>
-                    <Checkbox label={'Use sentiment analysis'} checked={useSentimentAnalysis} onChange={(useSentimentAnalysis) => update(id, {useSentimentAnalysis})} />
+                    <Checkbox label={'Use sentiment analysis'} checked={useSentimentAnalysis} onChange={(useSentimentAnalysis) => update(id, { useSentimentAnalysis })} />
                     <DeleteWord id={id} word={word} name={name} />
                 </div>)}
                 {words.length < 5 && <div className={'wordTile'}>
@@ -66,7 +69,7 @@ export default function ChatAnalyses(): ReactElement {
         </div>)}
 
         {wordGroups.length < 1 && <CreateWordGroup />}
-        
+
         <style jsx>{`
             .page {
                 padding: 2rem 2.75rem;
