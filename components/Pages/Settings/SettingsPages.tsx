@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { ReactElement } from "react";
 
+import Account from "./Pages/Account";
 import AntiSnipeOverlay from "./Pages/AntiSnipeOverlay";
 import BotCommands from "./Pages/BotCommands";
 import ChatAnalyses from "./Pages/ChatAnalyses/ChatAnalyses";
@@ -34,9 +35,7 @@ export default function SettingsPages({ active }: Props): ReactElement {
           {active === "keywordListener" && <KeywordListener />}
           {active === "chatAnalyses" && <ChatAnalyses />}
           {active === "botCommands" && <BotCommands />}
-          {active === "account" && (
-            <div className={"container"}>Work in progress</div>
-          )}
+          {active === "account" && <Account />}
         </motion.div>
 
         <style jsx>{`
