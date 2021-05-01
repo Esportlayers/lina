@@ -1,7 +1,9 @@
 import { ReactElement, useCallback } from "react";
 
 import BrowserSource from "../../../Ui/browsersource/BrowserSource";
+import Input from "../../../Ui/input/Input";
 import SettingsTitle from "../SettingsTitle";
+import Toggle from "../../../Ui/toggle/Toggle";
 import { User } from "@streamdota/shared-types";
 import { updateCurrentUser } from "../../../../modules/reducer/Ui";
 import { useCurrentUser } from "../../../../modules/selector/UiSelector";
@@ -15,9 +17,35 @@ export default function KeywordListener(): ReactElement {
     [dispatch]
   );
 
+  const toggleKeywordListener = useCallback((useKeywordListener) => {
+    dispatch(updateCurrentUser({ useKeywordListener }));
+  }, [dispatch]);
+
+  const changeKeyword = useCallback(
+    (keywordListener) => {
+      dispatch(updateCurrentUser({ keywordListener }));
+    },
+    [dispatch]
+  );
+
   return (
     <div className={"overlay"}>
       <div>
+        <SettingsTitle>Settings</SettingsTitle>
+        <Toggle checked={user?.useKeywordListener || false} onChange={toggleKeywordListener} label={'Keyword listener active'} />
+
+        <br />
+
+        <Input
+          value={user.keywordListener || ""}
+          label={"Keyword"}
+          onChange={changeKeyword}
+        />
+
+        <br />
+        <br />
+        <br />
+
         <SettingsTitle>Browser Source</SettingsTitle>
         <BrowserSource
           hasIndividualSource={false}
