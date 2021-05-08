@@ -28,6 +28,11 @@ const items = [
     type: "page",
   },
   {
+    name: "Twitch Predictions",
+    page: "predictions",
+    type: "page",
+  },
+  {
     name: "Keyword listener",
     page: "keywordListener",
     type: "page",

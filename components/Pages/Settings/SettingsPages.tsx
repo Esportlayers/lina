@@ -8,6 +8,7 @@ import ChatAnalyses from "./Pages/ChatAnalyses/ChatAnalyses";
 import DraftStats from "./Pages/DraftStats";
 import HeroStats from "./Pages/HeroStats";
 import KeywordListener from "./Pages/KeywordListener";
+import Predictions from "./Pages/Predictions/Predictions";
 import RoshanTimer from "./Pages/RoshanTimer";
 import VoteSystem from "./Pages/VoteSystem/VoteSystem";
 import WLStats from "./Pages/WLStats/WLStats";
@@ -36,6 +37,7 @@ export default function SettingsPages({ active }: Props): ReactElement {
           {active === "chatAnalyses" && <ChatAnalyses />}
           {active === "botCommands" && <BotCommands />}
           {active === "account" && <Account />}
+          {active === "predictions" && <Predictions />}
         </motion.div>
 
         <style jsx>{`
