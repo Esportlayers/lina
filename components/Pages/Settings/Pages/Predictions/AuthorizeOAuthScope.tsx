@@ -34,12 +34,16 @@ export default function AuthorizeOAuthScope({ hasPredictionAccess }: Props): Rea
 
     <br />
 
-    {!hasPredictionAccess && <Button onClick={onRequest}>Grant access</Button>}
+    {!hasPredictionAccess && <div className={'buttonRow'}><Button onClick={onRequest}>Grant access</Button></div>}
     {hasPredictionAccess && <div>Access granted</div>}
 
     <style jsx>{`
       .accessInfo {
         max-width: 600px;
+      }
+
+      .buttonRow {
+        display: flex;
       }
     `}</style>
   </div>;
