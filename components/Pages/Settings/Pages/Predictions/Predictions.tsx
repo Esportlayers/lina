@@ -7,6 +7,7 @@ import Toggle from "../../../../Ui/toggle/Toggle";
 import { updateCurrentUser } from "../../../../../modules/reducer/Ui";
 import { useCurrentUser } from "../../../../../modules/selector/UiSelector";
 import { useDispatch } from "react-redux";
+import PredictionTexts from "./PredictionTexts";
 
 export default function Predictions(): ReactElement {
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ export default function Predictions(): ReactElement {
         type={"number"}
       />
     </div>
+
+    <br />
+
+    <PredictionTexts />
 
     <br />
     <br />
